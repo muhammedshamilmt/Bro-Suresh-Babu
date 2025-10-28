@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Sparkles, Users, UsersRound, HeartHandshake, Bed, Utensils, Trees, Building2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { TestimonialSection } from "@/components/ui/testimonials";
@@ -8,6 +8,10 @@ import Footer from "@/components/Footer";
 const TetelestaiCentre = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoUrl = isVideoPlaying
+    ? "https://www.youtube.com/embed/sSEIOQMtHSc?autoplay=1&mute=1"
+    : "https://www.youtube.com/embed/sSEIOQMtHSc";
 
   const retreatPrograms = [
     {
@@ -138,40 +142,51 @@ const TetelestaiCentre = () => {
       </section>
 
       {/* Full Width Video Section */}
-      <section className="relative w-full h-[70vh] bg-background">
-        <div className="relative w-full h-full">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent to-primary/20" />
-          
-          {/* Play Button Overlay */}
-          <div className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm group cursor-pointer hover:bg-black/40 transition-all duration-300">
-            <motion.div
-              initial={{ scale: 1 }}
-              whileHover={{ scale: 1.1 }}
-              className="relative"
-            >
+      <section className="relative w-full h-[70vh] bg-background overflow-hidden">
+        <div className="absolute inset-0">
+          <iframe
+            className="w-full h-full"
+            src={videoUrl}
+            title="Tetelestai Centre Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            style={{ pointerEvents: isVideoPlaying ? "auto" : "none" }}
+          />
+          {!isVideoPlaying && (
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent to-primary/20 opacity-90 pointer-events-none" />
+          )}
+        </div>
+
+        {!isVideoPlaying && (
+          <div
+            className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm group cursor-pointer hover:bg-black/50 transition-all duration-300"
+            onClick={() => setIsVideoPlaying(true)}
+          >
+            <motion.div initial={{ scale: 1 }} whileHover={{ scale: 1.1 }} className="relative">
               <div className="absolute inset-0 bg-primary rounded-full blur-2xl opacity-50 animate-pulse" />
               <div className="relative p-8 rounded-full bg-primary text-primary-foreground shadow-2xl">
-                <svg
-                  className="w-12 h-12 md:w-16 md:h-16"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="w-12 h-12 md:w-16 md:h-16" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
             </motion.div>
           </div>
+        )}
 
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="text-center px-4">
-              <h2 className="text-3xl md:text-5xl font-bold text-white font-sans mb-4 drop-shadow-lg">
-                Experience the Transformation
-              </h2>
-              <p className="text-lg md:text-xl text-white/90 drop-shadow-md">
-                Take a virtual tour of our peaceful sanctuary
-              </p>
-            </div>
-          </div>
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isVideoPlaying ? 0 : 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center px-4"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-white font-sans mb-4 drop-shadow-lg">
+              Experience the Transformation
+            </h2>
+            <p className="text-lg md:text-xl text-white/90 drop-shadow-md">
+              Take a virtual tour of our peaceful sanctuary
+            </p>
+          </motion.div>
         </div>
       </section>
 

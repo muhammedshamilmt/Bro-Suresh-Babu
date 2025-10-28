@@ -57,7 +57,7 @@ const GraceCommunity = () => {
               <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative overflow-hidden rounded-2xl shadow-glow">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1470&auto=format&fit=crop"
+                  src="https://sajithjoseph.org/wp-content/uploads/elementor/thumbs/Sajith-Joseph-1-qsudtimqwhljo1lqquxz0kyhk7qgbphl4uvlvjdr3k.jpg"
                   alt="Sajith Joseph - Grace Community Global"
                   className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />
@@ -115,7 +115,7 @@ const GraceCommunity = () => {
               <div className="absolute -inset-2 bg-gradient-to-r from-accent/30 to-primary/30 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative overflow-hidden rounded-2xl shadow-glow">
                 <img
-                  src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?q=80&w=1474&auto=format&fit=crop"
+                  src="https://img.freepik.com/free-vector/history-grunge-text_460848-9367.jpg?t=st=1761666458~exp=1761670058~hmac=1b0f335c4646fb89aee3f0c629a81b85ba04de97aee0f1eee8644142cf191060&w=1480"
                   alt="Grace Community Global Founding"
                   className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />

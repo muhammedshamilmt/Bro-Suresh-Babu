@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import heroPortrait from "@/assets/hero-portrait.png";
 
 const Hero = () => {
   const [counts, setCounts] = useState({ sermons: 0, lives: 0, countries: 0 });
@@ -157,13 +157,14 @@ const Hero = () => {
               <div className="absolute -bottom-6 -left-6 w-32 h-32 border-4 border-primary-glow/20 rounded-full" />
               
               {/* Image Container */}
-              <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+              <div className="relative  rounded-3xl ">
                 <img
-                  src={heroPortrait}
+                  // src={heroPortrait}
+                  src="https://gracecommunityglobal.com/wp-content/uploads/2024/10/SLIDER-BG-2.png"
                   alt="Brother Sajith Joseph - Spiritual Leader at Grace Community Global"
                   className="relative object-cover w-full h-full hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
+                <div  />
               </div>
             </div>
           </motion.div>

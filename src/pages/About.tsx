@@ -1,11 +1,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Church, Heart, Gift, Mountain, Globe2, Wifi } from "lucide-react";
+import { Church, Heart, Gift } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import InteractiveBentoGallery from "@/components/ui/interactive-bento-gallery";
 import { TestimonialSection } from "@/components/ui/testimonials";
 import Video from "@/components/Video";
 import Footer from "@/components/Footer";
+import family from "@/assets/family.png";
 
 const About = () => {
   const ref = useRef(null);
@@ -85,50 +86,106 @@ const About = () => {
     {
       id: 1,
       type: "image",
-      title: "Community Gathering",
-      desc: "United in faith and fellowship",
-      url: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1470&auto=format&fit=crop",
-      span: "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2",
+      title: "Sajith and Reshma",
+      desc: "Partnering in ministry and family life",
+      url: "https://sajithjoseph.org/wp-content/uploads/2024/08/sajithwife-650x572.jpg",
+      span: "md:col-span-2 md:row-span-3 sm:col-span-2 sm:row-span-2",
     },
     {
       id: 2,
       type: "image",
-      title: "Worship Service",
-      desc: "Praising together in spirit",
-      url: "https://images.unsplash.com/photo-1438032005730-c779502df39b?q=80&w=1470&auto=format&fit=crop",
-      span: "md:col-span-2 md:row-span-2 col-span-1 sm:col-span-2 sm:row-span-2",
+      title: "Joseph Children",
+      desc: "Joyful moments with the Joseph family",
+      url: "https://sajithjoseph.org/wp-content/uploads/2024/08/sajithkids-650x572.jpg",
+      span: "md:col-span-1 md:row-span-2 sm:col-span-1 sm:row-span-2",
     },
     {
       id: 3,
       type: "image",
-      title: "Prayer Meeting",
-      desc: "Seeking God's presence together",
-      url: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=1470&auto=format&fit=crop",
-      span: "md:col-span-1 md:row-span-3 sm:col-span-2 sm:row-span-2",
+      title: "Family Gathering",
+      desc: "Celebrating faith and togetherness",
+      url: "https://sajithjoseph.org/wp-content/uploads/2024/08/sajithfamily1-650x572.jpg",
+      span: "md:col-span-2 md:row-span-2 sm:col-span-2 sm:row-span-2",
     },
     {
       id: 4,
       type: "image",
-      title: "Youth Ministry",
-      desc: "Empowering the next generation",
-      url: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1469&auto=format&fit=crop",
-      span: "md:col-span-2 md:row-span-2 sm:col-span-1 sm:row-span-2",
+      title: "Grace Community",
+      desc: "Standing united in purpose",
+      url: "https://sajithjoseph.org/wp-content/uploads/2024/08/sajithfamily-650x572.jpg",
+      span: "md:col-span-1 md:row-span-2 sm:col-span-1 sm:row-span-2",
     },
     {
       id: 5,
       type: "image",
-      title: "Community Outreach",
-      desc: "Serving with love and compassion",
-      url: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=1470&auto=format&fit=crop",
-      span: "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2",
+      title: "Ministry Moments",
+      desc: "Sharing the gospel with passion",
+      url: "https://sajithjoseph.org/wp-content/uploads/2024/08/sajith3-650x572.jpg",
+      span: "md:col-span-1 md:row-span-2 sm:col-span-1 sm:row-span-2",
     },
     {
       id: 6,
       type: "image",
-      title: "Mission Trip",
-      desc: "Spreading the gospel worldwide",
-      url: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1470&auto=format&fit=crop",
-      span: "md:col-span-2 md:row-span-2 sm:col-span-1 sm:row-span-2",
+      title: "Sajith Joseph",
+      desc: "A shepherd devoted to the gospel",
+      url: "https://sajithjoseph.org/wp-content/uploads/2024/08/sajith-650x572.jpg",
+      span: "md:col-span-1 md:row-span-2 sm:col-span-1 sm:row-span-2",
+    },
+    {
+      id: 7,
+      type: "image",
+      title: "Reshma Joseph",
+      desc: "Grace-filled leadership and care",
+      url: "https://sajithjoseph.org/wp-content/uploads/2024/08/reshma-650x572.jpg",
+      span: "md:col-span-1 md:row-span-2 sm:col-span-1 sm:row-span-2",
+    },
+    {
+      id: 8,
+      type: "image",
+      title: "GCTV Broadcast",
+      desc: "Reaching hearts through media",
+      url: "https://sajithjoseph.org/wp-content/uploads/2024/08/gctvcovernew-650x572.jpg",
+      span: "md:col-span-2 md:row-span-3 sm:col-span-2 sm:row-span-2",
+    },
+    {
+      id: 9,
+      type: "image",
+      title: "Broadcast Studio",
+      desc: "Preparing messages of hope",
+      url: "https://sajithjoseph.org/wp-content/uploads/2024/08/gctvcover-650x572.jpg",
+      span: "md:col-span-1 md:row-span-2 sm:col-span-1 sm:row-span-2",
+    },
+    {
+      id: 10,
+      type: "image",
+      title: "Worship Service",
+      desc: "Gathered in praise and worship",
+      url: "https://sajithjoseph.org/wp-content/uploads/2024/08/ddd-650x572.jpg",
+      span: "md:col-span-1 md:row-span-2 sm:col-span-1 sm:row-span-2",
+    },
+    {
+      id: 11,
+      type: "image",
+      title: "Ministry Vision",
+      desc: "Looking ahead with faith",
+      url: "https://sajithjoseph.org/wp-content/uploads/2024/08/coverabout-650x572.jpg",
+      span: "md:col-span-2 md:row-span-2 sm:col-span-2 sm:row-span-2",
+    },
+    {
+      id: 12,
+      type: "image",
+      title: "Grace Initiatives",
+      desc: "Serving communities with compassion",
+      url: "https://sajithjoseph.org/wp-content/uploads/2024/08/donatecover-650x572.jpg",
+      span: "md:col-span-1 md:row-span-2 sm:col-span-1 sm:row-span-2",
+    },
+    {
+      id: 13,
+      type: "image",
+      title: "Prayer Ministry",
+      desc: "Imparting blessings and intercession",
+      url: "https://sajithjoseph.org/wp-content/uploads/2024/08/sajithandson.jpg",
+      span: "md:col-span-2 md:row-span-3 sm:col-span-2 sm:row-span-2",
     },
   ];
 
@@ -207,7 +264,7 @@ const About = () => {
               <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative overflow-hidden rounded-2xl shadow-glow">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1470&auto=format&fit=crop"
+                  src="https://sajithjoseph.org/wp-content/uploads/elementor/thumbs/sajith-718x960-1-qsw0wkkus10xqznazer1n06bsm201p1t10511iv53g.jpg"
                   alt="Sajith Joseph - Grace Community Global"
                   className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />
@@ -265,7 +322,7 @@ const About = () => {
               <div className="absolute -inset-2 bg-gradient-to-r from-accent/30 to-primary/30 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative overflow-hidden rounded-2xl shadow-glow">
                 <img
-                  src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=1473&auto=format&fit=crop"
+                  src="https://i.ytimg.com/vi/uTEsxMukwis/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAC2v8ce0iwPwQnaIfKVJrijYt4kA"
                   alt="Grace Community Global Founding"
                   className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />
@@ -303,7 +360,7 @@ const About = () => {
               <div className="absolute -inset-2 bg-gradient-to-r from-accent/30 to-primary/30 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative overflow-hidden rounded-2xl shadow-glow">
                 <img
-                  src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?q=80&w=1474&auto=format&fit=crop"
+                  src="https://img.freepik.com/free-photo/person-with-books-digital-art-style-education-day_23-2151164365.jpg?t=st=1761665859~exp=1761669459~hmac=6b6e0f3b6a9b77699e9a2a8348023fedfd404acb32b75100d54531dd92973647&w=1480"
                   alt="Sajith Joseph's Journey"
                   className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />
@@ -475,9 +532,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* Global Impact Section */}
       <section className="py-16 md:py-24 bg-accent/10">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -486,53 +542,45 @@ const About = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold font-sans mb-4 text-foreground">
-              Global Impact
+              About Sajith Joseph
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Grace Community Global has extended its reach beyond local communities to have a profound global impact.
+              A glimpse into the roots and spiritual journey that shaped his calling.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Mountain,
-                title: "Retreats and Missions",
-                description: "The organization conducts retreats that offer spiritual renewal and personal growth, as well as missions that provide aid and spiritual support in underserved regions around the world.",
-              },
-              {
-                icon: Globe2,
-                title: "Ecumenical Initiatives",
-                description: "Active participation in global ecumenical movements that seek to heal divisions within the Christian church and promote a unified approach to worship and service.",
-              },
-              {
-                icon: Wifi,
-                title: "Digital Outreach",
-                description: "Leveraging technology to spread its message through online sermons, teachings, and interactive sessions that connect individuals globally, fostering a worldwide community of faith.",
-              },
-            ].map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="relative bg-card rounded-2xl p-8 border-2 border-dashed border-primary/30 hover:border-primary/60 transition-all duration-300 hover:shadow-glow"
-              >
-                <div className="flex flex-col items-center text-center space-y-4">
-                  <div className="p-4 rounded-2xl bg-primary/10">
-                    <service.icon className="w-12 h-12 text-primary" />
-                  </div>
-                  <h3 className="text-2xl font-bold font-sans text-foreground">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="relative w-full  rounded-2xl p-8 border border-border/50  transition-shadow duration-300"
+          >
+            <div className="absolute  pointer-events-none" />
+            <div className="relative grid gap-10">
+              <div className="space-y-4">
+                <h3 className="text-2xl md:text-3xl font-bold font-sans text-foreground">
+                  Early Life & Background
+                </h3>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Sajith Joseph was born and raised in a devout Roman Catholic family in Kerala, India. The Catholic Church immersed him in its teachings and traditions from a young age, nurturing a profound reverence for faith and community.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  As he grew older, his quest for deeper spiritual understanding led him to explore various Christian denominations and eventually embrace Pentecostalism, where he felt a compelling call to preach and lead. His early experiences as a pastor were marked by vibrant preaching and an unwavering dedication to spiritual service, laying the groundwork for his future endeavours.
+                </p>
+              </div>
+              <div className="relative">
+                <div className="absolute -inset-2  opacity-50 pointer-events-none" />
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+                  <img
+                    src={family}
+                    alt="Portrait representing Sajith Joseph"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

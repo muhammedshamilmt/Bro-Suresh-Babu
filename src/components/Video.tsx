@@ -1,11 +1,15 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Play } from "lucide-react";
 
 const Video = () => {
   const ref = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const videoUrl = isPlaying
+    ? "https://www.youtube.com/embed/ULqPQxoha64?autoplay=1&mute=1"
+    : "https://www.youtube.com/embed/ULqPQxoha64";
 
   return (
     <section className="py-24 bg-gradient-warm" ref={ref}>
@@ -32,31 +36,31 @@ const Video = () => {
           className="relative max-w-5xl mx-auto"
         >
           <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
-            {/* Video Background / Placeholder */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent to-primary/20" />
-            
-            {/* Play Button Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm group cursor-pointer hover:bg-black/40 transition-all duration-300">
-              <motion.div
-                initial={{ scale: 1 }}
-                whileHover={{ scale: 1.1 }}
-                className="relative"
+            {!isPlaying && (
+              <div
+                className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm group cursor-pointer hover:bg-black/40 transition-all duration-300"
+                onClick={() => setIsPlaying(true)}
               >
-                <div className="absolute inset-0 bg-primary rounded-full blur-2xl opacity-50 animate-glow" />
-                <div className="relative p-8 rounded-full bg-primary text-primary-foreground shadow-2xl">
-                  <Play size={48} fill="currentColor" />
-                </div>
-              </motion.div>
-            </div>
+                <motion.div
+                  initial={{ scale: 1 }}
+                  whileHover={{ scale: 1.1 }}
+                  className="relative"
+                >
+                  <div className="absolute inset-0 bg-primary rounded-full blur-2xl opacity-50 animate-glow" />
+                  <div className="relative p-8 rounded-full bg-primary text-primary-foreground shadow-2xl">
+                    <Play size={48} fill="currentColor" />
+                  </div>
+                </motion.div>
+              </div>
+            )}
 
-            {/* You can replace this with an actual video embed */}
-            {/* <iframe
+            <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+              src={videoUrl}
               title="Ministry Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-            /> */}
+            />
           </div>
 
           {/* Decorative elements */}
