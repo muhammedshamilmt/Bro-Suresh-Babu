@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, Clock, Globe, Facebook, Youtube, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Globe, Facebook, Youtube, Instagram } from "lucide-react";
 import { z } from "zod";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -8,28 +8,25 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useSubmitEnquiry } from "@/hooks/useEnquiries";
 
 const contactSchema = z.object({
-  name: z.string().trim().min(1, { message: "Name is required" }).max(100, { message: "Name must be less than 100 characters" }),
-  email: z.string().trim().email({ message: "Invalid email address" }).max(255, { message: "Email must be less than 255 characters" }),
-  phone: z.string().trim().max(20, { message: "Phone must be less than 20 characters" }).optional(),
+  name: z.string().trim().min(1, { message: "Name is required" }).max(100),
+  email: z.string().trim().email({ message: "Invalid email address" }).max(255),
+  phone: z.string().trim().max(20).optional(),
   type: z.string().min(1, { message: "Inquiry type is required" }),
-  message: z.string().trim().min(1, { message: "Message is required" }).max(1000, { message: "Message must be less than 1000 characters" })
+  message: z.string().trim().min(1, { message: "Message is required" }).max(1000),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
 const Contact = () => {
   const { toast } = useToast();
+  const submitEnquiry = useSubmitEnquiry();
   const [formData, setFormData] = useState<ContactFormData>({
-    name: "",
-    email: "",
-    phone: "",
-    type: "",
-    message: ""
+    name: "", email: "", phone: "", type: "", message: "",
   });
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -42,43 +39,34 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
-    setIsSubmitting(true);
+
+    const parsed = contactSchema.safeParse(formData);
+    if (!parsed.success) {
+      const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
+      parsed.error.errors.forEach((err) => {
+        if (err.path[0]) fieldErrors[err.path[0] as keyof ContactFormData] = err.message;
+      });
+      setErrors(fieldErrors);
+      return;
+    }
 
     try {
-      const validatedData = contactSchema.parse(formData);
-
+      await submitEnquiry.mutateAsync(parsed.data);
       toast({
         title: "Message Sent!",
-        description: "Thank you for reaching out to Brother Suresh Babu Ministries. We'll get back to you soon.",
+        description: "Thank you for reaching out. We'll get back to you soon.",
       });
-
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        type: "",
-        message: ""
+      setFormData({ name: "", email: "", phone: "", type: "", message: "" });
+    } catch (err: any) {
+      toast({
+        title: "Failed to send",
+        description: err?.message ?? "Something went wrong. Please try again.",
+        variant: "destructive",
       });
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
-        error.errors.forEach((err) => {
-          if (err.path[0]) {
-            fieldErrors[err.path[0] as keyof ContactFormData] = err.message;
-          }
-        });
-        setErrors(fieldErrors);
-        
-        toast({
-          title: "Validation Error",
-          description: "Please check the form and try again.",
-          variant: "destructive"
-        });
-      }
-    } finally {
-      setIsSubmitting(false);
     }
   };
+
+  const isSubmitting = submitEnquiry.isPending;
 
   const contactInfo = [
     {

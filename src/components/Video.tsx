@@ -8,8 +8,8 @@ const Video = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const videoUrl = isPlaying
-    ? "https://youtu.be/lCMEqroNbWE?autoplay=1&mute=1"
-    : "https://youtu.be/lCMEqroNbWE";
+    ? "https://www.youtube.com/watch?v=lCMEqroNbWE?autoplay=1&mute=1"
+    : "https://www.youtube.com/watch?v=lCMEqroNbWE";
 
   return (
     <section className="py-24 bg-gradient-warm" ref={ref}>
