@@ -12,6 +12,9 @@ const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const Events = lazy(() => import("./pages/Events"));
 const Contact = lazy(() => import("./pages/Contact"));
+const GraceCommunity = lazy(() => import("./pages/GraceCommunity"));
+const SajithJourney = lazy(() => import("./pages/SajithJourney"));
+const TetelestaiCentre = lazy(() => import("./pages/TetelestaiCentre"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -31,6 +34,9 @@ const App = () => (
             <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/events" element={<Events />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/grace-community" element={<GraceCommunity />} />
+            <Route path="/sajith-journey" element={<SajithJourney />} />
+            <Route path="/tetelestai-centre" element={<TetelestaiCentre />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

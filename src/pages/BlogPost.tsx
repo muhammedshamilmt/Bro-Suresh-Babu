@@ -40,7 +40,7 @@ const BlogPost = () => {
       <p class="mb-6 text-lg leading-relaxed">As you walk through your week, meditate on the finished work of the cross. Let the truth of your justification bring peace to your anxious heart. Rest in the assurance that He who began a good work in you will carry it on to completion.</p>
     `,
     date: "October 15, 2023",
-    author: "Bro. Suresh Babu",
+    author: "Brother Suresh Babu",
     category: "Sermons & Teachings",
     image: "https://images.unsplash.com/photo-1490730141103-6cac501b1062?q=80&w=1470&auto=format&fit=crop",
   };

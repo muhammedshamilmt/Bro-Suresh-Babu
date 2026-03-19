@@ -136,7 +136,7 @@ const Ministry = () => {
                 Global Geographic Reach
               </h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Bro. Suresh Babu's ministry breaks geographical boundaries, impacting lives from local 
+                Brother Suresh Babu's ministry breaks geographical boundaries, impacting lives from local 
                 villages in India to massive conventions in South America.
               </p>
               
@@ -229,7 +229,7 @@ const Ministry = () => {
             <div className="bg-card p-8 rounded-3xl border border-border shadow-soft">
               <h2 className="text-3xl font-bold font-serif mb-6 text-blue-dark">Unifying the Church</h2>
               <p className="text-muted-foreground mb-6">
-                Bro. Suresh Babu is known for his widespread denominational acceptance, uniting believers 
+                Brother Suresh Babu is known for his widespread denominational acceptance, uniting believers 
                 from all backgrounds under the banner of Christ.
               </p>
               <ul className="space-y-3">

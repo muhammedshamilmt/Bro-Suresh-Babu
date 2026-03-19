@@ -49,7 +49,7 @@ const Contact = () => {
 
       toast({
         title: "Message Sent!",
-        description: "Thank you for reaching out to Bro. Suresh Babu Ministries. We'll get back to you soon.",
+        description: "Thank you for reaching out to Brother Suresh Babu Ministries. We'll get back to you soon.",
       });
 
       setFormData({
@@ -137,7 +137,7 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto"
           >
-            Invite Bro. Suresh Babu, send prayer requests, or inquire about ministry partnerships.
+            Invite Brother Suresh Babu, send prayer requests, or inquire about ministry partnerships.
           </motion.p>
         </div>
       </section>
@@ -160,7 +160,7 @@ const Contact = () => {
                   Ministry Office
                 </h2>
                 <p className="text-muted-foreground text-lg mb-8">
-                  Get in touch with the official ministry office of Bro. Suresh Babu. 
+                  Get in touch with the official ministry office of Brother Suresh Babu. 
                   We aim to respond to all inquiries within 24-48 hours.
                 </p>
               </div>
@@ -225,7 +225,7 @@ const Contact = () => {
                   Send an Inquiry
                 </h2>
                 <p className="text-muted-foreground mb-8">
-                  Use this form to invite Bro. Suresh, share a testimony, or request prayer.
+                  Use this form to invite Brother Suresh, share a testimony, or request prayer.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">

@@ -11,7 +11,7 @@ const testimonialsData = [
   {
     id: 1,
     quote:
-      "Bro. Suresh's ministry completely changed our church. His focus on Gospel truth and practical spiritual transformation brought a new wave of revival to our congregation.",
+      "Brother Suresh's ministry completely changed our church. His focus on Gospel truth and practical spiritual transformation brought a new wave of revival to our congregation.",
     name: "Rev. David Smith",
     role: "Senior Pastor",
     imageSrc: "https://images.unsplash.com/photo-1581403341630-a6e0b9d2d257?q=80&w=1470&auto=format&fit=crop",
@@ -19,7 +19,7 @@ const testimonialsData = [
   {
     id: 2,
     quote:
-      "The youth camp led by Bro. Suresh Babu was the turning point in my life. I encountered God's grace and found my true calling in serving the community.",
+      "The youth camp led by Brother Suresh Babu was the turning point in my life. I encountered God's grace and found my true calling in serving the community.",
     name: "John Mark",
     role: "Youth Leader",
     imageSrc: "https://images.unsplash.com/photo-1690407617542-2f210cf20d7e?q=80&w=1470&auto=format&fit=crop",
@@ -42,11 +42,11 @@ const Index = () => {
       <Introduction />
       <Services />
       <Video />
-      <TestimonialSection
+      {/* <TestimonialSection
         title="See What All the Talk Is About!"
         subtitle="Transformative experiences from believers around the globe"
         testimonials={testimonialsData}
-      />
+      /> */}
       <CTA />
       <Footer />
     </div>

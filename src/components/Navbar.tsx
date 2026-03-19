@@ -42,7 +42,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className={`flex items-center space-x-2 transition-colors ${!isScrolled ? 'text-white' : 'text-foreground'}`}>
           <span className="text-2xl font-serif font-bold ">
-            Bro. Suresh Babu
+            Brother Suresh Babu
           </span>
         </Link>
 

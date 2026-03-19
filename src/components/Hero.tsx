@@ -132,14 +132,14 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.95, y: 50 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-            className="relative flex-shrink-0 w-[450px] sm:w-[600px] lg:w-[750px] xl:w-[900px] 2xl:w-[950px] pointer-events-auto"
+            className="relative flex-shrink-0 w-[450px]  pointer-events-auto"
           >
             {/* Backglow for the portrait */}
             <div className="absolute inset-x-0 bottom-0 top-1/4 bg-primary/20 blur-[80px] -z-10 rounded-t-full" />
             <img
               src={HeroImg}
               className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-              alt="Bro. Suresh Babu"
+              alt="Brother Suresh Babu"
               style={{ filter: "brightness(1.1) contrast(1.05)" }}
             />
           </motion.div>

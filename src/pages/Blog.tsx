@@ -16,7 +16,7 @@ const Blog = () => {
     title: "Understanding the Finished Work of the Cross",
     excerpt: "The message of grace is not just a theological concept, but a practical reality that transforms our daily lives when we fully rest in what Jesus accomplished.",
     date: "October 15, 2023",
-    author: "Bro. Suresh Babu",
+    author: "Brother Suresh Babu",
     category: "Sermons & Teachings",
     image: "https://images.unsplash.com/photo-1490730141103-6cac501b1062?q=80&w=1470&auto=format&fit=crop",
   };
@@ -202,7 +202,7 @@ const Blog = () => {
                 <ul className="space-y-2">
                   {categories.map((category, i) => (
                     <li key={i}>
-                      <a href="#" className="flex items-center justify-between text-muted-foreground hover:text-primary transition-colors group">
+                      <a href="/blog" className="flex items-center justify-between text-muted-foreground hover:text-primary transition-colors group">
                         <span className="flex items-center gap-2">
                           <ChevronRight className="w-4 h-4 text-border group-hover:text-primary transition-colors" />
                           {category}

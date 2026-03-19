@@ -28,7 +28,7 @@ const Footer = () => {
           {/* Logo & Message */}
           <div className="space-y-4">
             <h3 className="text-2xl font-serif font-bold text-primary">
-              Bro. Suresh Babu
+              Brother Suresh Babu
             </h3>
             <p className="text-background/80 leading-relaxed">
               33 Years of Full-Time Ministry. Touching Lives Across the Globe.
@@ -118,7 +118,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-background/20">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-background/60 text-sm text-center md:text-left">
-              © {currentYear} Bro. Suresh Babu Ministries. All Rights Reserved.
+              © {currentYear} Brother Suresh Babu Ministries. All Rights Reserved.
             </p>
             <p className="text-background/60 text-sm text-center md:text-right">
               Powered by Faith & Grace

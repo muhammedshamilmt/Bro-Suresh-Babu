@@ -84,7 +84,7 @@ const About = () => {
     {
       id: 1,
       quote:
-        "Bro. Suresh's ministry completely changed our church. His focus on Gospel truth and practical spiritual transformation brought a new wave of revival to our congregation.",
+        "Brother Suresh's ministry completely changed our church. His focus on Gospel truth and practical spiritual transformation brought a new wave of revival to our congregation.",
       name: "Rev. David Smith",
       role: "Senior Pastor",
       imageSrc: "https://images.unsplash.com/photo-1581403341630-a6e0b9d2d257?q=80&w=1470&auto=format&fit=crop",
@@ -92,7 +92,7 @@ const About = () => {
     {
       id: 2,
       quote:
-        "The youth camp led by Bro. Suresh Babu was the turning point in my life. I encountered God's grace and found my true calling in serving the community.",
+        "The youth camp led by Brother Suresh Babu was the turning point in my life. I encountered God's grace and found my true calling in serving the community.",
       name: "John Mark",
       role: "Youth Leader",
       imageSrc: "https://images.unsplash.com/photo-1690407617542-2f210cf20d7e?q=80&w=1470&auto=format&fit=crop",
@@ -116,7 +116,7 @@ const About = () => {
         <div className="absolute inset-0">
           <img
             src={aboutImg}
-            alt="About Bro. Suresh Babu"
+            alt="About Brother Suresh Babu"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/60" />
@@ -128,7 +128,7 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-6xl font-bold text-white font-serif mb-6"
           >
-            About Bro. Suresh Babu
+            About Brother Suresh Babu
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -157,7 +157,7 @@ const About = () => {
               <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
                 <p>
                   At the young age of 17, facing overwhelming suicidal thoughts and despair,
-                  Bro. Suresh Babu encountered the unconditional love and compassion of Jesus Christ.
+                  Brother Suresh Babu encountered the unconditional love and compassion of Jesus Christ.
                   This pivotal moment led to a complete and miraculous life transformation.
                 </p>
                 <p>
@@ -176,7 +176,7 @@ const About = () => {
             >
               <img
                 src={about2}
-                alt="Bro. Suresh Babu Speaking"
+                alt="Brother Suresh Babu Speaking"
                 className="w-full h-full object-cover"
               />
             </motion.div>
@@ -268,7 +268,7 @@ const About = () => {
               <Users className="w-12 h-12 text-primary mb-6" />
               <h3 className="text-2xl font-serif font-bold mb-4 text-blue-dark">Family Background</h3>
               <p className="text-muted-foreground mb-4">
-                As the firstborn in his family, Bro. Suresh was raised with a Father from a Hindu background and a Mother who was a nominal Christian.
+                As the firstborn in his family, Brother Suresh was raised with a Father from a Hindu background and a Mother who was a nominal Christian.
               </p>
               <p className="text-muted-foreground">
                 Today, his entire family has been touched by God's grace, remarkably standing as a
@@ -337,11 +337,11 @@ const About = () => {
       </section>
 
       {/* Testimonials Section */}
-      <TestimonialSection
+      {/* <TestimonialSection
         title="Impact Stories"
         subtitle="Hear from those who have been touched by the ministry"
         testimonials={testimonialsData}
-      />
+      /> */}
 
       <Footer />
     </div>

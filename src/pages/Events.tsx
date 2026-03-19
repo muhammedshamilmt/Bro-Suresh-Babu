@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Clock, Users, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
@@ -10,7 +11,7 @@ const Events = () => {
     date: "November 15-18, 2024",
     time: "9:00 AM - 9:00 PM Daily",
     location: "Trivandrum International Stadium, Kerala",
-    description: "Join us for four days of powerful worship, transformative teaching, and miraculous healing. Bro. Suresh Babu will be sharing deep revelations on the finished work of the cross, alongside international guest speakers. This convention is expected to gather over 50,000 believers from across India and around the globe.",
+    description: "Join us for four days of powerful worship, transformative teaching, and miraculous healing. Brother Suresh Babu will be sharing deep revelations on the finished work of the cross, alongside international guest speakers. This convention is expected to gather over 50,000 believers from across India and around the globe.",
     image: "https://images.unsplash.com/photo-1543722530-d2c3201371e7?q=80&w=1474&auto=format&fit=crop",
     type: "Major Crusade",
   };
@@ -50,7 +51,7 @@ const Events = () => {
       time: "9:00 AM & 11:30 AM",
       location: "Christ Centre, Trivandrum",
       type: "Weekly Service",
-      description: "Weekly gathering featuring powerful worship, anointed preaching by Bro. Suresh Babu, and a special time for prayer and healing.",
+      description: "Weekly gathering featuring powerful worship, anointed preaching by Brother Suresh Babu, and a special time for prayer and healing.",
     },
   ];
 
@@ -142,12 +143,12 @@ const Events = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="flex-1 bg-primary text-white font-bold py-4 px-8 rounded-full hover:bg-primary/90 transition-colors shadow-glow text-center">
+                <Link to="/contact" className="flex-1 bg-primary text-white font-bold py-4 px-8 rounded-full hover:bg-primary/90 transition-colors shadow-glow text-center">
                   Register Now
-                </button>
-                <button className="flex-1 border-2 border-primary text-primary font-bold py-4 px-8 rounded-full hover:bg-primary/5 transition-colors text-center">
+                </Link>
+                <Link to="/contact" className="flex-1 border-2 border-primary text-primary font-bold py-4 px-8 rounded-full hover:bg-primary/5 transition-colors text-center">
                   Learn More
-                </button>
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -217,9 +218,9 @@ const Events = () => {
 
                 {/* Keep Arrow aligned */}
                 <div className="flex-shrink-0 w-full lg:w-auto mt-4 lg:mt-0">
-                  <button className="w-full lg:w-auto flex items-center justify-center gap-2 bg-background border border-border hover:border-primary hover:text-primary font-bold py-3 px-6 rounded-full transition-all group-hover:shadow-sm">
+                  <Link to={`/events`} className="w-full lg:w-auto flex items-center justify-center gap-2 bg-background border border-border hover:border-primary hover:text-primary font-bold py-3 px-6 rounded-full transition-all group-hover:shadow-sm">
                     View Details <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             ))}
@@ -241,9 +242,9 @@ const Events = () => {
           <p className="text-xl md:text-2xl opacity-90 mb-10">
             Support the ministry through prayer, volunteering, or financial contributions as we reach the nations.
           </p>
-          <button className="bg-white text-primary font-bold text-lg py-4 px-10 rounded-full hover:bg-white/90 shadow-glow transition-all">
+          <Link to="/contact" className="bg-white text-primary font-bold text-lg py-4 px-10 rounded-full hover:bg-white/90 shadow-glow transition-all inline-block">
             Become a Partner
-          </button>
+          </Link>
         </div>
       </section>
 

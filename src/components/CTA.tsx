@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import ctaBackground from "@/assets/cta-background.jpg";
 
 const CTA = () => {
@@ -56,9 +57,10 @@ const CTA = () => {
           >
             <Button 
               size="lg"
+              asChild
               className="px-12 py-6 text-lg font-semibold bg-primary hover:bg-primary-glow text-primary-foreground shadow-glow transition-smooth rounded-full"
             >
-              Join Us
+              <Link to="/contact">Join Us</Link>
             </Button>
           </motion.div>
         </motion.div>

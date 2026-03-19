@@ -336,11 +336,11 @@ const TetelestaiCentre = () => {
       </section>
 
       {/* Testimonials Section */}
-      <TestimonialSection
+      {/* <TestimonialSection
         title="Transformative Experiences"
         subtitle="Hear from those who have experienced the peace and renewal at Tetelestai Centre"
         testimonials={testimonialsData}
-      />
+      /> */}
 
       <Footer />
     </div>

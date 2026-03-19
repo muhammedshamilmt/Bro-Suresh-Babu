@@ -46,7 +46,7 @@ const Introduction = () => {
 
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
-                At 17, facing suicidal thoughts, Bro. Suresh Babu encountered Jesus's love and compassion, 
+                At 17, facing suicidal thoughts, Brother Suresh Babu encountered Jesus's love and compassion, 
                 leading to a complete life transformation. This divine intervention sparked a lifelong 
                 testimony and passion for witnessing.
               </p>
