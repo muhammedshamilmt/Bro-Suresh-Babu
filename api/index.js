@@ -1,8 +1,8 @@
-const express = require("express");
-const cors = require("cors");
-const { connectDB } = require("../server/db");
-const enquiriesRouter = require("../server/routes/enquiries");
-const blogsRouter = require("../server/routes/blogs");
+import express from "express";
+import cors from "cors";
+import { connectDB } from "../server/db.js";
+import enquiriesRouter from "../server/routes/enquiries.js";
+import blogsRouter from "../server/routes/blogs.js";
 
 const app = express();
 
@@ -14,10 +14,9 @@ app.use("/api/enquiries", enquiriesRouter);
 app.use("/api/blogs", blogsRouter);
 app.get("/api/health", (_req, res) => res.json({ status: "ok", ts: Date.now() }));
 
-// Cache DB connection across warm serverless invocations
 let dbReady = false;
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   try {
     if (!dbReady) {
       await connectDB();
@@ -25,7 +24,7 @@ module.exports = async (req, res) => {
     }
     app(req, res);
   } catch (err) {
-    console.error("Serverless handler error:", err);
+    console.error("Handler error:", err);
     res.status(500).json({ error: "Internal server error", detail: err.message });
   }
-};
+}

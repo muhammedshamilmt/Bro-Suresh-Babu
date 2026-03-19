@@ -1,12 +1,11 @@
-const { Router } = require("express");
-const { ObjectId } = require("mongodb");
-const { getDB } = require("../db");
+import { Router } from "express";
+import { ObjectId } from "mongodb";
+import { getDB } from "../db.js";
 
 const router = Router();
 const COL = "blogs";
 
-// ── GET /api/blogs ─────────────────────────────────────────────────────────────
-// ?status=published&category=Devotionals&search=grace&page=1&limit=10
+// GET /api/blogs
 router.get("/", async (req, res) => {
   try {
     const db = getDB();
@@ -37,7 +36,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// ── GET /api/blogs/:id ─────────────────────────────────────────────────────────
+// GET /api/blogs/:id
 router.get("/:id", async (req, res) => {
   try {
     const db = getDB();
@@ -51,7 +50,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// ── POST /api/blogs ────────────────────────────────────────────────────────────
+// POST /api/blogs
 router.post("/", async (req, res) => {
   try {
     const db = getDB();
@@ -83,7 +82,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// ── PUT /api/blogs/:id ─────────────────────────────────────────────────────────
+// PUT /api/blogs/:id
 router.put("/:id", async (req, res) => {
   try {
     const db = getDB();
@@ -116,7 +115,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// ── DELETE /api/blogs/:id ──────────────────────────────────────────────────────
+// DELETE /api/blogs/:id
 router.delete("/:id", async (req, res) => {
   try {
     const db = getDB();
@@ -129,7 +128,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// ── PATCH /api/blogs/:id/views — increment view count ─────────────────────────
+// PATCH /api/blogs/:id/views
 router.patch("/:id/views", async (req, res) => {
   try {
     const db = getDB();
@@ -143,4 +142,4 @@ router.patch("/:id/views", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

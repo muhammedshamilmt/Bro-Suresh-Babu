@@ -1,20 +1,13 @@
-// Load local .env only in development (file won't exist on Vercel)
-try {
-  require("dotenv").config({ path: require("path").join(__dirname, ".env") });
-} catch (_) {}
-
-const { MongoClient } = require("mongodb");
+import { MongoClient } from "mongodb";
 
 const uri = process.env.MONGODB_URI;
-const dbName = process.env.DB_NAME || "ministry_db";
+const dbName = process.env.DB_NAME || "brosureshbabu";
 
-// Single client instance — reused across warm invocations
 let client;
 let db;
 
-async function connectDB() {
+export async function connectDB() {
   if (db) return db;
-
   if (!uri) throw new Error("MONGODB_URI environment variable is not set");
 
   client = new MongoClient(uri, {
@@ -27,21 +20,18 @@ async function connectDB() {
   await client.connect();
   db = client.db(dbName);
 
-  // Ensure indexes for fast queries
   await db.collection("enquiries").createIndex({ createdAt: -1 });
   await db.collection("enquiries").createIndex({ status: 1 });
   await db.collection("blogs").createIndex({ createdAt: -1 });
   await db.collection("blogs").createIndex({ status: 1 });
   await db.collection("blogs").createIndex({ category: 1 });
-  await db.collection("blogs").createIndex({ title: "text", excerpt: "text" }); // full-text search
+  await db.collection("blogs").createIndex({ title: "text", excerpt: "text" });
 
   console.log(`✅ MongoDB connected → ${dbName}`);
   return db;
 }
 
-function getDB() {
+export function getDB() {
   if (!db) throw new Error("DB not initialised — call connectDB() first");
   return db;
 }
-
-module.exports = { connectDB, getDB };

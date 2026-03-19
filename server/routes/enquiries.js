@@ -1,12 +1,11 @@
-const { Router } = require("express");
-const { ObjectId } = require("mongodb");
-const { getDB } = require("../db");
+import { Router } from "express";
+import { ObjectId } from "mongodb";
+import { getDB } from "../db.js";
 
 const router = Router();
 const COL = "enquiries";
 
-// ── GET /api/enquiries ────────────────────────────────────────────────────────
-// Supports ?status=new&search=james&page=1&limit=20
+// GET /api/enquiries
 router.get("/", async (req, res) => {
   try {
     const db = getDB();
@@ -31,9 +30,7 @@ router.get("/", async (req, res) => {
       db.collection(COL).countDocuments(filter),
     ]);
 
-    // Normalise _id → id for the frontend
     const data = items.map(({ _id, ...rest }) => ({ id: _id.toString(), ...rest }));
-
     res.json({ data, total, page: parseInt(page), limit: parseInt(limit) });
   } catch (err) {
     console.error(err);
@@ -41,13 +38,12 @@ router.get("/", async (req, res) => {
   }
 });
 
-// ── POST /api/enquiries ───────────────────────────────────────────────────────
+// POST /api/enquiries
 router.post("/", async (req, res) => {
   try {
     const db = getDB();
     const { name, email, phone, type, message } = req.body;
 
-    // Basic server-side validation
     if (!name?.trim() || !email?.trim() || !type?.trim() || !message?.trim()) {
       return res.status(400).json({ error: "name, email, type and message are required" });
     }
@@ -73,7 +69,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// ── PATCH /api/enquiries/:id ──────────────────────────────────────────────────
+// PATCH /api/enquiries/:id
 router.patch("/:id", async (req, res) => {
   try {
     const db = getDB();
@@ -92,7 +88,6 @@ router.patch("/:id", async (req, res) => {
     );
 
     if (!result) return res.status(404).json({ error: "Enquiry not found" });
-
     const { _id, ...rest } = result;
     res.json({ id: _id.toString(), ...rest });
   } catch (err) {
@@ -101,7 +96,7 @@ router.patch("/:id", async (req, res) => {
   }
 });
 
-// ── DELETE /api/enquiries/:id ─────────────────────────────────────────────────
+// DELETE /api/enquiries/:id
 router.delete("/:id", async (req, res) => {
   try {
     const db = getDB();
@@ -114,4 +109,4 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
