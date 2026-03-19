@@ -1,19 +1,24 @@
-require("dotenv").config({ path: require("path").join(__dirname, ".env") });
+// Load local .env only in development (file won't exist on Vercel)
+try {
+  require("dotenv").config({ path: require("path").join(__dirname, ".env") });
+} catch (_) {}
+
 const { MongoClient } = require("mongodb");
 
 const uri = process.env.MONGODB_URI;
 const dbName = process.env.DB_NAME || "ministry_db";
 
-// Single client instance — reused across all requests (connection pooling)
+// Single client instance — reused across warm invocations
 let client;
 let db;
 
 async function connectDB() {
   if (db) return db;
 
+  if (!uri) throw new Error("MONGODB_URI environment variable is not set");
+
   client = new MongoClient(uri, {
-    maxPoolSize: 20,          // up to 20 concurrent connections
-    minPoolSize: 2,           // keep 2 warm connections alive
+    maxPoolSize: 10,
     serverSelectionTimeoutMS: 5000,
     socketTimeoutMS: 10000,
     connectTimeoutMS: 5000,

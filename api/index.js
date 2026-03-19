@@ -14,14 +14,18 @@ app.use("/api/enquiries", enquiriesRouter);
 app.use("/api/blogs", blogsRouter);
 app.get("/api/health", (_req, res) => res.json({ status: "ok", ts: Date.now() }));
 
-// Connect DB then handle request
+// Cache DB connection across warm serverless invocations
 let dbReady = false;
-const handler = async (req, res) => {
-  if (!dbReady) {
-    await connectDB();
-    dbReady = true;
-  }
-  app(req, res);
-};
 
-module.exports = handler;
+module.exports = async (req, res) => {
+  try {
+    if (!dbReady) {
+      await connectDB();
+      dbReady = true;
+    }
+    app(req, res);
+  } catch (err) {
+    console.error("Serverless handler error:", err);
+    res.status(500).json({ error: "Internal server error", detail: err.message });
+  }
+};
