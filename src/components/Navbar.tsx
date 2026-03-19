@@ -25,9 +25,9 @@ const Navbar = () => {
   const navItems = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
-    { label: "Grace Community Global", href: "/grace-community" },
-    { label: "Tetelestai Centre", href: "/tetelestai-centre" },
-    { label: "Sajith's Journey", href: "/sajith-journey" },
+    { label: "Ministry", href: "/ministry" },
+    { label: "Blog", href: "/blog" },
+    { label: "Events", href: "/events" },
     { label: "Contact", href: "/contact" },
   ];
 
@@ -40,9 +40,9 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2">
+        <Link to="/" className={`flex items-center space-x-2 transition-colors ${!isScrolled ? 'text-white' : 'text-foreground'}`}>
           <span className="text-2xl font-serif font-bold ">
-            Sajith Joseph
+            Bro. Suresh Babu
           </span>
         </Link>
 
@@ -58,7 +58,9 @@ const Navbar = () => {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="relative text-sm font-medium text-foreground hover:text-primary transition-smooth group"
+                  className={`relative text-sm font-medium transition-smooth group ${
+                    !isScrolled ? 'text-white/90 hover:text-white' : 'text-foreground hover:text-primary'
+                  }`}
                 >
                   {item.label}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
@@ -71,7 +73,11 @@ const Navbar = () => {
                 key={item.label}
                 to={item.href}
                 className={`relative text-sm font-medium transition-smooth group ${
-                  isActive ? "text-primary" : "text-foreground hover:text-primary"
+                  isActive 
+                    ? "text-primary" 
+                    : !isScrolled 
+                      ? "text-white/90 hover:text-white" 
+                      : "text-foreground hover:text-primary"
                 }`}
               >
                 {item.label}
@@ -86,7 +92,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden p-2 text-foreground hover:text-primary transition-smooth"
+          className={`md:hidden p-2 transition-smooth ${!isScrolled ? 'text-white' : 'text-foreground hover:text-primary'}`}
           aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

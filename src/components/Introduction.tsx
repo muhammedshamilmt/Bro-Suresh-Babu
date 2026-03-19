@@ -38,41 +38,40 @@ const Introduction = () => {
             className="space-y-6"
           >
             <h2 className="text-4xl md:text-5xl font-serif font-bold leading-tight">
-              Welcome to{" "}
+              From Despair to{" "}
               <span>
-                Sajith Joseph's Journey!
+                Destiny
               </span>
             </h2>
 
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
-                This is the extraordinary journey of faith, uniting diverse Christian traditions 
-                toward true spiritual renewal. Sajith Joseph has been passionately sharing the 
-                Gospel of grace throughout his life.
+                At 17, facing suicidal thoughts, Bro. Suresh Babu encountered Jesus's love and compassion, 
+                leading to a complete life transformation. This divine intervention sparked a lifelong 
+                testimony and passion for witnessing.
               </p>
               
               <p>
-                His teachings emphasize living a life centered on Christ's finished work on the 
-                Cross — encouraging believers to embrace grace and walk in unity. Through Grace 
-                Community Global and the Tetelestai Centre, Sajith has touched thousands, bringing 
-                revival and hope to communities across nations.
+                Since 1990, he has been officially serving as a full-time evangelist, starting from small 
+                gatherings in South India to reaching over 25 nations and 19 Indian states today.
               </p>
               
               <p>
-                Join us as we continue to experience God's love, deepen our understanding of His 
-                word, and strengthen our faith through community and service.
+                His non-denominational approach and Gospel-centered teaching has touched countless lives, 
+                bringing practical spiritual transformation and restoring families globally.
               </p>
             </div>
 
             <div className="pt-4 space-y-3">
               <Button 
                 size="lg" 
+                onClick={() => window.location.href='/about'}
                 className="bg-primary hover:bg-primary-glow text-primary-foreground shadow-glow transition-smooth"
               >
-                About Me
+                Read Full Biography
               </Button>
               <p className="text-sm text-muted-foreground italic">
-                Praying and Learning His Holy Word
+                A Living Example of Acts 16:31
               </p>
             </div>
           </motion.div>

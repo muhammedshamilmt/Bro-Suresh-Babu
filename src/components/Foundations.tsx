@@ -1,4 +1,5 @@
-import ScrollStack, { ScrollStackItem } from "./ScrollStack";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import foundationGrace from "@/assets/foundation-grace.jpg";
 import foundationCross from "@/assets/foundation-cross.jpg";
 import foundationUnity from "@/assets/foundation-unity.jpg";
@@ -21,10 +22,69 @@ const foundations = [
   },
 ];
 
+const DesktopFoundationCard = ({ foundation, index, total, scrollYProgress }: any) => {
+  const scale = useTransform(
+    scrollYProgress,
+    [index / total, 1],
+    [1, 1 - (total - 1 - index) * 0.05]
+  );
+
+  return (
+    <div 
+      className="sticky w-full max-w-[1400px] mx-auto flex items-center justify-center px-4 lg:px-8"
+      style={{ 
+        height: '600px',
+        top: `calc(15vh + ${index * 40}px)`, 
+        marginTop: index === 0 ? '0' : '80vh', 
+        zIndex: index 
+      }}
+    >
+      <motion.div 
+        style={{ scale }}
+        className="relative w-full h-full rounded-[40px] overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.1)] origin-top bg-background"
+      >
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${foundation.image})` }}
+        />
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+        {/* Content */}
+        <div className="relative h-full flex flex-col justify-end p-12">
+          <div className="space-y-4">
+            <div className="inline-block px-4 py-2 bg-primary/20 backdrop-blur-sm rounded-full">
+              <span className="text-sm font-bold text-primary-foreground">
+                Foundation {index + 1}
+              </span>
+            </div>
+            
+            <h3 className="text-5xl font-bold text-white">
+              {foundation.title}
+            </h3>
+            
+            <p className="text-xl text-white/90 max-w-2xl">
+              {foundation.description}
+            </p>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 const Foundations = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
   return (
     <section id="foundations" className="relative w-full bg-background">
-      <div className="text-center pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-12 px-4">
+      <div className="text-center pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-12 px-4 relative z-10 bg-background">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
           Our <span>Foundations</span>
         </h2>
@@ -33,54 +93,17 @@ const Foundations = () => {
         </p>
       </div>
 
-      {/* Desktop: ScrollStack View */}
-      <div className="hidden lg:block">
-        <ScrollStack
-          useWindowScroll
-          itemDistance={100}
-          itemScale={0.05}
-          itemStackDistance={40}
-          stackPosition="15%"
-          scaleEndPosition="10%"
-          baseScale={0.90}
-        >
-          {foundations.map((foundation, index) => (
-            <ScrollStackItem
-              key={foundation.title}
-              itemClassName="overflow-visible bg-background"
-            >
-              <div className="relative w-full h-full rounded-3xl overflow-hidden">
-                {/* Background Image */}
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${foundation.image})` }}
-                />
-                
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-
-                {/* Content */}
-                <div className="relative h-full flex flex-col justify-end p-12">
-                  <div className="space-y-4">
-                    <div className="inline-block px-4 py-2 bg-primary/20 backdrop-blur-sm rounded-full">
-                      <span className="text-sm font-bold text-primary-foreground">
-                        Foundation {index + 1}
-                      </span>
-                    </div>
-                    
-                    <h3 className="text-5xl font-bold text-white">
-                      {foundation.title}
-                    </h3>
-                    
-                    <p className="text-xl text-white/90 max-w-2xl">
-                      {foundation.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </ScrollStackItem>
-          ))}
-        </ScrollStack>
+      {/* Desktop: Stacking Cards View */}
+      <div ref={containerRef} className="hidden lg:block relative pb-[20vh] bg-background">
+        {foundations.map((foundation, index) => (
+          <DesktopFoundationCard 
+            key={foundation.title} 
+            foundation={foundation} 
+            index={index} 
+            total={foundations.length} 
+            scrollYProgress={scrollYProgress} 
+          />
+        ))}
       </div>
 
       {/* Mobile & Tablet: Card Grid View */}

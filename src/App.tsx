@@ -7,9 +7,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const Index = lazy(() => import("./pages/Index"));
 const About = lazy(() => import("./pages/About"));
-const GraceCommunity = lazy(() => import("./pages/GraceCommunity"));
-const TetelestaiCentre = lazy(() => import("./pages/TetelestaiCentre"));
-const SajithJourney = lazy(() => import("./pages/SajithJourney"));
+const Ministry = lazy(() => import("./pages/Ministry"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const Events = lazy(() => import("./pages/Events"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -25,9 +26,10 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
-            <Route path="/grace-community" element={<GraceCommunity />} />
-            <Route path="/tetelestai-centre" element={<TetelestaiCentre />} />
-            <Route path="/sajith-journey" element={<SajithJourney />} />
+            <Route path="/ministry" element={<Ministry />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
+            <Route path="/events" element={<Events />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
