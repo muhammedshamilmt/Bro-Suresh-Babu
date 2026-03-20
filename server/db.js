@@ -1,13 +1,22 @@
+import { createRequire } from "module";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
 import { MongoClient } from "mongodb";
 
-const uri = process.env.MONGODB_URI;
-const dbName = process.env.DB_NAME || "brosureshbabu";
+// Self-contained env load — safe to call multiple times (dotenv is idempotent)
+const _require = createRequire(import.meta.url);
+_require("dotenv").config({ path: join(dirname(fileURLToPath(import.meta.url)), ".env") });
 
 let client;
 let db;
 
 export async function connectDB() {
   if (db) return db;
+
+  // Read lazily so dotenv has already run
+  const uri = process.env.MONGODB_URI;
+  const dbName = process.env.DB_NAME || "brosureshbabu";
+
   if (!uri) throw new Error("MONGODB_URI environment variable is not set");
 
   client = new MongoClient(uri, {

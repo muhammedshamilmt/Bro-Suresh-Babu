@@ -1,4 +1,11 @@
-import "dotenv/config";
+import { createRequire } from "module";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+// Load server/.env before anything else touches process.env
+const _require = createRequire(import.meta.url);
+_require("dotenv").config({ path: join(dirname(fileURLToPath(import.meta.url)), ".env") });
+
 import express from "express";
 import cors from "cors";
 import { connectDB } from "./db.js";

@@ -25,6 +25,7 @@ const Navbar = () => {
   const navItems = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
+    { label: "Christ Centre", href: "/christ-centre" },
     { label: "Ministry", href: "/ministry" },
     { label: "Blog", href: "/blog" },
     { label: "Events", href: "/events" },

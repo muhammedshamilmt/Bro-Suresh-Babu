@@ -16,6 +16,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 const GraceCommunity = lazy(() => import("./pages/GraceCommunity"));
 const SajithJourney = lazy(() => import("./pages/SajithJourney"));
 const TetelestaiCentre = lazy(() => import("./pages/TetelestaiCentre"));
+const ChristCentre = lazy(() => import("./pages/ChristCentre"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const BlogEditor = lazy(() => import("./pages/BlogEditor"));
@@ -41,6 +42,7 @@ const App = () => (
             <Route path="/grace-community" element={<GraceCommunity />} />
             <Route path="/sajith-journey" element={<SajithJourney />} />
             <Route path="/tetelestai-centre" element={<TetelestaiCentre />} />
+            <Route path="/christ-centre" element={<ChristCentre />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/dashboard/blog/new" element={<ProtectedRoute><BlogEditor /></ProtectedRoute>} />

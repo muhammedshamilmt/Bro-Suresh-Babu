@@ -33,16 +33,16 @@ const statusConfig = {
   },
 };
 
-const stats = [
-  { label: "Total Posts", value: "24", change: "+3 this month", icon: BookOpen, color: "from-blue-500 to-blue-600" },
-  { label: "Total Enquiries", value: "138", change: "+12 this week", icon: Inbox, color: "from-violet-500 to-violet-600" },
-  { label: "Total Views", value: "18.4K", change: "+8.2% vs last month", icon: TrendingUp, color: "from-amber-500 to-orange-500" },
-  { label: "Subscribers", value: "2,310", change: "+45 new", icon: Users, color: "from-emerald-500 to-teal-500" },
+const STAT_META = [
+  { label: "Total Posts", icon: BookOpen, color: "from-blue-500 to-blue-600" },
+  { label: "Total Enquiries", icon: Inbox, color: "from-violet-500 to-violet-600" },
+  { label: "Total Views", icon: TrendingUp, color: "from-amber-500 to-orange-500" },
+  { label: "New Enquiries", icon: Users, color: "from-emerald-500 to-teal-500" },
 ];
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
+function StatCard({ stat, index }: { stat: { label: string; value: string; change: string; icon: React.ElementType; color: string }; index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -513,11 +513,21 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<Tab>("blogs");
 
-  // Live counts for tab badges
+  // Live counts for tab badges and stats
   const { data: blogsData } = useBlogs();
-  const blogCount = blogsData?.data?.length ?? 0;
+  const blogCount = blogsData?.total ?? 0;
+  const totalViews = blogsData?.data?.reduce((sum, b) => sum + (b.views ?? 0), 0) ?? 0;
+  const { data: allEnquiries } = useEnquiries({});
   const { data: newData } = useEnquiries({ status: "new" });
   const newCount = newData?.total ?? 0;
+  const totalEnquiries = allEnquiries?.total ?? 0;
+
+  const liveStats = [
+    { ...STAT_META[0], value: String(blogCount), change: "from database" },
+    { ...STAT_META[1], value: String(totalEnquiries), change: "all time" },
+    { ...STAT_META[2], value: totalViews >= 1000 ? `${(totalViews / 1000).toFixed(1)}K` : String(totalViews), change: "total across posts" },
+    { ...STAT_META[3], value: String(newCount), change: "awaiting response" },
+  ];
 
   const tabs: { id: Tab; label: string; icon: React.ElementType; count?: number }[] = [
     { id: "blogs", label: "Blog Posts", icon: FileText, count: blogCount },
@@ -627,7 +637,7 @@ export default function Dashboard() {
 
         {/* Stats Row */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          {stats.map((s, i) => <StatCard key={s.label} stat={s} index={i} />)}
+          {liveStats.map((s, i) => <StatCard key={s.label} stat={s} index={i} />)}
         </div>
 
         {/* Tab Content */}
