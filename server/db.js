@@ -35,6 +35,15 @@ export async function connectDB() {
   await db.collection("blogs").createIndex({ status: 1 });
   await db.collection("blogs").createIndex({ category: 1 });
   await db.collection("blogs").createIndex({ title: "text", excerpt: "text" });
+  await db.collection("events").createIndex({ createdAt: -1 });
+  await db.collection("events").createIndex({ status: 1 });
+  await db.collection("events").createIndex({ type: 1 });
+  await db.collection("events").createIndex(
+    { title: "text", description: "text", location: "text" },
+    { background: true }
+  );
+  await db.collection("event_registrations").createIndex({ eventId: 1, createdAt: -1 });
+  await db.collection("event_registrations").createIndex({ status: 1 });
 
   console.log(`✅ MongoDB connected → ${dbName}`);
   return db;
