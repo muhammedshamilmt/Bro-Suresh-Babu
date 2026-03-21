@@ -1,21 +1,23 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { logout } from "@/lib/auth";
 import { useEnquiries, useUpdateEnquiryStatus, useDeleteEnquiry } from "@/hooks/useEnquiries";
 import { useBlogs, useDeleteBlog } from "@/hooks/useBlogs";
-import type { Enquiry, BlogPost } from "@/lib/api";
+import { useEvents, useDeleteEvent } from "@/hooks/useEvents";
+import type { Enquiry, BlogPost, Event } from "@/lib/api";
 import {
   LayoutDashboard, FileText, MessageSquare, Plus, Search, Bell, Settings, LogOut,
   Eye, Pencil, Trash2, Calendar, Tag, User, Mail, Phone, Clock, CheckCircle2,
   XCircle, AlertCircle, TrendingUp, Users, BookOpen, Inbox, Download, RefreshCw,
+  MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type Tab = "blogs" | "enquiries";
+type Tab = "blogs" | "enquiries" | "events";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -507,11 +509,139 @@ function EnquiriesTab() {
   );
 }
 
+// ─── Events Tab ──────────────────────────────────────────────────────────────
+
+function EventsTab() {
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState<"all" | "published" | "draft" | "archived">("all");
+
+  const { data, isLoading } = useEvents({
+    status: filter === "all" ? undefined : filter,
+    search: search || undefined,
+  });
+  const deleteEvent = useDeleteEvent();
+
+  const events = data?.data ?? [];
+
+  const eventStatusColor: Record<string, string> = {
+    published: "bg-emerald-100 text-emerald-700 border-emerald-200",
+    draft: "bg-amber-100 text-amber-700 border-amber-200",
+    archived: "bg-slate-100 text-slate-500 border-slate-200",
+  };
+
+  const handleDelete = async (event: Event) => {
+    if (!confirm(`Delete "${event.title}"?`)) return;
+    await deleteEvent.mutateAsync(event.id);
+  };
+
+  return (
+    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
+      {/* Toolbar */}
+      <div className="flex flex-col sm:flex-row gap-3 mb-6">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <Input placeholder="Search events..." value={search} onChange={(e) => setSearch(e.target.value)}
+            className="pl-9 bg-white border-border rounded-xl h-10" />
+        </div>
+        <div className="flex gap-2">
+          {(["all", "published", "draft", "archived"] as const).map((f) => (
+            <button key={f} onClick={() => setFilter(f)}
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium capitalize transition-all ${
+                filter === f ? "bg-blue-dark text-white shadow-sm" : "bg-white border border-border text-muted-foreground hover:border-blue-dark/40"
+              }`}>
+              {f}
+            </button>
+          ))}
+        </div>
+        <Button onClick={() => navigate("/dashboard/events/new")}
+          className="bg-primary hover:bg-primary/90 text-white rounded-xl gap-2 h-10 px-4 shadow-sm">
+          <Plus className="w-4 h-4" /> New Event
+        </Button>
+      </div>
+
+      {/* Grid */}
+      {isLoading ? (
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className="bg-white rounded-2xl border border-border h-64 animate-pulse" />
+          ))}
+        </div>
+      ) : (
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
+          {events.map((event, i) => (
+            <motion.div key={event.id} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}
+              className="bg-white rounded-2xl border border-border shadow-soft overflow-hidden group hover:shadow-md transition-all">
+              {/* Cover */}
+              <div className="relative h-36 overflow-hidden">
+                {event.image
+                  ? <img src={event.image} alt={event.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  : <div className={`w-full h-full bg-gradient-to-br ${event.color}`} />}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute top-3 left-3 flex gap-1.5">
+                  {event.type && <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur text-white">{event.type}</span>}
+                </div>
+                <div className="absolute top-3 right-3">
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${eventStatusColor[event.status] ?? ""}`}>
+                    {event.status}
+                  </span>
+                </div>
+                {event.registrationOpen && (
+                  <div className="absolute bottom-3 right-3">
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/90 text-white">Reg. Open</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Body */}
+              <div className="p-4">
+                <h3 className="font-bold text-foreground text-sm line-clamp-2 mb-2 group-hover:text-primary transition-colors">
+                  {event.title}
+                </h3>
+                <div className="space-y-1 text-xs text-muted-foreground mb-3">
+                  {event.date && <p className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> {event.date}</p>}
+                  {event.location && <p className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" /> {event.location}</p>}
+                </div>
+
+                {/* Actions */}
+                <div className="flex items-center gap-1.5 pt-3 border-t border-border">
+                  <button onClick={() => navigate(`/dashboard/events/${event.id}`)}
+                    className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg hover:bg-sky-50 hover:text-sky-600 text-muted-foreground text-xs font-medium transition-colors">
+                    <Eye className="w-3.5 h-3.5" /> View
+                  </button>
+                  <button onClick={() => navigate(`/dashboard/events/${event.id}/edit`)}
+                    className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg hover:bg-amber-50 hover:text-amber-600 text-muted-foreground text-xs font-medium transition-colors">
+                    <Pencil className="w-3.5 h-3.5" /> Edit
+                  </button>
+                  <button onClick={() => handleDelete(event)}
+                    className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg hover:bg-red-50 hover:text-red-500 text-muted-foreground text-xs font-medium transition-colors">
+                    <Trash2 className="w-3.5 h-3.5" /> Delete
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      )}
+
+      {!isLoading && events.length === 0 && (
+        <div className="py-16 text-center text-muted-foreground bg-white rounded-2xl border border-border">
+          <Calendar className="w-10 h-10 mx-auto mb-3 opacity-30" />
+          <p className="font-medium">No events found</p>
+          <p className="text-sm mt-1">Create your first event to get started.</p>
+        </div>
+      )}
+    </motion.div>
+  );
+}
+
 // ─── Main Dashboard ───────────────────────────────────────────────────────────
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<Tab>("blogs");
+  const location = useLocation();
+  const initialTab: Tab = location.pathname.includes("events") ? "events" : "blogs";
+  const [activeTab, setActiveTab] = useState<Tab>(initialTab);
 
   // Live counts for tab badges and stats
   const { data: blogsData } = useBlogs();
@@ -521,6 +651,8 @@ export default function Dashboard() {
   const { data: newData } = useEnquiries({ status: "new" });
   const newCount = newData?.total ?? 0;
   const totalEnquiries = allEnquiries?.total ?? 0;
+  const { data: eventsData } = useEvents();
+  const eventCount = eventsData?.total ?? 0;
 
   const liveStats = [
     { ...STAT_META[0], value: String(blogCount), change: "from database" },
@@ -532,6 +664,7 @@ export default function Dashboard() {
   const tabs: { id: Tab; label: string; icon: React.ElementType; count?: number }[] = [
     { id: "blogs", label: "Blog Posts", icon: FileText, count: blogCount },
     { id: "enquiries", label: "Enquiries", icon: MessageSquare, count: newCount },
+    { id: "events", label: "Events", icon: Calendar, count: eventCount },
   ];
 
   const handleLogout = () => {
@@ -561,7 +694,10 @@ export default function Dashboard() {
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={() => {
+                    setActiveTab(tab.id);
+                    navigate(tab.id === "events" ? "/dashboard/events" : "/dashboard");
+                  }}
                   className={`relative flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     activeTab === tab.id
                       ? "bg-white text-foreground shadow-sm"
@@ -642,7 +778,7 @@ export default function Dashboard() {
 
         {/* Tab Content */}
         <AnimatePresence mode="wait">
-          {activeTab === "blogs" ? <BlogsTab key="blogs" /> : <EnquiriesTab key="enquiries" />}
+          {activeTab === "blogs" ? <BlogsTab key="blogs" /> : activeTab === "events" ? <EventsTab key="events" /> : <EnquiriesTab key="enquiries" />}
         </AnimatePresence>
       </main>
     </div>

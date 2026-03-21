@@ -11,16 +11,18 @@ import cors from "cors";
 import { connectDB } from "./db.js";
 import enquiriesRouter from "./routes/enquiries.js";
 import blogsRouter from "./routes/blogs.js";
+import eventsRouter from "./routes/events.js";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(cors({ origin: process.env.CLIENT_ORIGIN || "*", credentials: true }));
-app.use(express.json({ limit: "1mb" }));
+app.use(express.json({ limit: "2mb" }));
 app.disable("x-powered-by");
 
 app.use("/api/enquiries", enquiriesRouter);
 app.use("/api/blogs", blogsRouter);
+app.use("/api/events", eventsRouter);
 app.get("/api/health", (_req, res) => res.json({ status: "ok", ts: Date.now() }));
 
 connectDB()

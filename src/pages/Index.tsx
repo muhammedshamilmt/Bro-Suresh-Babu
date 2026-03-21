@@ -1,8 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Banner from "@/components/Banner";
 import Introduction from "@/components/Introduction";
 import Services from "@/components/Services";
-import Video from "@/components/Video";
 import { TestimonialSection } from "@/components/ui/testimonials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -41,7 +41,7 @@ const Index = () => {
       <Hero />
       <Introduction />
       <Services />
-      <Video />
+      <Banner />
       {/* <TestimonialSection
         title="See What All the Talk Is About!"
         subtitle="Transformative experiences from believers around the globe"
