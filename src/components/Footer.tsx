@@ -7,10 +7,11 @@ const Footer = () => {
     quickLinks: [
       { label: "Home", href: "/" },
       { label: "About", href: "/about" },
-      { label: "Ministry", href: "/ministry" },
-      { label: "Blog", href: "/blog" },
+      { label: "Give", href: "/give" },
+      { label: "Building-fund", href: "/building-fund" },
       { label: "Events", href: "/events" },
       { label: "Contact", href: "/contact" },
+
     ],
   };
 
@@ -116,13 +117,22 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-background/20">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3">
             <p className="text-background/60 text-sm text-center md:text-left">
               © {currentYear} Brother Suresh Babu Ministries. All Rights Reserved.
             </p>
-            <p className="text-background/60 text-sm text-center md:text-right">
-              Powered by Faith & Grace
-            </p>
+            <a
+              href="https://heraldgroup.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-background/20 hover:border-primary/60 bg-background/5 hover:bg-primary/10 transition-all duration-200 group"
+            >
+              <span className="text-background/50 text-xs tracking-wide">Powered by</span>
+              <span className="text-background/80 group-hover:text-primary text-sm font-semibold transition-colors">
+                Herald Group
+              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-60 group-hover:opacity-100 transition-opacity" />
+            </a>
           </div>
         </div>
       </div>

@@ -24,6 +24,8 @@ const Dashboard = lazy(() => import("./pages/Dashboard"));
 const BlogEditor = lazy(() => import("./pages/BlogEditor"));
 const AdminEventEditor = lazy(() => import("./pages/AdminEventEditor"));
 const AdminEventDetail = lazy(() => import("./pages/AdminEventDetail"));
+const Give = lazy(() => import("./pages/Give"));
+const BuildingFund = lazy(() => import("./pages/BuildingFund"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -49,6 +51,8 @@ const App = () => (
             <Route path="/sajith-journey" element={<SajithJourney />} />
             <Route path="/tetelestai-centre" element={<TetelestaiCentre />} />
             <Route path="/christ-centre" element={<ChristCentre />} />
+            <Route path="/give" element={<Give />} />
+            <Route path="/building-fund" element={<BuildingFund />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/dashboard/blog/new" element={<ProtectedRoute><BlogEditor /></ProtectedRoute>} />
