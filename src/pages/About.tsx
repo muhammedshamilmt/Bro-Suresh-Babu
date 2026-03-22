@@ -2,8 +2,8 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { BookOpen, MapPin, Heart, GraduationCap, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import { TestimonialSection } from "@/components/ui/testimonials";
 import Footer from "@/components/Footer";
+import Gallery from "@/components/Gallery";
 import aboutImg from "@/assets/about.png";
 import about2 from "@/assets/about-2.png";
 
@@ -337,12 +337,9 @@ const About = () => {
       </section>
 
       {/* Testimonials Section */}
-      {/* <TestimonialSection
-        title="Impact Stories"
-        subtitle="Hear from those who have been touched by the ministry"
-        testimonials={testimonialsData}
-      /> */}
+      {/* <TestimonialSection ... /> */}
 
+      <Gallery />
       <Footer />
     </div>
   );
