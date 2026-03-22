@@ -3,7 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 
-const introCommunity = "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_900/v1774195150/img-21_nj51uc.jpg";
+const introCommunity = "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774196645/intro-community_oajli2.jpg";
 
 const Introduction = () => {
   const ref = useRef(null);
