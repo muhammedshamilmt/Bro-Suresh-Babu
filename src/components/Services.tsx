@@ -2,37 +2,52 @@ import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { BookOpen, Users, Heart, Radio } from "lucide-react";
 
-// ── Allowed images (excluding img-7,8,19,20,25,26,29,30) ─────────────────────
-import img1  from "@/assets/images/img-1.jpeg";
-import img2  from "@/assets/images/img-2.jpeg";
-import img3  from "@/assets/images/img-3.jpeg";
-import img4  from "@/assets/images/img-4.jpeg";
-import img5  from "@/assets/images/img-5.jpeg";
-import img6  from "@/assets/images/img-6.jpeg";
-import img9  from "@/assets/images/img-9.jpeg";
-import img10 from "@/assets/images/img-10.jpeg";
-import img11 from "@/assets/images/img-11.jpeg";
-import img12 from "@/assets/images/img-12.jpeg";
-import img13 from "@/assets/images/img-13.jpeg";
-import img14 from "@/assets/images/img-14.jpeg";
-import img15 from "@/assets/images/img-15.jpeg";
-import img16 from "@/assets/images/img-16.jpeg";
-import img17 from "@/assets/images/img-17.jpeg";
-import img18 from "@/assets/images/img-18.jpeg";
-import img21 from "@/assets/images/img-21.jpeg";
-import img22 from "@/assets/images/img-22.jpeg";
-import img23 from "@/assets/images/img-23.jpeg";
-import img24 from "@/assets/images/img-24.jpeg";
-import img27 from "@/assets/images/img-27.jpeg";
-import img28 from "@/assets/images/img-28.jpeg";
+const cl = (url: string) => url.replace("/upload/", "/upload/f_auto,q_auto,w_1200/");
 
-// Distribute 22 images across 4 cards (~5-6 each)
+// Distributed across 4 service cards
 const serviceImages = [
-  [img1,  img2,  img3,  img4,  img5,  img6],   // Gospel Campaigns
-  [img9,  img10, img11, img12, img13],           // Seminars & Training
-  [img14, img15, img16, img17, img18],           // Youth Camps
-  [img21, img22, img23, img24, img27, img28],    // Media Ministry
-];
+  // Gospel Campaigns (7)
+  [
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195147/img-1_mfnnu1.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195146/img-2_ecf3r5.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195149/img-3_rxycs8.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195151/img-4_uymnkt.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195152/img-5_ycyrf4.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195155/img-6_ti6qmr.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195165/img-7_yevbv7.jpg",
+  ],
+  // Seminars & Training (7)
+  [
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195156/img-8_hspdx8.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195157/img-9_ijhyvp.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195162/img-11_vqtnsd.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195161/img-12_qjyno3.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195167/img-13_kqw3rc.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195165/img-14_j6nuil.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195168/img-15_gzrz7d.jpg",
+  ],
+  // Youth Camps (7)
+  [
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195144/img-16_fc53dw.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195144/img-17_iun9rm.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195148/img-18_fvlhqj.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195146/img-19_swypkw.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195148/img-20_k3gkxr.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195150/img-21_nj51uc.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195150/img-22_cwjiac.jpg",
+  ],
+  // Media Ministry (8)
+  [
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195155/img-23_qjfc72.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195157/img-24_lqtjmx.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195153/img-25_grv02w.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195153/img-26_o3wccz.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195161/img-27_gp8lhj.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195159/img-28_y2gg0a.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195160/img-29_qyhx2w.jpg",
+    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195164/img-30_wuqvhj.jpg",
+  ],
+].map((group) => group.map(cl));
 
 const services = [
   {

@@ -2,46 +2,42 @@ import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 
-// ── All images from assets/images ────────────────────────────────────────────
-import img1  from "@/assets/images/img-1.jpeg";
-import img2  from "@/assets/images/img-2.jpeg";
-import img3  from "@/assets/images/img-3.jpeg";
-import img4  from "@/assets/images/img-4.jpeg";
-import img5  from "@/assets/images/img-5.jpeg";
-import img6  from "@/assets/images/img-6.jpeg";
-import img7  from "@/assets/images/img-7.jpeg";
-import img8  from "@/assets/images/img-8.jpeg";
-import img9  from "@/assets/images/img-9.jpeg";
-import img10 from "@/assets/images/img-10.jpeg";
-import img11 from "@/assets/images/img-11.jpeg";
-import img12 from "@/assets/images/img-12.jpeg";
-import img13 from "@/assets/images/img-13.jpeg";
-import img14 from "@/assets/images/img-14.jpeg";
-import img15 from "@/assets/images/img-15.jpeg";
-import img16 from "@/assets/images/img-16.jpeg";
-import img17 from "@/assets/images/img-17.jpeg";
-import img18 from "@/assets/images/img-18.jpeg";
-import img19 from "@/assets/images/img-19.jpeg";
-import img20 from "@/assets/images/img-20.jpeg";
-import img21 from "@/assets/images/img-21.jpeg";
-import img22 from "@/assets/images/img-22.jpeg";
-import img23 from "@/assets/images/img-23.jpeg";
-import img24 from "@/assets/images/img-24.jpeg";
-import img25 from "@/assets/images/img-25.jpeg";
-import img26 from "@/assets/images/img-26.jpeg";
-import img27 from "@/assets/images/img-27.jpeg";
-import img28 from "@/assets/images/img-28.jpeg";
-import img29 from "@/assets/images/img-29.jpeg";
-import img30 from "@/assets/images/img-30.jpeg";
+// ── Cloudinary base — inject f_auto,q_auto for every image ───────────────────
+const cl = (url: string) => url.replace("/upload/", "/upload/f_auto,q_auto/");
 
 const ALL_IMAGES = [
-  img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,
-  img11, img12, img13, img14, img15, img16, img17, img18, img19, img20,
-  img21, img22, img23, img24, img25, img26, img27, img28, img29, img30,
-];
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195168/img-15_gzrz7d.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195167/img-13_kqw3rc.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195165/img-14_j6nuil.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195165/img-7_yevbv7.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195164/img-30_wuqvhj.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195162/img-11_vqtnsd.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195161/img-12_qjyno3.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195161/img-27_gp8lhj.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195160/img-29_qyhx2w.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195159/img-28_y2gg0a.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195157/img-24_lqtjmx.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195157/img-9_ijhyvp.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195156/img-8_hspdx8.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195155/img-23_qjfc72.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195155/img-6_ti6qmr.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195153/img-26_o3wccz.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195153/img-25_grv02w.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195152/img-5_ycyrf4.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195151/img-4_uymnkt.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195150/img-22_cwjiac.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195150/img-21_nj51uc.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195149/img-3_rxycs8.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195148/img-20_k3gkxr.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195148/img-18_fvlhqj.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195147/img-1_mfnnu1.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195146/img-2_ecf3r5.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195146/img-19_swypkw.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195144/img-17_iun9rm.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195144/img-16_fc53dw.jpg",
+].map(cl);
 
 // Bento layout pattern — repeats every 7 items
-// span-2 = wide, tall = tall, normal = 1x1
 type CellSize = "wide" | "tall" | "normal";
 const PATTERN: CellSize[] = ["wide", "normal", "tall", "normal", "normal", "wide", "normal"];
 
@@ -53,19 +49,11 @@ function getCellClass(size: CellSize) {
 
 // ── Lightbox ──────────────────────────────────────────────────────────────────
 function Lightbox({
-  images,
-  index,
-  onClose,
-  onPrev,
-  onNext,
+  images, index, onClose, onPrev, onNext,
 }: {
-  images: string[];
-  index: number;
-  onClose: () => void;
-  onPrev: () => void;
-  onNext: () => void;
+  images: string[]; index: number;
+  onClose: () => void; onPrev: () => void; onNext: () => void;
 }) {
-  // Keyboard nav
   const handleKey = useCallback(
     (e: React.KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -75,43 +63,35 @@ function Lightbox({
     [onClose, onPrev, onNext]
   );
 
+  // Use higher-res version in lightbox (w_1400)
+  const lightboxSrc = (url: string) =>
+    url.replace("f_auto,q_auto", "f_auto,q_auto,w_1400");
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.25 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/92 backdrop-blur-sm"
       onClick={onClose}
       onKeyDown={handleKey}
       tabIndex={0}
     >
-      {/* Close */}
-      <button
-        onClick={onClose}
-        className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-10"
-      >
+      <button onClick={onClose} className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-10">
         <X size={22} />
       </button>
-
-      {/* Counter */}
       <div className="absolute top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-white/10 text-white text-sm">
         {index + 1} / {images.length}
       </div>
-
-      {/* Prev */}
-      <button
-        onClick={(e) => { e.stopPropagation(); onPrev(); }}
-        className="absolute left-4 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-10"
-      >
+      <button onClick={(e) => { e.stopPropagation(); onPrev(); }} className="absolute left-4 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-10">
         <ChevronLeft size={24} />
       </button>
 
-      {/* Image */}
       <AnimatePresence mode="wait">
         <motion.img
           key={index}
-          src={images[index]}
+          src={lightboxSrc(images[index])}
           alt={`Gallery image ${index + 1}`}
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -122,11 +102,7 @@ function Lightbox({
         />
       </AnimatePresence>
 
-      {/* Next */}
-      <button
-        onClick={(e) => { e.stopPropagation(); onNext(); }}
-        className="absolute right-4 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-10"
-      >
+      <button onClick={(e) => { e.stopPropagation(); onNext(); }} className="absolute right-4 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-10">
         <ChevronRight size={24} />
       </button>
     </motion.div>
@@ -134,19 +110,14 @@ function Lightbox({
 }
 
 // ── Bento cell ────────────────────────────────────────────────────────────────
-function BentoCell({
-  src,
-  index,
-  size,
-  onClick,
-}: {
-  src: string;
-  index: number;
-  size: CellSize;
-  onClick: () => void;
+function BentoCell({ src, index, size, onClick }: {
+  src: string; index: number; size: CellSize; onClick: () => void;
 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.1 });
+
+  // Thumbnail size — smaller for grid
+  const thumbSrc = src.replace("f_auto,q_auto", "f_auto,q_auto,w_600");
 
   return (
     <motion.div
@@ -159,22 +130,17 @@ function BentoCell({
       onClick={onClick}
     >
       <img
-        src={src}
+        src={thumbSrc}
         alt={`Ministry photo ${index + 1}`}
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         loading="lazy"
       />
-      {/* Hover overlay */}
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.7 }}
-          whileHover={{ opacity: 1, scale: 1 }}
-          className="opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-        >
+        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           <div className="p-3 rounded-full bg-white/20 backdrop-blur-sm">
             <ZoomIn size={20} className="text-white" />
           </div>
-        </motion.div>
+        </div>
       </div>
     </motion.div>
   );
@@ -193,7 +159,6 @@ export default function Gallery() {
 
   return (
     <section className="py-20 bg-muted/30">
-      {/* Header */}
       <div ref={headerRef} className="container mx-auto px-4 text-center mb-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -204,9 +169,7 @@ export default function Gallery() {
             <ZoomIn size={14} />
             Photo Gallery
           </div>
-          <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">
-            Ministry in Pictures
-          </h2>
+          <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">Ministry in Pictures</h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
             Moments captured across nations — crusades, camps, conferences, and communities
             transformed by the Gospel.
@@ -214,11 +177,8 @@ export default function Gallery() {
         </motion.div>
       </div>
 
-      {/* Bento Grid */}
       <div className="container mx-auto px-4">
-        <div
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3"
-        >
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3">
           {ALL_IMAGES.map((src, i) => (
             <BentoCell
               key={i}
@@ -231,16 +191,9 @@ export default function Gallery() {
         </div>
       </div>
 
-      {/* Lightbox */}
       <AnimatePresence>
         {lightboxIndex !== null && (
-          <Lightbox
-            images={ALL_IMAGES}
-            index={lightboxIndex}
-            onClose={close}
-            onPrev={prev}
-            onNext={next}
-          />
+          <Lightbox images={ALL_IMAGES} index={lightboxIndex} onClose={close} onPrev={prev} onNext={next} />
         )}
       </AnimatePresence>
     </section>
