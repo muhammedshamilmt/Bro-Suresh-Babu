@@ -4,8 +4,6 @@ import { BookOpen, MapPin, Heart, GraduationCap, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Gallery from "@/components/Gallery";
-import aboutImg from "@/assets/about.png";
-import about2 from "@/assets/about-2.png";
 
 const About = () => {
   const ref = useRef(null);
@@ -115,7 +113,7 @@ const About = () => {
       <section className="relative w-full h-[70vh] flex items-center justify-center bg-background">
         <div className="absolute inset-0">
           <img
-            src={aboutImg}
+            src="https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774195168/img-15_gzrz7d.jpg"
             alt="About Brother Suresh Babu"
             className="w-full h-full object-cover"
           />
@@ -175,7 +173,7 @@ const About = () => {
               className="relative rounded-2xl overflow-hidden shadow-2xl"
             >
               <img
-                src={about2}
+                src="https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774195148/img-20_k3gkxr.jpg"
                 alt="Brother Suresh Babu Speaking"
                 className="w-full h-full object-cover"
               />

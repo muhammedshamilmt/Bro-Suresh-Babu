@@ -2,7 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Christcenter from "@/assets/christ-center.png"
+
+const Christcenter = "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_900/v1774196461/about_gsr3vz.png";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,

@@ -4,7 +4,8 @@ import { useRef, useState } from "react";
 import { Hammer, Copy, CheckCheck, Building2, CreditCard, Church } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import paymentImg from "@/assets/payment/payment.png";
+
+const paymentImg = "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto/v1774196942/payment_pyahj5.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },

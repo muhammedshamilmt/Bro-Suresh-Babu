@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Import banner images
-import banner1 from "@/assets/banners/481131959_1200842661397984_659384177515617890_n.jpg.jpeg";
-import banner2 from "@/assets/banners/481181005_1200842881397962_5051816390040899779_n.jpg.jpeg";
-import banner3 from "@/assets/banners/481193457_1200842738064643_2944386291273338404_n.jpg.jpeg";
-import banner4 from "@/assets/banners/481242686_1200842754731308_8916210152357672079_n.jpg.jpeg";
-
-const images = [banner1, banner2, banner3, banner4];
+// Banner images — using ministry photos from Cloudinary
+const images = [
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774195147/img-1_mfnnu1.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774195150/img-22_cwjiac.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774195155/img-6_ti6qmr.jpg",
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774195161/img-27_gp8lhj.jpg",
+];
 
 const Banner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

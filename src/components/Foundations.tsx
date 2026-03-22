@@ -1,8 +1,9 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import foundationGrace from "@/assets/foundation-grace.jpg";
-import foundationCross from "@/assets/foundation-cross.jpg";
-import foundationUnity from "@/assets/foundation-unity.jpg";
+
+const foundationGrace = "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774196440/foundation-grace_gyxv94.jpg";
+const foundationCross = "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774196443/foundation-cross_uk68fm.jpg";
+const foundationUnity = "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774196449/foundation-unity_yw12or.jpg";
 
 const foundations = [
   {

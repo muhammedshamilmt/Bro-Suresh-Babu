@@ -3,7 +3,8 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import ctaBackground from "@/assets/cta-background.jpg";
+
+const ctaBackground = "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1600/v1774196451/cta-background_wqv5n9.jpg";
 
 const CTA = () => {
   const ref = useRef(null);

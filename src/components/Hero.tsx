@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Globe, BookOpen, Users, Church, Heart, Navigation } from "lucide-react";
-import HeroImg from "@/assets/hero.png";
+
+const HeroImg = "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto/v1774197091/hero_b69llr.png";
 
 
 export const CircularText = ({ text, radius = 50 }: { text: string; radius?: number }) => {

@@ -5,7 +5,8 @@ import { Heart, Copy, CheckCheck, Building2, CreditCard } from "lucide-react";
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import paymentImg from "@/assets/payment/payment.png";
+
+const paymentImg = "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto/v1774196942/payment_pyahj5.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
