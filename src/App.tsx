@@ -16,7 +16,6 @@ const EventDetail = lazy(() => import("./pages/EventDetail"));
 const EventRegister = lazy(() => import("./pages/EventRegister"));
 const Contact = lazy(() => import("./pages/Contact"));
 const GraceCommunity = lazy(() => import("./pages/GraceCommunity"));
-const SajithJourney = lazy(() => import("./pages/SajithJourney"));
 const TetelestaiCentre = lazy(() => import("./pages/TetelestaiCentre"));
 const ChristCentre = lazy(() => import("./pages/ChristCentre"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
@@ -26,7 +25,10 @@ const AdminEventEditor = lazy(() => import("./pages/AdminEventEditor"));
 const AdminEventDetail = lazy(() => import("./pages/AdminEventDetail"));
 const Give = lazy(() => import("./pages/Give"));
 const BuildingFund = lazy(() => import("./pages/BuildingFund"));
+const SajithJourney = lazy(() => import("./pages/SajithJourney"));
+const MinistryHub = lazy(() => import("./pages/MinistryHub"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+
 
 const queryClient = new QueryClient();
 
@@ -49,6 +51,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/grace-community" element={<GraceCommunity />} />
             <Route path="/sajith-journey" element={<SajithJourney />} />
+            <Route path="/hub" element={<MinistryHub />} />
             <Route path="/tetelestai-centre" element={<TetelestaiCentre />} />
             <Route path="/christ-centre" element={<ChristCentre />} />
             <Route path="/give" element={<Give />} />
