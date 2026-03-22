@@ -72,7 +72,14 @@ const services = [
   },
 ];
 
-// ── Auto-cycling image slideshow ──────────────────────────────────────────────
+const TOP_ANCHORED_SERVICES = new Set([
+  "img-7_yevbv7", "img-8_hspdx8", "img-25_grv02w",
+  "img-26_o3wccz", "img-20_k3gkxr", "img-19_swypkw",
+]);
+
+function bgPosition(url: string) {
+  return [...TOP_ANCHORED_SERVICES].some((id) => url.includes(id)) ? "bg-top" : "bg-center";
+}
 function ImageSlideshow({ images, interval = 3500 }: { images: string[]; interval?: number }) {
   const [current, setCurrent] = useState(0);
 
@@ -90,7 +97,7 @@ function ImageSlideshow({ images, interval = 3500 }: { images: string[]; interva
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="absolute inset-0 bg-cover bg-center"
+          className={`absolute inset-0 bg-cover ${bgPosition(images[current])}`}
           style={{ backgroundImage: `url(${images[current]})` }}
         />
       </AnimatePresence>

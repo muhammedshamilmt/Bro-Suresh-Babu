@@ -2,7 +2,6 @@ import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 
-// ── Cloudinary base — inject f_auto,q_auto for every image ───────────────────
 const cl = (url: string) => url.replace("/upload/", "/upload/f_auto,q_auto/");
 
 const ALL_IMAGES = [
@@ -37,8 +36,23 @@ const ALL_IMAGES = [
   "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195144/img-16_fc53dw.jpg",
 ].map(cl);
 
-// Bento layout pattern — repeats every 7 items
+// Portrait/people images — show faces by anchoring to top
+const TOP_ANCHORED = new Set([
+  "img-7_yevbv7",
+  "img-8_hspdx8",
+  "img-25_grv02w",
+  "img-26_o3wccz",
+  "img-20_k3gkxr",
+  "img-19_swypkw",
+]);
+
+function getObjectPosition(url: string) {
+  return [...TOP_ANCHORED].some((id) => url.includes(id)) ? "object-top" : "object-center";
+}
+
+// ── Bento grid layout ─────────────────────────────────────────────────────────
 type CellSize = "wide" | "tall" | "normal";
+
 const PATTERN: CellSize[] = ["wide", "normal", "tall", "normal", "normal", "wide", "normal"];
 
 function getCellClass(size: CellSize) {
@@ -63,7 +77,6 @@ function Lightbox({
     [onClose, onPrev, onNext]
   );
 
-  // Use higher-res version in lightbox (w_1400)
   const lightboxSrc = (url: string) =>
     url.replace("f_auto,q_auto", "f_auto,q_auto,w_1400");
 
@@ -116,7 +129,6 @@ function BentoCell({ src, index, size, onClick }: {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.1 });
 
-  // Thumbnail size — smaller for grid
   const thumbSrc = src.replace("f_auto,q_auto", "f_auto,q_auto,w_600");
 
   return (
@@ -132,7 +144,7 @@ function BentoCell({ src, index, size, onClick }: {
       <img
         src={thumbSrc}
         alt={`Ministry photo ${index + 1}`}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        className={`w-full h-full object-cover ${getObjectPosition(src)} transition-transform duration-500 group-hover:scale-110`}
         loading="lazy"
       />
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
