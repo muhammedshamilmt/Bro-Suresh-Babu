@@ -7,8 +7,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "@/components/ProtectedRoute";
 
 const Index = lazy(() => import("./pages/Index"));
+const Landing = lazy(() => import("./pages/Landing"));
 const About = lazy(() => import("./pages/About"));
 const Ministry = lazy(() => import("./pages/Ministry"));
+const Media = lazy(() => import("./pages/Media"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const Events = lazy(() => import("./pages/Events"));
@@ -16,7 +18,6 @@ const EventDetail = lazy(() => import("./pages/EventDetail"));
 const EventRegister = lazy(() => import("./pages/EventRegister"));
 const Contact = lazy(() => import("./pages/Contact"));
 const GraceCommunity = lazy(() => import("./pages/GraceCommunity"));
-const TetelestaiCentre = lazy(() => import("./pages/TetelestaiCentre"));
 const ChristCentre = lazy(() => import("./pages/ChristCentre"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
@@ -25,7 +26,6 @@ const AdminEventEditor = lazy(() => import("./pages/AdminEventEditor"));
 const AdminEventDetail = lazy(() => import("./pages/AdminEventDetail"));
 const Give = lazy(() => import("./pages/Give"));
 const BuildingFund = lazy(() => import("./pages/BuildingFund"));
-const SajithJourney = lazy(() => import("./pages/SajithJourney"));
 const MinistryHub = lazy(() => import("./pages/MinistryHub"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -41,8 +41,10 @@ const App = () => (
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/landing" element={<Landing />} />
             <Route path="/about" element={<About />} />
             <Route path="/ministry" element={<Ministry />} />
+            <Route path="/media" element={<Media />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/events" element={<Events />} />
@@ -50,9 +52,7 @@ const App = () => (
             <Route path="/events/:id/register" element={<EventRegister />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/grace-community" element={<GraceCommunity />} />
-            <Route path="/sajith-journey" element={<SajithJourney />} />
             <Route path="/hub" element={<MinistryHub />} />
-            <Route path="/tetelestai-centre" element={<TetelestaiCentre />} />
             <Route path="/christ-centre" element={<ChristCentre />} />
             <Route path="/give" element={<Give />} />
             <Route path="/building-fund" element={<BuildingFund />} />

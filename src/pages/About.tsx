@@ -106,18 +106,18 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen p-3">
       <Navbar />
 
       {/* Hero Section */}
       <section className="relative w-full h-[70vh] flex items-center justify-center bg-background">
         <div className="absolute inset-0">
           <img
-            src="https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774195168/img-15_gzrz7d.jpg"
+            src="https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774195167/img-13_kqw3rc.jpg"
             alt="About Brother Suresh Babu"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover rounded-[40px]"
           />
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute  rounded-[40px] inset-0 bg-black/60" />
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <motion.h1

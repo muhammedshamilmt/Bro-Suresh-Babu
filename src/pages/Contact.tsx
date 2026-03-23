@@ -16,37 +16,37 @@ import { useSubmitEnquiry } from "@/hooks/useEnquiries";
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const youtubeChannels = [
-  { lang: "Hindi",   handle: "@brothersureshbabuhindi",   url: "https://www.youtube.com/channel/UC-uUoBYSnx_7tC9nC2kvtAQ", flag: "🇮🇳" },
+  { lang: "Hindi", handle: "@brothersureshbabuhindi", url: "https://www.youtube.com/channel/UC-uUoBYSnx_7tC9nC2kvtAQ", flag: "🇮🇳" },
   { lang: "English", handle: "@brothersureshbabuenglish", url: "https://www.youtube.com/channel/UCKv2sCGAxT9rUW880dkJk_Q", flag: "🇬🇧" },
-  { lang: "Telugu",  handle: "@brothersureshbabutelugu",  url: "https://www.youtube.com/channel/UCIDI0SBN8hNEOx3tpQ_KzRA", flag: "🇮🇳" },
-  { lang: "Tamil",   handle: "@brothersureshbabutamil",   url: "https://www.youtube.com/channel/UCaKa1T5d9V81coLZEKd-FGA", flag: "🇮🇳" },
-  { lang: "French",  handle: "@brothersureshbabufrench",  url: "https://www.youtube.com/channel/UCsQRXKzK2MtSwYIjnaTZ-2A", flag: "🇫🇷" },
+  { lang: "Telugu", handle: "@brothersureshbabutelugu", url: "https://www.youtube.com/channel/UCIDI0SBN8hNEOx3tpQ_KzRA", flag: "🇮🇳" },
+  { lang: "Tamil", handle: "@brothersureshbabutamil", url: "https://www.youtube.com/channel/UCaKa1T5d9V81coLZEKd-FGA", flag: "🇮🇳" },
+  { lang: "French", handle: "@brothersureshbabufrench", url: "https://www.youtube.com/channel/UCsQRXKzK2MtSwYIjnaTZ-2A", flag: "🇫🇷" },
   { lang: "Spanish", handle: "@brothersureshbabuspanish", url: "https://www.youtube.com/channel/UCNpHTdvVUBmuxmcHtoPwiqw", flag: "🇪🇸" },
 ];
 
 const socialLinks = [
-  { label: "Facebook Page",   icon: Facebook,        url: "https://www.facebook.com/brothersureshbabu/",       color: "bg-blue-600",   hint: "Facebook" },
-  { label: "Instagram",       icon: Instagram,       url: "https://www.instagram.com/brothersureshbabu/",      color: "bg-pink-600",   hint: "Instagram" },
-  { label: "Facebook Group",  icon: Facebook,        url: "https://m.me/j/AbZf1Y0CTUjIVNZl/",                  color: "bg-blue-500",   hint: "FB Group" },
-  { label: "WhatsApp Channel",icon: MessageCircle,   url: "https://bit.ly/3zoESxT",                            color: "bg-green-500",  hint: "WhatsApp" },
-  { label: "Telegram",        icon: TelegramIcon,    url: "https://t.me/brothersureshbabutvm",                 color: "bg-sky-500",    hint: "Telegram" },
-  { label: "WhatsApp Direct", icon: MessageCircle,   url: "https://wa.me/918111958000",                        color: "bg-green-600",  hint: "WhatsApp" },
+  { label: "Facebook Page", icon: Facebook, url: "https://www.facebook.com/brothersureshbabu/", color: "bg-blue-600", hint: "Facebook" },
+  { label: "Instagram", icon: Instagram, url: "https://www.instagram.com/brothersureshbabu/", color: "bg-pink-600", hint: "Instagram" },
+  { label: "Facebook Group", icon: Facebook, url: "https://m.me/j/AbZf1Y0CTUjIVNZl/", color: "bg-blue-500", hint: "FB Group" },
+  { label: "WhatsApp Channel", icon: MessageCircle, url: "https://bit.ly/3zoESxT", color: "bg-green-500", hint: "WhatsApp" },
+  { label: "Telegram", icon: TelegramIcon, url: "https://t.me/brothersureshbabutvm", color: "bg-sky-500", hint: "Telegram" },
+  { label: "WhatsApp Direct", icon: MessageCircle, url: "https://wa.me/918111958000", color: "bg-green-600", hint: "WhatsApp" },
 ];
 
 const contactInfo = [
-  { icon: Mail,   title: "Email",          details: "sureshbabu@sureshbabu.org",          link: "mailto:sureshbabu@sureshbabu.org" },
-  { icon: Phone,  title: "Phone",          details: "+91 471 272 5273 / 4",               link: "tel:+914712725273" },
-  { icon: MapPin, title: "Office Address", details: "Christ Centre, Trivandrum, Kerala",  link: "https://maps.app.goo.gl/iGZT19JoaSkk8v2t5" },
-  { icon: Globe,  title: "Website",        details: "www.sureshbabu.org",                 link: "https://sureshbabu.org" },
+  { icon: Mail, title: "Email", details: "sureshbabu@sureshbabu.org", link: "mailto:sureshbabu@sureshbabu.org" },
+  { icon: Phone, title: "Phone", details: "+91 471 272 5273 / 4", link: "tel:+914712725273" },
+  { icon: MapPin, title: "Office Address", details: "Christ Centre, Trivandrum, Kerala", link: "https://maps.app.goo.gl/iGZT19JoaSkk8v2t5" },
+  { icon: Globe, title: "Website", details: "www.sureshbabu.org", link: "https://sureshbabu.org" },
 ];
 
 // ─── Schema ───────────────────────────────────────────────────────────────────
 
 const contactSchema = z.object({
-  name:    z.string().trim().min(1, { message: "Name is required" }).max(100),
-  email:   z.string().trim().email({ message: "Invalid email address" }).max(255),
-  phone:   z.string().trim().max(20).optional(),
-  type:    z.string().min(1, { message: "Inquiry type is required" }),
+  name: z.string().trim().min(1, { message: "Name is required" }).max(100),
+  email: z.string().trim().email({ message: "Invalid email address" }).max(255),
+  phone: z.string().trim().max(20).optional(),
+  type: z.string().min(1, { message: "Inquiry type is required" }),
   message: z.string().trim().min(1, { message: "Message is required" }).max(1000),
 });
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -174,18 +174,18 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background p-3   ">
       <Navbar />
 
       {/* Hero */}
-      <section className="relative w-full h-[50vh] flex items-center justify-center overflow-hidden bg-blue-dark">
+      <section className="relative w-full rounded-[40px] h-[50vh] flex items-center justify-center overflow-hidden bg-blue-dark">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?q=80&w=1470&auto=format&fit=crop"
             alt="Contact Us"
-            className="w-full h-full object-cover opacity-20 mix-blend-overlay"
+            className="w-full h-full object-cover rounded-[40px] opacity-20 mix-blend-overlay"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-blue-dark to-transparent" />
+          {/* <div className="absolute inset-0 bg-gradient-to-t from-blue-dark to-transparent" /> */}
         </div>
         <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.h1

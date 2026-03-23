@@ -130,7 +130,7 @@ function AccordionRow({
                 {hoverImg && (
                   <motion.div
                     key={hoverImg}
-                    className="absolute top-0 left-10 w-48 h-64 rounded-xl overflow-hidden shadow-2xl z-20 pointer-events-none"
+                    className="absolute top-0 md:-right-48  w-48 h-64 rounded-xl overflow-hidden shadow-2xl z-20 pointer-events-none"
                     initial={{ clipPath: "inset(100% 0% 0% 0%)", opacity: 0.8 }}
                     animate={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1 }}
                     exit={{ clipPath: "inset(100% 0% 0% 0%)", opacity: 0 }}

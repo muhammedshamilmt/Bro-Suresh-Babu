@@ -54,18 +54,18 @@ const Events = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen p-3 ">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative w-full h-[50vh] flex items-center justify-center bg-blue-dark">
+      <section className="relative w-full rounded-[40px] h-[50vh] flex items-center justify-center bg-blue-dark">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1470&auto=format&fit=crop"
             alt="Events & Calendar"
-            className="w-full h-full object-cover opacity-30 mix-blend-overlay"
+            className="w-full h-full object-cover rounded-[40px] opacity-30 mix-blend-overlay"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-blue-dark to-blue-dark/50" />
+          {/* <div className="absolute inset-0 bg-gradient-to-t from-blue-dark to-blue-dark/50" /> */}
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <motion.h1
@@ -199,11 +199,10 @@ const Events = () => {
                 <button
                   key={t}
                   onClick={() => setTypeFilter(t)}
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-                    typeFilter === t
+                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${typeFilter === t
                       ? "bg-blue-dark text-white shadow-sm"
                       : "bg-white border border-border text-muted-foreground hover:border-blue-dark/40"
-                  }`}
+                    }`}
                 >
                   {t}
                 </button>
@@ -215,16 +214,16 @@ const Events = () => {
             {isLoading
               ? Array.from({ length: 3 }).map((_, i) => <EventCardSkeleton key={i} />)
               : upcomingEvents.length === 0 && !featuredEvent
-              ? (
-                <div className="py-20 text-center text-muted-foreground">
-                  <Calendar className="w-12 h-12 mx-auto mb-4 opacity-30" />
-                  <p className="font-semibold text-lg">No events found</p>
-                  <p className="text-sm mt-1">Check back soon for upcoming events.</p>
-                </div>
-              )
-              : upcomingEvents.map((event, i) => (
-                <EventListCard key={event.id} event={event} index={i} />
-              ))}
+                ? (
+                  <div className="py-20 text-center text-muted-foreground">
+                    <Calendar className="w-12 h-12 mx-auto mb-4 opacity-30" />
+                    <p className="font-semibold text-lg">No events found</p>
+                    <p className="text-sm mt-1">Check back soon for upcoming events.</p>
+                  </div>
+                )
+                : upcomingEvents.map((event, i) => (
+                  <EventListCard key={event.id} event={event} index={i} />
+                ))}
           </div>
 
           {!isLoading && events.length === 0 && (

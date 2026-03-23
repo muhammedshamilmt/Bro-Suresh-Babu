@@ -32,17 +32,17 @@ const staggerContainer = {
 
 const ChristCentre = () => {
   return (
-    <div className="min-h-screen bg-[#F8F6F1] font-sans selection:bg-[#D4A574] selection:text-white">
+    <div className="min-h-screen p-3 bg-[#F8F6F1] font-sans selection:bg-[#D4A574] selection:text-white">
       <Navbar />
 
       {/* SECTION 1: HERO BANNER */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1B3A7A]/90 to-black/80 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-br rounded-[40px] from-[#1B3A7A]/90 to-black/80 z-10" />
           <img
             src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=2073&auto=format&fit=crop"
             alt="Worship Service"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover rounded-[40px]"
           />
         </div>
 

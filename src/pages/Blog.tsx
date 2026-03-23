@@ -58,18 +58,18 @@ export default function Blog() {
   const recent = posts.slice(1);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen p-3">
       <Navbar />
 
       {/* Hero */}
-      <section className="relative w-full h-[50vh] flex items-center justify-center bg-blue-dark">
+      <section className="relative w-full rounded-[40px] h-[50vh] flex items-center justify-center bg-blue-dark">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?q=80&w=1470&auto=format&fit=crop"
             alt="Blog"
-            className="w-full h-full object-cover opacity-20 mix-blend-overlay"
+            className="w-full h-full object-cover rounded-[40px] opacity-20 mix-blend-overlay"
           />
-          <div className="absolute inset-0 bg-blue-dark/50" />
+          {/* <div className="absolute inset-0 bg-blue-dark/50" /> */}
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <motion.h1
@@ -100,11 +100,10 @@ export default function Blog() {
                   <button
                     key={cat}
                     onClick={() => { setActiveCategory(cat); setPage(1); }}
-                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all border ${
-                      activeCategory === cat
+                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all border ${activeCategory === cat
                         ? "bg-blue-dark text-white border-blue-dark shadow-sm"
                         : "border-border text-muted-foreground hover:border-primary/40 hover:text-foreground bg-white"
-                    }`}
+                      }`}
                   >
                     {cat}
                   </button>
@@ -179,37 +178,37 @@ export default function Blog() {
                     {isLoading
                       ? Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)
                       : recent.map((post, i) => (
-                          <motion.div
-                            key={post.id}
-                            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.08 }} viewport={{ once: true }}
-                            className="group"
-                          >
-                            <Link to={`/blog/${post.id}`}>
-                              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-4 shadow-sm">
-                                <img
-                                  src={post.coverImage || "https://images.unsplash.com/photo-1490730141103-6cac501b1062?q=80&w=800&auto=format&fit=crop"}
-                                  alt={post.title}
-                                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                                />
-                              </div>
-                              <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
-                                <span className="flex items-center gap-1">
-                                  <Calendar className="w-3 h-3" />
-                                  {new Date(post.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                                </span>
-                                {post.category && <span className="text-primary font-medium">{post.category}</span>}
-                              </div>
-                              <h4 className="text-xl font-bold font-serif mb-2 text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                                {post.title}
-                              </h4>
-                              <p className="text-muted-foreground text-sm line-clamp-3 mb-4">{post.excerpt}</p>
-                              <span className="text-primary text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
-                                Read More <ChevronRight className="w-4 h-4" />
+                        <motion.div
+                          key={post.id}
+                          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.08 }} viewport={{ once: true }}
+                          className="group"
+                        >
+                          <Link to={`/blog/${post.id}`}>
+                            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-4 shadow-sm">
+                              <img
+                                src={post.coverImage || "https://images.unsplash.com/photo-1490730141103-6cac501b1062?q=80&w=800&auto=format&fit=crop"}
+                                alt={post.title}
+                                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                              />
+                            </div>
+                            <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
+                              <span className="flex items-center gap-1">
+                                <Calendar className="w-3 h-3" />
+                                {new Date(post.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                               </span>
-                            </Link>
-                          </motion.div>
-                        ))}
+                              {post.category && <span className="text-primary font-medium">{post.category}</span>}
+                            </div>
+                            <h4 className="text-xl font-bold font-serif mb-2 text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                              {post.title}
+                            </h4>
+                            <p className="text-muted-foreground text-sm line-clamp-3 mb-4">{post.excerpt}</p>
+                            <span className="text-primary text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
+                              Read More <ChevronRight className="w-4 h-4" />
+                            </span>
+                          </Link>
+                        </motion.div>
+                      ))}
                   </div>
                 </>
               )}
@@ -221,11 +220,10 @@ export default function Blog() {
                     <button
                       key={p}
                       onClick={() => setPage(p)}
-                      className={`w-10 h-10 rounded-full text-sm font-medium transition-colors border ${
-                        p === page
+                      className={`w-10 h-10 rounded-full text-sm font-medium transition-colors border ${p === page
                           ? "bg-primary text-white border-primary shadow-lg"
                           : "border-border hover:bg-primary hover:text-white"
-                      }`}
+                        }`}
                     >
                       {p}
                     </button>

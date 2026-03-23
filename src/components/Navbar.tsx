@@ -23,7 +23,7 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { label: "Home", href: "/" },
+    { label: "Home", href: "/landing" },
     { label: "About", href: "/about" },
     { label: "Christ Centre", href: "/christ-centre" },
     { label: "Ministry", href: "/ministry" },
@@ -41,7 +41,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className={`flex items-center space-x-2 transition-colors ${!isScrolled ? 'text-white' : 'text-foreground'}`}>
+        <Link to="/landing" className={`flex items-center space-x-2 transition-colors ${!isScrolled ? 'text-white' : 'text-foreground'}`}>
           <span className="text-2xl font-serif font-bold ">
             Brother Suresh Babu
           </span>
@@ -51,8 +51,8 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => {
             const isExternal = item.href.startsWith("/#");
-            const isActive = location.pathname === item.href || 
-                           (item.href === "/" && location.pathname === "/");
+            const isActive = location.pathname === item.href ||
+                           (item.href === "/landing" && location.pathname === "/landing");
             
             if (isExternal) {
               return (

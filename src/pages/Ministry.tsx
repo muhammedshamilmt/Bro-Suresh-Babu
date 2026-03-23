@@ -56,18 +56,18 @@ const Ministry = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen p-3 ">
       <Navbar />
-      
+
       {/* Hero Section */}
-      <section className="relative w-full h-[60vh] flex items-center justify-center bg-blue-dark">
-        <div className="absolute inset-0">
+      <section className="relative w-full h-[60vh] flex items-center justify-center rounded-[40px] bg-blue-dark">
+        <div className="absolute inset-0 rounded-[40px] ">
           <img
             src="https://images.unsplash.com/photo-1543722530-d2c3201371e7?q=80&w=1474&auto=format&fit=crop"
             alt="Ministry & Work"
-            className="w-full h-full object-cover opacity-30 mix-blend-overlay"
+            className="w-full h-full object-cover opacity-30 mix-blend-overlay rounded-[40px]"
           />
-          <div className="absolute inset-0 bg-blue-dark/60" />
+          {/* <div className="absolute inset-0 bg-blue-dark/60 rounded-[40px]" /> */}
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <motion.h1
@@ -136,22 +136,22 @@ const Ministry = () => {
                 Global Geographic Reach
               </h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Brother Suresh Babu's ministry breaks geographical boundaries, impacting lives from local 
+                Brother Suresh Babu's ministry breaks geographical boundaries, impacting lives from local
                 villages in India to massive conventions in South America.
               </p>
-              
+
               <div className="space-y-6">
                 <div className="bg-card p-6 rounded-xl border border-border flex gap-4 items-start shadow-sm">
                   <MapPin className="text-primary w-6 h-6 flex-shrink-0 mt-1" />
                   <div>
                     <h4 className="font-bold text-lg mb-1">National Reach (India)</h4>
                     <p className="text-muted-foreground text-sm">
-                      Active presence in 19 states with a deep emphasis on South India (Kerala, Tamil Nadu) 
+                      Active presence in 19 states with a deep emphasis on South India (Kerala, Tamil Nadu)
                       and rapid expansion into Northern and Eastern regions.
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="bg-card p-6 rounded-xl border border-border flex gap-4 items-start shadow-sm">
                   <Globe2 className="text-primary w-6 h-6 flex-shrink-0 mt-1" />
                   <div>
@@ -171,7 +171,7 @@ const Ministry = () => {
                 </div>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -199,13 +199,13 @@ const Ministry = () => {
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid md:grid-cols-2 gap-12">
-            
+
             {/* Media Ministry */}
             <div>
               <h2 className="text-3xl font-bold font-serif mb-8 text-blue-dark">Media Ministry</h2>
               <div className="space-y-6">
                 {mediaOutlets.map((media, i) => (
-                  <motion.div 
+                  <motion.div
                     key={i}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -229,12 +229,12 @@ const Ministry = () => {
             <div className="bg-card p-8 rounded-3xl border border-border shadow-soft">
               <h2 className="text-3xl font-bold font-serif mb-6 text-blue-dark">Unifying the Church</h2>
               <p className="text-muted-foreground mb-6">
-                Brother Suresh Babu is known for his widespread denominational acceptance, uniting believers 
+                Brother Suresh Babu is known for his widespread denominational acceptance, uniting believers
                 from all backgrounds under the banner of Christ.
               </p>
               <ul className="space-y-3">
                 {denominations.map((denom, i) => (
-                  <motion.li 
+                  <motion.li
                     key={i}
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -257,7 +257,7 @@ const Ministry = () => {
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl md:text-5xl font-bold font-serif mb-6">Real Ministry Impact</h2>
           <p className="text-lg md:text-xl opacity-90 mb-12">
-            "Thousands converted to Christianity. Churches revitalized. Leaders trained and mentored. 
+            "Thousands converted to Christianity. Churches revitalized. Leaders trained and mentored.
             Families restored. Lives transformed."
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

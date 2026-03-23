@@ -1,25 +1,5 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Introduction from "@/components/Introduction";
-import Services from "@/components/Services";
-import MinistryAccordion from "@/components/MinistryAccordion";
-import Video from "@/components/Video";
-import CTA from "@/components/CTA";
-import Footer from "@/components/Footer";
+import MinistryHub from "./MinistryHub";
 
-const Index = () => {
-  return (
-    <div className="min-h-screen p-4">
-      <Navbar />
-      <Hero />
-      <Introduction />
-      {/* <Services /> */}
-      <MinistryAccordion />
-      <Video />
-      {/* <CTA /> */}
-      <Footer />
-    </div>
-  );
-};
+const Index = () => <MinistryHub />;
 
 export default Index;
