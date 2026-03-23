@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Heart, Copy, CheckCheck, Building2, CreditCard } from "lucide-react";
+import { Heart, Copy, CheckCheck, Building2, CreditCard, Radio, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Link } from "react-router-dom";
 
 const paymentImg = "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto/v1774196942/payment_pyahj5.png";
 
@@ -75,37 +76,37 @@ function BankCard({
 }
 
 const Give = () => {
-  const heroRef = useRef(null);
   const qrRef = useRef(null);
   const qrInView = useInView(qrRef, { once: true, amount: 0.2 });
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background p-3">
       <Navbar />
 
       {/* Hero */}
-      <section
-        ref={heroRef}
-        className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-primary/5 via-background to-primary/10"
-      >
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-20 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <section className="relative w-full rounded-[40px] h-[50vh] flex items-center justify-center">
+        <div className="absolute inset-0">
+          <img
+            src="https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774196451/cta-background_wqv5n9.jpg"
+            alt="Give & Support"
+            className="w-full h-full object-cover object-center rounded-[40px] "
+          />
+          <div className="absolute inset-0 bg-black/60 rounded-[40px] " />
         </div>
-        <div className="container mx-auto px-4 text-center">
+        <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6"
+            className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/20 border border-primary/40 mb-5"
           >
-            <Heart size={28} className="text-primary" fill="currentColor" />
+            <Heart size={26} className="text-primary" fill="currentColor" />
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-6xl font-serif font-bold mb-5"
+            className="text-4xl md:text-6xl font-serif font-bold text-white mb-4"
           >
             Give &amp; Support
           </motion.h1>
@@ -113,7 +114,7 @@ const Give = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto"
           >
             Your generosity fuels the Gospel mission — reaching lives, building communities,
             and spreading the love of Christ across the nations.
@@ -121,20 +122,54 @@ const Give = () => {
         </div>
       </section>
 
-      {/* Scripture */}
-      <section className="py-10 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-lg md:text-xl italic font-serif max-w-3xl mx-auto"
-          >
-            "Each of you should give what you have decided in your heart to give, not reluctantly
-            or under compulsion, for God loves a cheerful giver."
-          </motion.p>
-          <p className="mt-3 text-primary-foreground/70 text-sm">— 2 Corinthians 9:7</p>
+      {/* Quick nav cards */}
+      <section className="py-10 bg-background">
+        <div className="container mx-auto px-4 max-w-2xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Link
+              to="/building-fund"
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card
+                hover:border-primary/50 hover:shadow-[0_0_30px_hsl(31,55%,64%,0.15)]
+                transition-all duration-300 p-6 flex items-center gap-4"
+            >
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center
+                group-hover:bg-primary/20 transition-colors flex-shrink-0">
+                <Building2 size={22} className="text-primary" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-muted-foreground uppercase tracking-widest mb-0.5">Also Support</p>
+                <p className="font-serif font-bold text-foreground text-lg leading-tight
+                  group-hover:text-primary transition-colors">Building Fund</p>
+                <p className="text-xs text-muted-foreground mt-0.5 truncate">
+                  Help build a house of worship
+                </p>
+              </div>
+              <ArrowRight size={18} className="text-muted-foreground group-hover:text-primary
+                group-hover:translate-x-1 transition-all flex-shrink-0" />
+            </Link>
+
+            <Link
+              to="/media"
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card
+                hover:border-primary/50 hover:shadow-[0_0_30px_hsl(31,55%,64%,0.15)]
+                transition-all duration-300 p-6 flex items-center gap-4"
+            >
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center
+                group-hover:bg-primary/20 transition-colors flex-shrink-0">
+                <Radio size={22} className="text-primary" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-muted-foreground uppercase tracking-widest mb-0.5">Explore</p>
+                <p className="font-serif font-bold text-foreground text-lg leading-tight
+                  group-hover:text-primary transition-colors">Media Ministry</p>
+                <p className="text-xs text-muted-foreground mt-0.5 truncate">
+                  Watch, listen &amp; be inspired
+                </p>
+              </div>
+              <ArrowRight size={18} className="text-muted-foreground group-hover:text-primary
+                group-hover:translate-x-1 transition-all flex-shrink-0" />
+            </Link>
+          </div>
         </div>
       </section>
 

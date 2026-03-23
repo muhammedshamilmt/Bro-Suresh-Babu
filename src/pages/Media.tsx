@@ -3,29 +3,29 @@ import Navbar from "@/components/Navbar";
 import { Play, Youtube, Facebook, Instagram, Music, Video, Headphones, ArrowRight, Share2, MessageCircle, Mail, MapPin, Globe, Phone, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const LATEST_MESSAGES = [
-  {
-    id: 1,
-    title: "The Power of Grace in Modern Times",
-    thumbnail: "https://images.unsplash.com/photo-1519781542704-958ff1dbbf78?q=80&w=1470&auto=format&fit=crop",
-    date: "August 15, 2023",
-    duration: "45:20"
-  },
-  {
-    id: 2,
-    title: "Understanding Your Divine Purpose",
-    thumbnail: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=1473&auto=format&fit=crop",
-    date: "August 8, 2023",
-    duration: "52:10"
-  },
-  {
-    id: 3,
-    title: "Walking in Faith During Uncertainty",
-    thumbnail: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=1470&auto=format&fit=crop",
-    date: "August 1, 2023",
-    duration: "38:45"
-  }
-];
+// const LATEST_MESSAGES = [
+//   {
+//     id: 1,
+//     title: "The Power of Grace in Modern Times",
+//     thumbnail: "https://images.unsplash.com/photo-1519781542704-958ff1dbbf78?q=80&w=1470&auto=format&fit=crop",
+//     date: "August 15, 2023",
+//     duration: "45:20"
+//   },
+//   {
+//     id: 2,
+//     title: "Understanding Your Divine Purpose",
+//     thumbnail: "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=1473&auto=format&fit=crop",
+//     date: "August 8, 2023",
+//     duration: "52:10"
+//   },
+//   {
+//     id: 3,
+//     title: "Walking in Faith During Uncertainty",
+//     thumbnail: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=1470&auto=format&fit=crop",
+//     date: "August 1, 2023",
+//     duration: "38:45"
+//   }
+// ];
 
 const YOUTUBE_CHANNELS = [
   { lang: "Hindi", handle: "@brothersureshbabuhindi", url: "https://www.youtube.com/channel/UC-uUoBYSnx_7tC9nC2kvtAQ", flag: "🇮🇳" },
@@ -99,7 +99,7 @@ const Media = () => {
       {/* Main Content Area */}
       <div className="container mx-auto px-4 py-16 lg:py-24">
         
-        {/* Latest Messages Section */}
+        {/* Latest Messages Section
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div className="max-w-2xl">
             <motion.h2 
@@ -122,9 +122,9 @@ const Media = () => {
           <Button variant="outline" className="mt-6 md:mt-0 rounded-full border-blue-dark/20 text-blue-dark hover:bg-blue-dark hover:text-white transition-all">
             View All Sermons <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
-        </div>
+        </div> */}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {LATEST_MESSAGES.map((msg, idx) => (
             <motion.div
               key={msg.id}
@@ -156,7 +156,7 @@ const Media = () => {
               </h3>
             </motion.div>
           ))}
-        </div>
+        </div> */}
 
         {/* Regional YouTube Channels */}
         <motion.div 
@@ -233,7 +233,7 @@ const Media = () => {
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
              {CONTACT_INFO.map((info, idx) => (
                 <a href={info.link} key={idx} className="bg-white p-6 rounded-[30px] border border-border shadow-sm flex flex-col items-center text-center hover:border-primary/50 transition-colors group">
-                  <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-primary/20 transition-colors">
                     <info.icon className="w-6 h-6 text-primary" />
                   </div>
                   <h4 className="font-bold text-lg mb-1">{info.title}</h4>

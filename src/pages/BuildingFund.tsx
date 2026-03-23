@@ -85,29 +85,33 @@ const BuildingFund = () => {
   const qrInView = useInView(qrRef, { once: true, amount: 0.2 });
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background p-3 ">
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-amber-500/5 via-background to-primary/10">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-20 left-1/4 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <section className="relative w-full rounded-[40px] h-[50vh] flex items-center justify-center">
+        <div className="absolute inset-0">
+          <img
+            src="https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774195162/img-11_vqtnsd.jpg"
+            alt="Building Fund"
+            className="w-full rounded-[40px] h-full object-cover object-center"
+          />
+          <div className="absolute rounded-[40px] inset-0 bg-black/60" />
         </div>
-        <div className="container mx-auto px-4 text-center">
+        <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-amber-500/10 mb-6"
+            className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/20 border border-primary/40 mb-5"
           >
-            <Church size={28} className="text-amber-600" />
+            <Church size={26} className="text-primary" />
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-6xl font-serif font-bold mb-5"
+            className="text-4xl md:text-6xl font-serif font-bold text-white mb-4"
           >
             Building Fund
           </motion.h1>
@@ -115,27 +119,11 @@ const BuildingFund = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto"
           >
             Help us build a house of worship where generations will encounter God, grow in faith,
             and be sent out to transform the world.
           </motion.p>
-        </div>
-      </section>
-
-      {/* Scripture */}
-      <section className="py-10 bg-amber-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-lg md:text-xl italic font-serif max-w-3xl mx-auto"
-          >
-            "Unless the Lord builds the house, the builders labour in vain."
-          </motion.p>
-          <p className="mt-3 text-white/70 text-sm">— Psalm 127:1</p>
         </div>
       </section>
 
