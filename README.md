@@ -60,18 +60,24 @@ A full-stack ministry website built with React, TypeScript, Express, and MongoDB
 │   │   ├── auth.ts               # Session-based admin auth
 │   │   └── utils.ts
 │   └── pages/
-│       ├── Index.tsx             # Home
+│       ├── Index.tsx             # Home (Ministry Hub or Mobile redirect to Landing)
+│       ├── Landing.tsx           # Main Landing Page
+│       ├── MinistryHub.tsx       # Ministry Hub Portal
 │       ├── About.tsx             # About + photo gallery
 │       ├── Blog.tsx              # Public blog listing
 │       ├── BlogPost.tsx          # Blog detail
-│       ├── BuildingFund.tsx      # Building fund + bank details + QR
+│       ├── BuildingFund.tsx      # Building fund + bank details + UPI QR
 │       ├── ChristCentre.tsx      # Christ Centre church page
 │       ├── Contact.tsx           # Contact form + YouTube channels marquee + social links
 │       ├── Events.tsx            # Public events listing
 │       ├── EventDetail.tsx       # Event detail with parallax hero
 │       ├── EventRegister.tsx     # 3-step registration form
-│       ├── Give.tsx              # Give & Support + bank details + QR
-│       ├── Ministry.tsx
+│       ├── Give.tsx              # Give & Support + bank details + UPI QR
+│       ├── GraceCommunity.tsx    # Grace Community Global (Bro. Sajith Joseph)
+│       ├── Media.tsx             # Media & Resources
+│       ├── MediaFund.tsx         # Media Fund page
+│       ├── Ministry.tsx          # Ministries overview
+│       ├── Podcast.tsx           # Podcast directory
 │       ├── AdminLogin.tsx        # /admin/login
 │       ├── Dashboard.tsx         # Protected admin — Blogs / Enquiries / Events tabs
 │       ├── BlogEditor.tsx        # Blog create/edit with live preview
@@ -144,17 +150,24 @@ Cloudinary cloud name: `dfadqkxbo`
 
 | Route | Description |
 |-------|-------------|
-| `/` | Home — hero, intro, foundations, services, banner, video, CTA |
+| `/` | Home — dynamically renders Ministry Hub (desktop) or redirects to Landing (mobile < 1066px) |
+| `/landing` | Landing — main page with hero, intro, foundations, services, video, CTA |
+| `/hub` | Ministry Hub — dynamic central navigation portal |
 | `/about` | About + ministry timeline + bento photo gallery |
+| `/ministry` | Ministries overview |
+| `/media` | Media & Resources — global YouTube network, podcasts, social links |
 | `/blog` | Blog listing |
 | `/blog/:id` | Blog post detail |
 | `/events` | Events listing — live from DB |
 | `/events/:id` | Event detail — parallax hero, speakers, schedule |
 | `/events/:id/register` | 3-step in-person registration form |
 | `/contact` | Contact form + YouTube channels marquee + social links |
+| `/grace-community` | Grace Community Global (founded by Bro. Sajith Joseph) |
+| `/christ-centre` | Christ Centre church page |
 | `/give` | Give & Support — bank details + UPI QR |
 | `/building-fund` | Building Fund — vision timeline + bank details + UPI QR |
-| `/christ-centre` | Christ Centre church page |
+| `/media-fund` | Media Fund page |
+| `/podcast` | Podcast directory |
 | `/admin/login` | Admin login |
 | `/dashboard` | Protected admin dashboard |
 

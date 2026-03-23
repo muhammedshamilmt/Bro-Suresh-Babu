@@ -17,7 +17,6 @@ const Events = lazy(() => import("./pages/Events"));
 const EventDetail = lazy(() => import("./pages/EventDetail"));
 const EventRegister = lazy(() => import("./pages/EventRegister"));
 const Contact = lazy(() => import("./pages/Contact"));
-const GraceCommunity = lazy(() => import("./pages/GraceCommunity"));
 const ChristCentre = lazy(() => import("./pages/ChristCentre"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
@@ -53,7 +52,6 @@ const App = () => (
             <Route path="/events/:id" element={<EventDetail />} />
             <Route path="/events/:id/register" element={<EventRegister />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/grace-community" element={<GraceCommunity />} />
             <Route path="/hub" element={<MinistryHub />} />
             <Route path="/christ-centre" element={<ChristCentre />} />
             <Route path="/give" element={<Give />} />

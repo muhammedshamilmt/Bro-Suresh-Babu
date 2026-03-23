@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useMotionValue, useTransform, useAnimationFrame } from "framer-motion";
-import { Globe, BookOpen, Church, Navigation, Volume2, VolumeX } from "lucide-react";
+import { Globe, BookOpen, Church, Navigation } from "lucide-react";
 import { CircularText } from "@/components/Hero";
 
 const HeroImg = "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto/v1774197091/hero_b69llr.png";
@@ -28,7 +28,6 @@ const BUBBLES = [
   { label: "Media", path: "/media" },
   { label: "Blog", path: "/blog" },
   { label: "Events", path: "/events" },
-  { label: "Grace Community", path: "/grace-community" },
   { label: "Christ Centre", path: "/christ-centre" },
   { label: "Contact", path: "/contact" },
   { label: "Give", path: "/give" },
@@ -69,30 +68,21 @@ export default function MinistryHub() {
   const rotation = useMotionValue(0);
   const isDragging = useRef(false);
 
-  // Spotify dial rotation (independent)
-  const spotifyRotation = useMotionValue(0);
-  const isSpotifyDragging = useRef(false);
   const [activeEp, setActiveEp] = useState(0);
-  const [muted, setMuted] = useState(false);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   // Continuously rotate slowly
   useAnimationFrame((_t, delta) => {
     if (!isDragging.current) {
       rotation.set(rotation.get() + delta * 0.005);
     }
-    if (!isSpotifyDragging.current) {
-      spotifyRotation.set(spotifyRotation.get() - delta * 0.004);
-    }
   });
 
   // Inverse rotation to keep children upright
   const reverseRotation = useTransform(rotation, r => -r);
-  const reverseSpotify = useTransform(spotifyRotation, r => -r);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#061430] via-[#050A14] to-[#241702] flex flex-col">
-      <section className="relative flex-1 w-full flex flex-col justify-between overflow-hidden">
+      <section className="relative flex-1 w-full flex flex-col justify-between overflow-hidden min-h-screen">
         {/* Top Header Placeholder mimicking the provided design */}
         <motion.div
           initial={{ y: -50, opacity: 0 }}
@@ -213,151 +203,119 @@ export default function MinistryHub() {
             </div>
           </motion.div>
 
-          {/* ── Spotify Podcast Dial — half-visible on right edge ── */}
+          {/* ── Spotify Episodes Panel — right side ── */}
           <motion.div
-            onPanStart={() => { isSpotifyDragging.current = true; }}
-            onPanEnd={() => { isSpotifyDragging.current = false; }}
-            onPan={(_e, info) => {
-              spotifyRotation.set(spotifyRotation.get() + info.delta.y * 0.25);
-            }}
-            className="absolute right-0 translate-x-1/2 top-1/2 -translate-y-1/2 w-[340px] h-[340px] sm:w-[500px] sm:h-[500px] lg:w-[600px] lg:h-[600px] xl:w-[720px] xl:h-[720px] z-30 touch-none cursor-grab active:cursor-grabbing pointer-events-auto"
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="absolute right-4 top-0 bottom-0 z-30 w-[260px] sm:w-[300px] lg:w-[320px] pointer-events-auto hidden lg:flex flex-col justify-center gap-3"
           >
-            {/* Rotating rim + episode bubbles */}
-            <motion.div
-              style={{ rotate: spotifyRotation }}
-              className="absolute inset-0 rounded-full border-[4px] border-[#1DB954]/40 sm:border-[6px] sm:border-[#1DB954]/35"
-            >
-              {PODCAST_EPISODES.map((epId, index) => {
-                const angleInDeg = index * (360 / PODCAST_EPISODES.length);
-                const angleInRad = (angleInDeg * Math.PI) / 180;
-                const radius = 50;
-                const x = 50 + radius * Math.cos(angleInRad);
-                const y = 50 + radius * Math.sin(angleInRad);
-                return (
-                  <motion.div
-                    key={epId}
-                    className="absolute"
-                    style={{ left: `${x}%`, top: `${y}%`, x: "-50%", y: "-50%", rotate: reverseSpotify }}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    whileHover={{ scale: 1.08 }}
-                    transition={{ delay: index * 0.12, type: "spring", stiffness: 120 }}
-                  >
-                    <button
-                      onClick={() => setActiveEp(index)}
-                      className={`flex items-center gap-1.5 sm:gap-2.5 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full border backdrop-blur-md transition-all group pointer-events-auto relative z-10 whitespace-nowrap
-                        ${activeEp === index
-                          ? "bg-[#1DB954] border-[#1DB954] shadow-[0_0_20px_rgba(29,185,84,0.5)]"
-                          : "border-white/10 bg-[#061430]/95 hover:bg-[#1DB954]/10 hover:border-[#1DB954]/50"
-                        }`}
-                    >
-                      <SpotifyIcon className={`w-3 h-3 sm:w-4 sm:h-4 ${activeEp === index ? "text-white" : "text-[#1DB954]"}`} />
-                      <span className={`text-xs sm:text-sm font-semibold ${activeEp === index ? "text-white" : "text-white/80 group-hover:text-[#1DB954]"} transition-colors`}>
-                        EP {index + 1}
+            {/* Header */}
+            <div className="flex items-center gap-2.5 px-1">
+              <div className="w-8 h-8 rounded-full bg-[#1DB954] flex items-center justify-center shadow-[0_0_20px_rgba(29,185,84,0.5)] shrink-0">
+                <SpotifyIcon className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <p className="text-white font-bold text-sm leading-tight">Latest Episodes</p>
+                <p className="text-white/40 text-[10px] uppercase tracking-widest">Podcast</p>
+              </div>
+              <div className="ml-auto flex gap-[2px] items-end h-4">
+                {[3, 5, 4, 6, 3].map((h, j) => (
+                  <motion.span
+                    key={j}
+                    className="w-[2px] bg-[#1DB954] rounded-full"
+                    animate={{ height: [`${h}px`, `${h + 5}px`, `${h}px`] }}
+                    transition={{ duration: 0.6, repeat: Infinity, delay: j * 0.1 }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="h-px bg-gradient-to-r from-[#1DB954]/40 via-white/10 to-transparent" />
+
+            {/* Episode list */}
+            <div className="flex flex-col gap-2">
+              {PODCAST_EPISODES.map((_, i) => (
+                <motion.button
+                  key={i}
+                  onClick={() => setActiveEp(i)}
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className={`flex items-center gap-3 px-3 py-3 rounded-2xl border text-left transition-all duration-200 group
+                    ${activeEp === i
+                      ? "bg-[#1DB954]/15 border-[#1DB954]/50 shadow-[0_0_16px_rgba(29,185,84,0.15)]"
+                      : "bg-white/[0.03] border-white/8 hover:bg-white/[0.06] hover:border-white/20"
+                    }`}
+                >
+                  {/* Play indicator */}
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all
+                    ${activeEp === i ? "bg-[#1DB954] shadow-[0_0_12px_rgba(29,185,84,0.5)]" : "bg-white/10 group-hover:bg-white/20"}`}>
+                    {activeEp === i ? (
+                      <span className="flex gap-[2px] items-end h-3">
+                        {[3, 5, 4].map((h, j) => (
+                          <motion.span key={j}
+                            className="w-[2px] bg-white rounded-full"
+                            animate={{ height: [`${h}px`, `${h + 3}px`, `${h}px`] }}
+                            transition={{ duration: 0.5, repeat: Infinity, delay: j * 0.12 }}
+                          />
+                        ))}
                       </span>
-                    </button>
-                  </motion.div>
-                );
-              })}
+                    ) : (
+                      <svg className="w-3 h-3 text-white/70 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    )}
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <p className={`text-xs font-bold truncate ${activeEp === i ? "text-[#1DB954]" : "text-white/80 group-hover:text-white"} transition-colors`}>
+                      Episode {i + 1}
+                    </p>
+                    <p className="text-[10px] text-white/35 mt-0.5">Brother Suresh Babu</p>
+                  </div>
+
+                  <SpotifyIcon className={`w-3.5 h-3.5 shrink-0 ${activeEp === i ? "text-[#1DB954]" : "text-white/20 group-hover:text-white/40"} transition-colors`} />
+                </motion.button>
+              ))}
+            </div>
+
+            {/* Active embed */}
+            <motion.div
+              key={activeEp}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
+              className="rounded-2xl overflow-hidden border border-[#1DB954]/20 shadow-[0_4px_32px_rgba(29,185,84,0.1)]"
+            >
+              <iframe
+                style={{ borderRadius: "12px", display: "block" }}
+                src={`https://open.spotify.com/embed/episode/${PODCAST_EPISODES[activeEp]}?utm_source=generator`}
+                width="100%"
+                height="152"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                title={`Episode ${activeEp + 1}`}
+              />
             </motion.div>
 
-            {/* Center hub — Spotify icon + custom player card */}
-            <div className="absolute left-[25%] top-[50%] -translate-x-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-3 pointer-events-none">
-
-              {/* Spotify hub button */}
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1DB954] flex items-center justify-center shadow-[0_0_28px_rgba(29,185,84,0.7)] pointer-events-auto cursor-pointer">
-                <SpotifyIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </div>
-
-              {/* Custom player card — no iframe preview shown */}
-              <motion.div
-                key={activeEp}
-                initial={{ opacity: 0, scale: 0.9, y: 8 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="pointer-events-auto w-[190px] sm:w-[240px] rounded-2xl overflow-hidden
-                  border border-[#1DB954]/30 bg-[#061430]/95 backdrop-blur-md
-                  shadow-[0_0_30px_rgba(29,185,84,0.2)] p-3 flex flex-col gap-2"
-              >
-                {/* Episode label */}
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-lg bg-[#1DB954] flex items-center justify-center shrink-0">
-                    <SpotifyIcon className="w-4 h-4 text-white" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-[10px] text-white/40 uppercase tracking-wider">Episode</p>
-                    <p className="text-xs font-bold text-white truncate">EP {activeEp + 1}</p>
-                  </div>
-                  {/* Mute / Unmute */}
-                  <button
-                    onClick={() => {
-                      const next = !muted;
-                      setMuted(next);
-                      if (iframeRef.current?.contentWindow) {
-                        iframeRef.current.contentWindow.postMessage(
-                          JSON.stringify({ command: next ? "pause" : "play" }),
-                          "*"
-                        );
-                      }
-                    }}
-                    className="ml-auto w-7 h-7 rounded-full bg-white/10 hover:bg-[#1DB954]/30
-                      flex items-center justify-center transition-colors shrink-0"
-                    aria-label={muted ? "Unmute" : "Mute"}
-                  >
-                    {muted
-                      ? <VolumeX size={13} className="text-white/60" />
-                      : <Volume2 size={13} className="text-[#1DB954]" />
-                    }
-                  </button>
-                </div>
-
-                {/* Animated waveform bars */}
-                <div className="flex items-end gap-[3px] h-6 px-1">
-                  {Array.from({ length: 12 }).map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className={`flex-1 rounded-full ${muted ? "bg-white/20" : "bg-[#1DB954]"}`}
-                      animate={muted ? { height: "4px" } : {
-                        height: ["4px", `${8 + Math.random() * 14}px`, "4px"],
-                      }}
-                      transition={{
-                        duration: 0.6 + Math.random() * 0.4,
-                        repeat: Infinity,
-                        delay: i * 0.07,
-                        ease: "easeInOut",
-                      }}
-                    />
-                  ))}
-                </div>
-
-                {/* Hidden autoplay iframe */}
-                <iframe
-                  ref={iframeRef}
-                  style={{ display: "none" }}
-                  src={`https://open.spotify.com/embed/episode/${PODCAST_EPISODES[activeEp]}?utm_source=generator&autoplay=1`}
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  title={`Episode ${activeEp + 1}`}
-                />
-
-                {/* Open on Spotify link */}
-                <a
-                  href={`https://open.spotify.com/episode/${PODCAST_EPISODES[activeEp]}`}
-                  target="_blank" rel="noopener noreferrer"
-                  className="text-[10px] text-[#1DB954]/70 hover:text-[#1DB954] text-center transition-colors"
-                >
-                  Open in Spotify ↗
-                </a>
-              </motion.div>
-            </div>
+            {/* View all link */}
+            <Link
+              to="/podcast"
+              className="flex items-center justify-center gap-2 py-2.5 rounded-2xl border border-white/10 bg-white/[0.03] hover:bg-[#1DB954]/10 hover:border-[#1DB954]/30 transition-all text-white/50 hover:text-[#1DB954] text-xs font-semibold"
+            >
+              <SpotifyIcon className="w-3 h-3" />
+              View all episodes
+            </Link>
           </motion.div>
 
           {/* Right Column - Portrait Image — centered */}
-          <div className="relative w-full flex-1 flex justify-center items-end z-10 pointer-events-none pb-12 lg:pb-0 mt-20 lg:mt-0">
+          <div className="absolute inset-0 flex justify-center items-end z-10 pointer-events-none overflow-hidden">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, x: 50 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-              className="relative flex-shrink-0 w-[300px] sm:w-[350px] lg:w-[400px] xl:w-[450px] pointer-events-auto"
+              className="relative flex-shrink-0 w-[340px] sm:w-[420px] lg:w-[500px] xl:w-[580px] pointer-events-auto"
             >
               {/* Animated Floating Particles Behind the Portrait */}
               <div className="absolute inset-x-[-30%] bottom-0 top-0 -z-20 overflow-hidden pointer-events-none [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]">
@@ -393,13 +351,10 @@ export default function MinistryHub() {
                 className="absolute inset-x-0 bottom-0 top-1/4 bg-primary/30 blur-[60px] sm:blur-[80px] -z-10 rounded-t-full"
               />
 
-              <motion.img
-                animate={{ y: [-5, 5, -5] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              <img
                 src={HeroImg}
-                className="w-full h-auto  object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative z-10"
+                className="w-full h-auto object-contain object-top drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative z-10"
                 alt="Brother Suresh Babu"
-                style={{ filter: "brightness(1.1) contrast(1.05)" }}
               />
             </motion.div>
           </div>

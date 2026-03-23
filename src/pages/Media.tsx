@@ -279,6 +279,15 @@ const Media = () => {
         </motion.div>
 
       </div>
+
+      {/* Footer Badge */}
+      <div className="mt-8 flex justify-center pb-4 z-10 relative">
+        <a href="https://heraldgroup.org/" target="_blank" rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-foreground/40 hover:text-primary text-sm transition-colors">
+          Powered by
+          <span className="font-semibold text-foreground/55 hover:text-primary">Herald Group</span>
+        </a>
+      </div>
     </div>
   );
 };
