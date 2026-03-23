@@ -19,7 +19,6 @@ const GIVE = [
   { label: "Give Online",     href: "/give" },
   { label: "Building Fund",   href: "/building-fund" },
   { label: "Contact Us",      href: "/contact" },
-  { label: "Grace Community", href: "/grace-community" },
 ];
 
 const SOCIAL = [
