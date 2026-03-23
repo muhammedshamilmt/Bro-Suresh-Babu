@@ -3,61 +3,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Grace Community Global Design System - Elegant, Spiritual, Modern */
-
 @layer base {
   :root {
-    /* Core Colors - Cream base with dark gray text */
-    --background: 43 33% 96%; /* #F8F6F1 */
-    --foreground: 210 29% 24%; /* #2C3E50 */
+    /* Navy Blue Theme — #000518 → #141F47 */
+    --background: 0 0% 100%;            /* white */
+    --foreground: 225 80% 8%;           /* #000518 */
 
     --card: 0 0% 100%;
-    --card-foreground: 210 29% 24%;
+    --card-foreground: 225 80% 8%;
     --card-white: 0 0% 100%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 29% 24%;
+    --popover-foreground: 225 80% 8%;
 
-    /* Deep Blue Accent - #1B3A7A */
-    --blue-dark: 220 64% 29%;
+    /* Deep Navy — #0A1537 */
+    --blue-dark: 222 72% 13%;
     --blue-dark-foreground: 0 0% 100%;
 
-    /* Gold/Amber Accent System - #D4A574 */
-    --primary: 31 55% 64%;
+    /* Primary — #0F1B3F */
+    --primary: 226 65% 15%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 31 75% 64%;
-    
-    /* Emerald Green Accent - #2B7A78 */
-    --secondary: 178 48% 32%;
+    --primary-glow: 228 55% 25%;
+
+    /* Secondary — #17224D */
+    --secondary: 228 55% 20%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 40 20% 90%;
-    --muted-foreground: 210 29% 24%;
+    --muted: 222 30% 92%;
+    --muted-foreground: 222 30% 40%;
 
-    --accent: 31 55% 64%;
+    --accent: 228 52% 21%;              /* #1A2553 */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 15% 90%;
-    --input: 40 15% 90%;
-    --ring: 31 55% 64%;
+    --border: 222 25% 88%;
+    --input: 222 25% 88%;
+    --ring: 228 55% 30%;
 
     --radius: 0.75rem;
 
     /* Gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(31 55% 64%), hsl(31 75% 64%));
-    --gradient-blue: linear-gradient(135deg, hsl(220 64% 29%), hsl(220 70% 20%));
-    --gradient-warm: linear-gradient(180deg, hsl(43 33% 96%), hsl(40 25% 90%));
-    --gradient-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
-    --gradient-radial: radial-gradient(circle at 50% 0%, hsl(31 55% 64% / 0.15), transparent 70%);
-    --gradient-hero: linear-gradient(135deg, hsl(220 64% 29%), hsl(31 55% 64%));
+    --gradient-gold: linear-gradient(135deg, hsl(226 65% 15%), hsl(228 55% 25%));
+    --gradient-blue: linear-gradient(135deg, hsl(222 72% 13%), hsl(228 55% 20%));
+    --gradient-warm: linear-gradient(180deg, hsl(220 30% 97%), hsl(222 30% 92%));
+    --gradient-overlay: linear-gradient(180deg, rgba(0,5,24,0) 0%, rgba(0,5,24,0.85) 100%);
+    --gradient-radial: radial-gradient(circle at 50% 0%, hsl(228 52% 21% / 0.15), transparent 70%);
+    --gradient-hero: linear-gradient(135deg, hsl(225 80% 3%), hsl(228 55% 20%));
 
     /* Shadows */
-    --shadow-soft: 0 2px 20px rgba(0, 0, 0, 0.05);
-    --shadow-medium: 0 4px 30px rgba(0, 0, 0, 0.1);
-    --shadow-glow: 0 0 40px hsl(31 55% 64% / 0.3);
+    --shadow-soft: 0 2px 20px rgba(0, 5, 24, 0.06);
+    --shadow-medium: 0 4px 30px rgba(0, 5, 24, 0.14);
+    --shadow-glow: 0 0 40px hsl(228 52% 21% / 0.35);
 
     /* Transitions */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -65,12 +63,18 @@
   }
 
   .dark {
-    --background: 220 88% 20%;
+    --background: 225 80% 3%;           /* #000518 */
     --foreground: 0 0% 100%;
-    --card: 220 88% 22%;
+    --card: 222 72% 8%;                 /* #0A1537 */
     --card-foreground: 0 0% 100%;
-    --primary: 45 100% 60%;
-    --primary-foreground: 220 88% 20%;
+    --primary: 228 55% 25%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 228 55% 15%;
+    --muted-foreground: 222 30% 65%;
+    --border: 228 40% 18%;
+    --input: 228 40% 18%;
+    --accent: 228 52% 21%;
+    --accent-foreground: 0 0% 100%;
   }
 }
 
@@ -90,7 +94,6 @@
     letter-spacing: -0.02em;
   }
 
-  /* Smooth scroll */
   html {
     scroll-behavior: smooth;
   }
@@ -137,15 +140,14 @@
     transition: var(--transition-bounce);
   }
 
-  /* Glassmorphism effect */
   .glass {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(15, 27, 63, 0.08);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
 
   .glass-dark {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 5, 24, 0.65);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }

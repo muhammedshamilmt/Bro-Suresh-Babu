@@ -55,6 +55,13 @@ type CellSize = "wide" | "tall" | "normal";
 
 const PATTERN: CellSize[] = ["wide", "normal", "tall", "normal", "normal", "wide", "normal"];
 
+function getCellSize(src: string, index: number): CellSize {
+  if (src.includes("img-8_hspdx8") || src.includes("img-19_swypkw")) {
+    return "tall";
+  }
+  return PATTERN[index % PATTERN.length];
+}
+
 function getCellClass(size: CellSize) {
   if (size === "wide") return "col-span-2 row-span-1";
   if (size === "tall") return "col-span-1 row-span-2";
@@ -130,6 +137,7 @@ function BentoCell({ src, index, size, onClick }: {
   const inView = useInView(ref, { once: true, amount: 0.1 });
 
   const thumbSrc = src.replace("f_auto,q_auto", "f_auto,q_auto,w_600");
+  const objectPosition = size === "tall" ? "object-top" : getObjectPosition(src);
 
   return (
     <motion.div
@@ -144,7 +152,7 @@ function BentoCell({ src, index, size, onClick }: {
       <img
         src={thumbSrc}
         alt={`Ministry photo ${index + 1}`}
-        className={`w-full h-full object-cover ${getObjectPosition(src)} transition-transform duration-500 group-hover:scale-110`}
+        className={`w-full h-full object-cover ${objectPosition} transition-transform duration-500 group-hover:scale-110`}
         loading="lazy"
       />
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
@@ -190,13 +198,13 @@ export default function Gallery() {
       </div>
 
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3">
+        <div className="grid grid-flow-dense grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3">
           {ALL_IMAGES.map((src, i) => (
             <BentoCell
               key={i}
               src={src}
               index={i}
-              size={PATTERN[i % PATTERN.length]}
+              size={getCellSize(src, i)}
               onClick={() => open(i)}
             />
           ))}

@@ -245,6 +245,37 @@ const Media = () => {
            </div>
         </motion.div>
 
+        {/* Media Fund Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 relative rounded-[40px] overflow-hidden bg-gradient-to-r from-amber-950 to-orange-900 shadow-2xl"
+        >
+          <div className="absolute inset-0 opacity-10">
+            <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1470&auto=format&fit=crop" className="w-full h-full object-cover" />
+          </div>
+          <div className="relative z-10 p-8 md:p-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-5">
+              <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
+                <Video className="w-7 h-7 text-amber-300" />
+              </div>
+              <div>
+                <p className="text-amber-300 text-xs font-bold uppercase tracking-widest mb-1">Support the Vision</p>
+                <h3 className="text-white font-bold text-xl md:text-2xl leading-tight">Media Fund</h3>
+                <p className="text-white/60 text-sm mt-1 max-w-md">Help us reach more souls by funding professional media equipment and production.</p>
+              </div>
+            </div>
+            <a
+              href="/media-fund"
+              className="shrink-0 flex items-center gap-2 px-6 py-3 bg-amber-400 hover:bg-amber-300 text-amber-950 font-bold rounded-full transition-all shadow-lg text-sm whitespace-nowrap"
+            >
+              Give to Media Fund
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </motion.div>
+
         {/* Podcast Banner */}
         <motion.div
            initial={{ opacity: 0, scale: 0.95 }}

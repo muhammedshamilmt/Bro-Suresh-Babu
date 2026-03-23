@@ -33,7 +33,7 @@ const Footer = () => {
   const ctaInView = useInView(ctaRef, { once: true, amount: 0.3 });
 
   return (
-    <footer className="bg-white text-foreground rounded-[40px] mb-4 ">
+    <footer className="bg-white text-foreground rounded-[40px] mb-4 shadow-[0_-4px_24px_rgba(0,5,24,0.08)]">
 
       {/* ── CTA card — sits at the top of the footer ── */}
       <div className="px-4 md:px-10 pt-16 pb-0" ref={ctaRef}>
