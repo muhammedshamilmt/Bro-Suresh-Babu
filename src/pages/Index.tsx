@@ -1,22 +1,22 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Banner from "@/components/Banner";
 import Introduction from "@/components/Introduction";
 import Services from "@/components/Services";
+import MinistryAccordion from "@/components/MinistryAccordion";
 import Video from "@/components/Video";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen p-4">
       <Navbar />
       <Hero />
       <Introduction />
-      <Services />
-      {/* <Banner /> */}
+      {/* <Services /> */}
+      <MinistryAccordion />
       <Video />
-      <CTA />
+      {/* <CTA /> */}
       <Footer />
     </div>
   );

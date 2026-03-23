@@ -1,139 +1,212 @@
-import { Facebook, Instagram, Twitter, Youtube, Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Instagram, Youtube, Mail, MapPin, Phone, Send, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
+
+const ctaBackground =
+  "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1600/v1774196451/cta-background_wqv5n9.jpg";
+
+const MINISTRY = [
+  { label: "About",          href: "/about" },
+  { label: "Ministry",       href: "/ministry" },
+  { label: "Events",         href: "/events" },
+  { label: "Blog",           href: "/blog" },
+  { label: "Christ Centre",  href: "/christ-centre" },
+];
+
+const GIVE = [
+  { label: "Give Online",     href: "/give" },
+  { label: "Building Fund",   href: "/building-fund" },
+  { label: "Contact Us",      href: "/contact" },
+  { label: "Grace Community", href: "/grace-community" },
+];
+
+const SOCIAL = [
+  { icon: Facebook,  href: "https://www.facebook.com/brothersureshbabu/",               label: "Facebook" },
+  { icon: Instagram, href: "https://www.instagram.com/brothersureshbabu/",              label: "Instagram" },
+  { icon: Youtube,   href: "https://www.youtube.com/channel/UC-uUoBYSnx_7tC9nC2kvtAQ", label: "YouTube" },
+];
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
-  const footerLinks = {
-    quickLinks: [
-      { label: "Home", href: "/" },
-      { label: "About", href: "/about" },
-      { label: "Give", href: "/give" },
-      { label: "Building-fund", href: "/building-fund" },
-      { label: "Events", href: "/events" },
-      { label: "Contact", href: "/contact" },
-
-    ],
-  };
-
-  const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Youtube, href: "#", label: "YouTube" },
-  ];
+  const year = new Date().getFullYear();
+  const ctaRef = useRef(null);
+  const ctaInView = useInView(ctaRef, { once: true, amount: 0.3 });
 
   return (
-    <footer className="bg-foreground text-background">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Logo & Message */}
-          <div className="space-y-4">
-            <h3 className="text-2xl font-serif font-bold text-primary">
-              Brother Suresh Babu
-            </h3>
-            <p className="text-background/80 leading-relaxed">
-              33 Years of Full-Time Ministry. Touching Lives Across the Globe.
+    <footer className="bg-white text-foreground rounded-[40px] mb-4 ">
+
+      {/* ── CTA card — sits at the top of the footer ── */}
+      <div className="px-4 md:px-10 pt-16 pb-0" ref={ctaRef}>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="relative overflow-hidden rounded-3xl min-h-[300px] flex items-center"
+        >
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${ctaBackground})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-black/30" />
+
+          <div className="relative z-10 w-full px-8 md:px-16 py-14 flex flex-col md:flex-row
+            items-start md:items-center justify-between gap-8">
+            <div className="max-w-xl">
+              <p className="text-primary text-xs tracking-[0.3em] uppercase font-semibold mb-3">
+                Join the Mission
+              </p>
+              <h2 className="text-3xl md:text-5xl font-serif font-bold text-white leading-tight mb-3">
+                Find Out How, Where &<br />When We Worship.
+              </h2>
+              <p className="text-white/70 text-base">
+                We hope to see you soon — come experience the grace of God with us.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+              <Link to="/contact"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full
+                  bg-primary hover:bg-primary/90 text-white font-semibold text-sm
+                  transition-all duration-200 shadow-lg">
+                Join Us <ArrowRight size={15} />
+              </Link>
+              <Link to="/events"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full
+                  border border-white/30 hover:border-white/60 text-white font-semibold text-sm
+                  backdrop-blur-sm transition-all duration-200">
+                View Events
+              </Link>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* ── Main footer grid ── */}
+      <div className="container mx-auto px-6 md:px-10 pt-16 pb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-14">
+
+          {/* Col 1 — Brand */}
+          <div className="space-y-5">
+            <div>
+              <h3 className="text-xl font-serif font-bold text-primary leading-tight">
+                Brother Suresh Babu
+              </h3>
+              <p className="text-foreground/40 text-xs mt-1 tracking-wide uppercase">
+                Ministries
+              </p>
+            </div>
+            <p className="text-foreground/60 text-sm leading-relaxed max-w-xs">
+              33 years of full-time ministry — touching lives across 25+ nations through
+              the power of the Gospel.
             </p>
-            <div className="flex space-x-4 pt-2">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="p-2 rounded-full bg-background/10 hover:bg-primary text-background hover:text-primary-foreground transition-smooth"
-                >
-                  <social.icon size={20} />
+            <div className="flex gap-3 pt-1">
+              {SOCIAL.map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="w-9 h-9 rounded-full flex items-center justify-center
+                    bg-foreground/8 border border-border hover:bg-primary hover:border-primary
+                    text-foreground/60 hover:text-white transition-all duration-200">
+                  <s.icon size={16} />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Col 2 — Ministry */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-background">Quick Links</h4>
+            <h4 className="text-foreground text-xs font-semibold tracking-[0.2em] uppercase mb-5">
+              Ministry
+            </h4>
             <ul className="space-y-3">
-              {footerLinks.quickLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-background/70 hover:text-primary transition-smooth"
-                  >
-                    {link.label}
-                  </a>
+              {MINISTRY.map((l) => (
+                <li key={l.label}>
+                  <Link to={l.href}
+                    className="text-foreground/55 hover:text-primary text-sm transition-colors duration-150">
+                    {l.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Col 3 — Give & Connect */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-background">Stay Updated</h4>
-            <p className="text-background/70 mb-4 text-sm">
-              Subscribe to our newsletter for monthly prayer updates and event announcements.
-            </p>
-            <form className="flex flex-col space-y-2" onSubmit={(e) => e.preventDefault()}>
-              <input 
-                type="email" 
-                placeholder="Email Address" 
-                className="px-4 py-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
-                required
-              />
-              <button 
-                type="submit" 
-                className="w-full bg-primary hover:bg-primary-glow text-primary-foreground py-2 rounded transition-smooth font-medium"
-              >
-                Subscribe
-              </button>
-            </form>
+            <h4 className="text-foreground text-xs font-semibold tracking-[0.2em] uppercase mb-5">
+              Give & Connect
+            </h4>
+            <ul className="space-y-3">
+              {GIVE.map((l) => (
+                <li key={l.label}>
+                  <Link to={l.href}
+                    className="text-foreground/55 hover:text-primary text-sm transition-colors duration-150">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-background">Contact Us</h4>
-            <ul className="space-y-3">
-              <li className="flex items-start space-x-3">
-                <MapPin size={20} className="text-primary mt-1 flex-shrink-0" />
-                <span className="text-background/70">
-                  Christ Centre<br />
-                  Trivandrum, Kerala<br />
-                  India
-                </span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Mail size={20} className="text-primary flex-shrink-0" />
-                <a href="mailto:sureshbabu@sureshbabu.org" className="text-background/70 hover:text-primary transition-smooth">
-                  sureshbabu@sureshbabu.org
-                </a>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Phone size={20} className="text-primary flex-shrink-0" />
-                <a href="tel:+919876543210" className="text-background/70 hover:text-primary transition-smooth">
-                  +91 98765 43210
-                </a>
-              </li>
-            </ul>
+          {/* Col 4 — Contact + Newsletter */}
+          <div className="space-y-7">
+            <div>
+              <h4 className="text-foreground text-xs font-semibold tracking-[0.2em] uppercase mb-5">
+                Contact
+              </h4>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <MapPin size={15} className="text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-foreground/60 text-sm leading-snug">
+                    Christ Centre, Trivandrum<br />Kerala, India
+                  </span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Phone size={15} className="text-primary flex-shrink-0" />
+                  <a href="tel:+914712725273"
+                    className="text-foreground/60 hover:text-primary text-sm transition-colors">
+                    +91 471 272 5273
+                  </a>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Mail size={15} className="text-primary flex-shrink-0" />
+                  <a href="mailto:sureshbabu@sureshbabu.org"
+                    className="text-foreground/60 hover:text-primary text-sm transition-colors">
+                    sureshbabu@sureshbabu.org
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-foreground text-xs font-semibold tracking-[0.2em] uppercase mb-3">
+                Stay Updated
+              </h4>
+              <form onSubmit={(e) => e.preventDefault()}
+                className="flex items-center gap-2 bg-muted rounded-full px-4 py-2
+                  border border-border focus-within:border-primary/50 transition-colors">
+                <input type="email" placeholder="Your email" required
+                  className="flex-1 bg-transparent text-sm text-foreground
+                    placeholder:text-foreground/40 outline-none min-w-0" />
+                <button type="submit"
+                  className="w-7 h-7 rounded-full bg-primary flex items-center justify-center
+                    flex-shrink-0 hover:bg-primary/80 transition-colors">
+                  <Send size={13} className="text-white" />
+                </button>
+              </form>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-background/20">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-3">
-            <p className="text-background/60 text-sm text-center md:text-left">
-              © {currentYear} Brother Suresh Babu Ministries. All Rights Reserved.
-            </p>
-            <a
-              href="https://heraldgroup.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-background/20 hover:border-primary/60 bg-background/5 hover:bg-primary/10 transition-all duration-200 group"
-            >
-              <span className="text-background/50 text-xs tracking-wide">Powered by</span>
-              <span className="text-background/80 group-hover:text-primary text-sm font-semibold transition-colors">
-                Herald Group
-              </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-primary opacity-60 group-hover:opacity-100 transition-opacity" />
-            </a>
-          </div>
+        {/* ── Bottom bar ── */}
+        <div className="border-t border-border pt-6 flex flex-col sm:flex-row
+          items-center justify-between gap-3">
+          <p className="text-foreground/40 text-xs">
+            © {year} Brother Suresh Babu Ministries. All rights reserved.
+          </p>
+          <a href="https://heraldgroup.org/" target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-foreground/40 hover:text-primary text-xs transition-colors">
+            Powered by
+            <span className="font-semibold text-foreground/55 hover:text-primary">Herald Group</span>
+          </a>
         </div>
       </div>
     </footer>

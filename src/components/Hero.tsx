@@ -65,7 +65,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-[95vh] w-full flex flex-col justify-between overflow-hidden bg-[#0A0B10]">
+    <section id="home" className="relative rounded-[40px]  min-h-[95vh] w-full flex flex-col justify-between overflow-hidden bg-[#0A0B10]">
       {/* Geometric / Grid Background */}
       <div
         className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:64px_64px]"

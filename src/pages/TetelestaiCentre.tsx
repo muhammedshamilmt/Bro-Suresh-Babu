@@ -90,7 +90,7 @@ const TetelestaiCentre = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      
+
       {/* Hero/Mission Section */}
       <section className="relative w-full min-h-screen flex items-center justify-center bg-background overflow-hidden">
         <div className="absolute inset-0">
@@ -101,7 +101,7 @@ const TetelestaiCentre = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
         </div>
-        
+
         <div className="relative z-10 container mx-auto px-4 py-24">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
