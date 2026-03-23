@@ -34,9 +34,10 @@ const socialLinks = [
 ];
 
 const contactInfo = [
-  { icon: Mail, title: "Email", details: "sureshbabu@sureshbabu.org", link: "mailto:sureshbabu@sureshbabu.org" },
-  { icon: Phone, title: "Phone", details: "+91 471 272 5273 / 4", link: "tel:+914712725273" },
-  { icon: MapPin, title: "Office Address", details: "Christ Centre, Trivandrum, Kerala", link: "https://maps.app.goo.gl/iGZT19JoaSkk8v2t5" },
+  { icon: Mail, title: "Email", details: "support@brothersureshbabu.org", link: "mailto:support@brothersureshbabu.org" },
+  { icon: Phone, title: "Phone", details: "+91 8606 222 273 / +91 8113 986 000", link: "tel:+918606222273" },
+  { icon: MapPin, title: "Office Address", details: "TC 11/729, PENGG House, Division Office Road, Near PNG, Trivandrum – 695033", link: "https://maps.app.goo.gl/iGZT19JoaSkk8v2t5" },
+  { icon: MapPin, title: "Church Address", details: "Ed Heights Building, 6th Floor, Pattom, Thiruvananthapuram", link: "https://maps.app.goo.gl/iGZT19JoaSkk8v2t5" },
   { icon: Globe, title: "Website", details: "www.sureshbabu.org", link: "https://sureshbabu.org" },
 ];
 
@@ -392,14 +393,20 @@ const Contact = () => {
             viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-10 flex flex-wrap justify-center gap-3"
           >
+            <a href="tel:+918606222273" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-card hover:bg-primary hover:text-white hover:border-primary transition-all text-sm font-medium">
+              <Phone size={14} /> +91 8606 222 273
+            </a>
+            <a href="tel:+918113986000" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-card hover:bg-primary hover:text-white hover:border-primary transition-all text-sm font-medium">
+              <Phone size={14} /> +91 8113 986 000
+            </a>
             <a href="tel:+914712725273" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-card hover:bg-primary hover:text-white hover:border-primary transition-all text-sm font-medium">
               <Phone size={14} /> +91 471 272 5273
             </a>
             <a href="tel:+914712725274" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-card hover:bg-primary hover:text-white hover:border-primary transition-all text-sm font-medium">
               <Phone size={14} /> +91 471 272 5274
             </a>
-            <a href="mailto:sureshbabu@sureshbabu.org" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-card hover:bg-primary hover:text-white hover:border-primary transition-all text-sm font-medium">
-              <Mail size={14} /> sureshbabu@sureshbabu.org
+            <a href="mailto:support@brothersureshbabu.org" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-card hover:bg-primary hover:text-white hover:border-primary transition-all text-sm font-medium">
+              <Mail size={14} /> support@brothersureshbabu.org
             </a>
           </motion.div>
         </div>

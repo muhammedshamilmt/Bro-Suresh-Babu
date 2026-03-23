@@ -30,7 +30,8 @@ const Navbar = () => {
     { label: "Blog", href: "/blog" },
     { label: "Events", href: "/events" },
     { label: "Give", href: "/give" },
-    // { label: "Building-Fund", href: "/build-fund" },
+    { label: "Media", href: "/media" },
+    { label: "Podcast", href: "/podcast" },
     { label: "Contact", href: "/contact" },
   ];
 
@@ -43,10 +44,18 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link to="/landing" className={`flex items-center space-x-2 transition-colors ${!isScrolled ? 'text-white' : 'text-foreground'}`}>
-          <span className="text-2xl font-serif font-bold ">
+        <Link to="/landing" className={`flex items-center gap-3 transition-colors ${!isScrolled ? 'text-white' : 'text-foreground'}`}>
+          <span className="text-2xl font-serif font-bold">
             Brother Suresh Babu
           </span>
+          {/* LIVE badge */}
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-600/20 border border-red-500/40">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500" />
+            </span>
+            <span className="text-red-400 text-[9px] font-bold uppercase tracking-widest">Streaming</span>
+          </div>
         </Link>
 
         {/* Desktop Menu */}

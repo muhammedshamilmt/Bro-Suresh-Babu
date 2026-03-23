@@ -105,7 +105,7 @@ function AccordionRow({
   const titleRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className={`border-b border-border/50 transition-colors duration-300 ${isOpen ? "bg-muted/20" : ""}`}>
+    <div className={`relative border-b border-border/50 transition-colors duration-300 ${isOpen ? "bg-muted/20" : ""}`}>
       <div className="grid grid-cols-1 lg:grid-cols-2">
 
         {/* ── Left: number + title + description ── */}
@@ -114,9 +114,7 @@ function AccordionRow({
             <span className="text-primary/40 text-xs font-mono mt-2 select-none flex-shrink-0">
               0{index + 1}
             </span>
-
-            {/* Title — hover image floats here */}
-            <div ref={titleRef} className="relative">
+            <div ref={titleRef}>
               <h3 className={`font-serif font-bold leading-tight transition-colors duration-200
                 ${isOpen
                   ? "text-primary text-4xl md:text-5xl"
@@ -124,26 +122,6 @@ function AccordionRow({
                 }`}>
                 {item.title}.
               </h3>
-
-              {/* Hover image — appears over the title area, clips up from bottom */}
-              <AnimatePresence>
-                {hoverImg && (
-                  <motion.div
-                    key={hoverImg}
-                    className="absolute top-0 md:-right-48  w-48 h-64 rounded-xl overflow-hidden shadow-2xl z-20 pointer-events-none"
-                    initial={{ clipPath: "inset(100% 0% 0% 0%)", opacity: 0.8 }}
-                    animate={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1 }}
-                    exit={{ clipPath: "inset(100% 0% 0% 0%)", opacity: 0 }}
-                    transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
-                  >
-                    <img
-                      src={hoverImg}
-                      alt=""
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
           </button>
 
@@ -157,6 +135,23 @@ function AccordionRow({
           <SubList items={item.sub} onHoverImg={setHoverImg} />
         </div>
       </div>
+
+      {/* Hover image — sits in the center gap between columns, clips up from bottom */}
+      <AnimatePresence>
+        {hoverImg && (
+          <motion.div
+            key={hoverImg}
+            className="hidden lg:block absolute top-1/2 left-[42%] -translate-x-1/2 -translate-y-1/2
+              w-44 h-60 rounded-2xl overflow-hidden shadow-2xl z-30 pointer-events-none"
+            initial={{ clipPath: "inset(100% 0% 0% 0%)", opacity: 0.9 }}
+            animate={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1 }}
+            exit={{ clipPath: "inset(100% 0% 0% 0%)", opacity: 0 }}
+            transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
+          >
+            <img src={hoverImg} alt="" className="w-full h-full object-cover" />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

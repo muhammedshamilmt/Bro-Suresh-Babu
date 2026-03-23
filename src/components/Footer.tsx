@@ -155,21 +155,28 @@ const Footer = () => {
                 <li className="flex items-start gap-3">
                   <MapPin size={15} className="text-primary mt-0.5 flex-shrink-0" />
                   <span className="text-foreground/60 text-sm leading-snug">
-                    Christ Centre, Trivandrum<br />Kerala, India
+                    TC 11/729, PENGG House,<br />Division Office Road, Near PNG,<br />Trivandrum – 695033
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <MapPin size={15} className="text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-foreground/60 text-sm leading-snug">
+                    Ed Heights Building, 6th Floor,<br />Pattom, Thiruvananthapuram
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone size={15} className="text-primary flex-shrink-0" />
-                  <a href="tel:+914712725273"
-                    className="text-foreground/60 hover:text-primary text-sm transition-colors">
-                    +91 471 272 5273
-                  </a>
+                  <div className="flex flex-col gap-0.5">
+                    <a href="tel:+918606222273" className="text-foreground/60 hover:text-primary text-sm transition-colors">+91 8606 222 273</a>
+                    <a href="tel:+918113986000" className="text-foreground/60 hover:text-primary text-sm transition-colors">+91 8113 986 000</a>
+                    <a href="tel:+914712725273" className="text-foreground/60 hover:text-primary text-sm transition-colors">+91 471 272 5273 / 5274</a>
+                  </div>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail size={15} className="text-primary flex-shrink-0" />
-                  <a href="mailto:sureshbabu@sureshbabu.org"
+                  <a href="mailto:support@brothersureshbabu.org"
                     className="text-foreground/60 hover:text-primary text-sm transition-colors">
-                    sureshbabu@sureshbabu.org
+                    support@brothersureshbabu.org
                   </a>
                 </li>
               </ul>

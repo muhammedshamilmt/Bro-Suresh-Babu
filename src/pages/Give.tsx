@@ -149,7 +149,7 @@ const Give = () => {
             </Link>
 
             <Link
-              to="/media"
+              to="/media-fund"
               className="group relative overflow-hidden rounded-2xl border border-border bg-card
                 hover:border-primary/50 hover:shadow-[0_0_30px_hsl(31,55%,64%,0.15)]
                 transition-all duration-300 p-6 flex items-center gap-4"
@@ -161,9 +161,9 @@ const Give = () => {
               <div className="flex-1 min-w-0">
                 <p className="text-xs text-muted-foreground uppercase tracking-widest mb-0.5">Explore</p>
                 <p className="font-serif font-bold text-foreground text-lg leading-tight
-                  group-hover:text-primary transition-colors">Media Ministry</p>
+                  group-hover:text-primary transition-colors">Media Fund</p>
                 <p className="text-xs text-muted-foreground mt-0.5 truncate">
-                  Watch, listen &amp; be inspired
+                  Equip broadcast &amp; media outreach
                 </p>
               </div>
               <ArrowRight size={18} className="text-muted-foreground group-hover:text-primary

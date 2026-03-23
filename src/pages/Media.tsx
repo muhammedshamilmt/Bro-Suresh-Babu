@@ -40,16 +40,18 @@ const SOCIAL_LINKS = [
   { label: "Facebook Page", icon: Facebook, url: "https://www.facebook.com/brothersureshbabu/", color: "text-blue-600", bg: "bg-blue-600/10", hint: "Facebook" },
   { label: "Instagram", icon: Instagram, url: "https://www.instagram.com/brothersureshbabu/", color: "text-pink-600", bg: "bg-pink-600/10", hint: "Instagram" },
   { label: "Facebook Group", icon: Facebook, url: "https://m.me/j/AbZf1Y0CTUjIVNZl/", color: "text-blue-500", bg: "bg-blue-500/10", hint: "FB Group" },
-  { label: "WhatsApp Channel", icon: MessageCircle, url: "https://bit.ly/3zoESxT", color: "text-green-500", bg: "bg-green-500/10", hint: "WhatsApp" },
+  { label: "WhatsApp Channel", icon: MessageCircle, url: "https://whatsapp.com/channel/0029VaBNok3CHDyhbcXhE53o", color: "text-green-500", bg: "bg-green-500/10", hint: "WhatsApp" },
   { label: "Telegram", icon: Send, url: "https://t.me/brothersureshbabutvm", color: "text-sky-500", bg: "bg-sky-500/10", hint: "Telegram" },
-  { label: "WhatsApp Direct", icon: MessageCircle, url: "https://wa.me/918111958000", color: "text-green-600", bg: "bg-green-600/10", hint: "WhatsApp" },
+  { label: "WhatsApp Direct", icon: MessageCircle, url: "https://wa.me/8111958000", color: "text-green-600", bg: "bg-green-600/10", hint: "WhatsApp" },
 ];
 
 const CONTACT_INFO = [
-  { icon: Mail, title: "Email", details: "sureshbabu@sureshbabu.org", link: "mailto:sureshbabu@sureshbabu.org" },
-  { icon: Phone, title: "Phone", details: "+91 471 272 5273 / 4", link: "tel:+914712725273" },
-  { icon: MapPin, title: "Office Address", details: "Christ Centre, Trivandrum, Kerala", link: "https://maps.app.goo.gl/iGZT19JoaSkk8v2t5" },
-  { icon: Globe, title: "Website", details: "www.sureshbabu.org", link: "https://sureshbabu.org" },
+  { icon: Mail, title: "Email", details: "support@brothersureshbabu.org", link: "mailto:support@brothersureshbabu.org" },
+  { icon: Phone, title: "Phone", details: "+91 8606 222 273 / +91 8113 986 000", link: "tel:+918606222273" },
+  { icon: Phone, title: "Landline", details: "+91 471 272 5273 / 5274", link: "tel:+914712725273" },
+  { icon: MapPin, title: "Office Address", details: "TC 11/729, PENGG House, Division Office Road, Near PNG, Trivandrum – 695033", link: "https://maps.app.goo.gl/iGZT19JoaSkk8v2t5" },
+  { icon: MapPin, title: "Church Address", details: "Ed Heights Building, 6th Floor, Pattom, Thiruvananthapuram", link: "https://maps.app.goo.gl/iGZT19JoaSkk8v2t5" },
+  { icon: Globe, title: "Website", details: "www.brothersureshbabu.org", link: "https://brothersureshbabu.org/" },
 ];
 
 const Media = () => {
@@ -230,7 +232,7 @@ const Media = () => {
           viewport={{ once: true }}
           className="mt-16 mb-8"
         >
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
              {CONTACT_INFO.map((info, idx) => (
                 <a href={info.link} key={idx} className="bg-white p-6 rounded-[30px] border border-border shadow-sm flex flex-col items-center text-center hover:border-primary/50 transition-colors group">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-primary/20 transition-colors">
@@ -271,7 +273,7 @@ const Media = () => {
             
             <div className="relative w-full md:w-1/3 aspect-square max-w-[300px] shrink-0">
                <div className="absolute inset-0 bg-gradient-to-tr from-primary to-purple-600 rounded-[30px] rotate-6 opacity-50 blur-lg" />
-               <img src="https://images.unsplash.com/photo-1619983081563-430f63602796?q=80&w=1374&auto=format&fit=crop" alt="Podcast Cover" className="relative z-10 w-full h-full object-cover rounded-[30px] shadow-2xl border-4 border-white/10" />
+               <img src="https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774195148/img-20_k3gkxr.jpg" alt="Podcast Cover" className="relative z-10 w-full h-full object-top object-cover rounded-[30px] shadow-2xl border-4 border-white/10" />
             </div>
           </div>
         </motion.div>

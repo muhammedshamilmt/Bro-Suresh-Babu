@@ -26,7 +26,9 @@ const AdminEventEditor = lazy(() => import("./pages/AdminEventEditor"));
 const AdminEventDetail = lazy(() => import("./pages/AdminEventDetail"));
 const Give = lazy(() => import("./pages/Give"));
 const BuildingFund = lazy(() => import("./pages/BuildingFund"));
+const MediaFund = lazy(() => import("./pages/MediaFund"));
 const MinistryHub = lazy(() => import("./pages/MinistryHub"));
+const Podcast = lazy(() => import("./pages/Podcast"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 
@@ -56,6 +58,8 @@ const App = () => (
             <Route path="/christ-centre" element={<ChristCentre />} />
             <Route path="/give" element={<Give />} />
             <Route path="/building-fund" element={<BuildingFund />} />
+            <Route path="/media-fund" element={<MediaFund />} />
+            <Route path="/podcast" element={<Podcast />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/dashboard/blog/new" element={<ProtectedRoute><BlogEditor /></ProtectedRoute>} />
