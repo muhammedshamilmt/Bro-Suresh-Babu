@@ -6,14 +6,14 @@
 @layer base {
   :root {
     /* Navy Blue Theme — #000518 → #141F47 */
-    --background: 0 0% 100%;            /* white */
+    --background: 162 45% 94%;          /* soft green tint */
     --foreground: 225 80% 8%;           /* #000518 */
 
     --card: 0 0% 100%;
     --card-foreground: 225 80% 8%;
     --card-white: 0 0% 100%;
 
-    --popover: 0 0% 100%;
+    --popover: 162 45% 94%;
     --popover-foreground: 225 80% 8%;
 
     /* Deep Navy — #0A1537 */

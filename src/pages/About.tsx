@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Play, BookOpen, MapPin, Heart, GraduationCap, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -34,7 +35,7 @@ const AboutVideo = () => {
             <div className="w-8 h-8 rounded-full bg-[#0C647F]/15 border border-[#0C647F]/30 flex items-center justify-center">
               <Play size={14} className="text-[#0C647F] ml-0.5" />
             </div>
-            <span className="text-xs font-bold uppercase tracking-widest text-[#0C647F]">Watch His Story</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#0C647F]">See Youtube Channel</span>
           </div>
 
           <div className="relative rounded-[28px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-black/[0.08] aspect-video bg-black w-full">
@@ -62,6 +63,17 @@ const AboutVideo = () => {
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const location = useLocation();
+
+  // Scroll to #gallery when navigated from Landing "See Full Gallery"
+  useEffect(() => {
+    if (location.hash === "#gallery") {
+      const el = document.getElementById("gallery");
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 300);
+      }
+    }
+  }, [location.hash]);
 
   const [counts, setCounts] = useState({
     years: 0,
@@ -435,7 +447,9 @@ const About = () => {
         </div>
       </section>
 
-      <Gallery />
+      <div id="gallery">
+        <Gallery />
+      </div>
       <Footer />
     </div>
   );

@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Introduction from "@/components/Introduction";
 import GivingBanners from "@/components/GivingBanners";
-// import Services from "@/components/Services";
+import BlogCTA from "@/components/BlogCTA";
 import Gallery from "@/components/Gallery";
 import MinistryAccordion from "@/components/MinistryAccordion";
 import Video from "@/components/Video";
@@ -15,9 +15,10 @@ const Landing = () => {
       <Hero />
       <Introduction />
       <GivingBanners />
-      <Gallery/>
+      <Gallery initialCount={8} />
       <MinistryAccordion />
       <Video />
+      <BlogCTA />
       <Footer />
     </div>
   );

@@ -167,10 +167,15 @@ function BentoCell({ src, index, size, onClick }: {
 }
 
 // ── Gallery section ───────────────────────────────────────────────────────────
-export default function Gallery() {
+export default function Gallery({ initialCount }: { initialCount?: number }) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [visibleCount, setVisibleCount] = useState(initialCount ?? ALL_IMAGES.length);
   const headerRef = useRef(null);
   const headerInView = useInView(headerRef, { once: true });
+
+  const isLimited = initialCount !== undefined;
+  const visibleImages = ALL_IMAGES.slice(0, visibleCount);
+  const hasMore = visibleCount < ALL_IMAGES.length;
 
   const open = (i: number) => setLightboxIndex(i);
   const close = () => setLightboxIndex(null);
@@ -199,7 +204,7 @@ export default function Gallery() {
 
       <div className="container mx-auto px-4">
         <div className="grid grid-flow-dense grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3">
-          {ALL_IMAGES.map((src, i) => (
+          {visibleImages.map((src, i) => (
             <BentoCell
               key={i}
               src={src}
@@ -209,6 +214,27 @@ export default function Gallery() {
             />
           ))}
         </div>
+
+        {/* Buttons */}
+        {isLimited && (
+          <div className="flex items-center justify-center gap-4 mt-10">
+            {hasMore && (
+              <button
+                onClick={() => setVisibleCount((c) => Math.min(c + 8, ALL_IMAGES.length))}
+                className="px-6 py-2.5 rounded-full border border-border text-sm font-semibold text-foreground hover:border-[#0C647F] hover:text-[#0C647F] transition-all duration-300"
+              >
+                Load More
+              </button>
+            )}
+            <a
+              href="/about#gallery"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#0C647F] text-white text-sm font-bold hover:bg-[#0a5570] transition-all duration-300 shadow-[0_4px_16px_rgba(12,100,127,0.25)] group"
+            >
+              See Full Gallery
+              <ChevronRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </div>
+        )}
       </div>
 
       <AnimatePresence>

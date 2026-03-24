@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,9 +11,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
-  MapPin, Clock, Phone, Mail, Globe, Users, BookOpen, Heart, Calendar,
-  Music, UserCheck, Shield, ChevronRight, PlayCircle, Star, Quote,
-  Church, Flame, Cross, HandHeart
+  MapPin, Clock, Phone, Users, BookOpen, Heart, Globe,
+  UserCheck, Shield, ChevronRight, Church, Flame, HandHeart
 } from "lucide-react";
 
 const fadeIn = {
@@ -32,7 +30,7 @@ const staggerContainer = {
 
 const ChristCentre = () => {
   return (
-    <div className="min-h-screen p-3 bg-[#F8F6F1] font-sans selection:bg-[#D4A574] selection:text-white">
+    <div className="min-h-screen p-3 bg-[#F8F6F1] font-sans selection:bg-[#0C647F] selection:text-white">
       <Navbar />
 
       {/* SECTION 1: HERO BANNER */}
@@ -53,7 +51,7 @@ const ChristCentre = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-7xl font-playfair font-bold text-white mb-6 drop-shadow-lg">
-              Christ <span className="text-[#0C647F]">Centre</span>
+              Christ <span className="text-[#4AAFCA]">Centre</span>
             </h1>
             <p className="text-xl md:text-3xl text-gray-200 mb-2 font-light">
               A Dynamic Non-Denominational Church
@@ -83,7 +81,7 @@ const ChristCentre = () => {
             className="grid md:grid-cols-2 gap-12 items-center"
           >
             <div className="relative">
-              <div className="absolute -inset-4 bg-[#1B3A7A]/5 rounded-2xl transform -rotate-3"></div>
+              <div className="absolute -inset-4 bg-[#0B2D3A]/5 rounded-2xl transform -rotate-3"></div>
               <img
                 src={Christcenter}
                 alt="Brother Suresh Babu"
@@ -92,11 +90,11 @@ const ChristCentre = () => {
             </div>
 
             <div className="space-y-6">
-              <div className="flex items-center gap-3 text-[#D4A574] mb-2">
+              <div className="flex items-center gap-3 text-[#0C647F] mb-2">
                 <Heart size={24} />
                 <span className="font-semibold tracking-wider uppercase text-sm">Welcome Home</span>
               </div>
-              <h2 className="text-4xl font-playfair font-bold text-[#1B3A7A]">A Message From Our Senior Pastor</h2>
+              <h2 className="text-4xl font-playfair font-bold text-[#0B2D3A]">A Message From Our Senior Pastor</h2>
 
               <div className="text-gray-600 space-y-4 text-lg/relaxed">
                 <p>
@@ -105,12 +103,12 @@ const ChristCentre = () => {
                 <p>
                   "Our mission is simple: to help people know Jesus Christ, grow in their faith, and go out to impact the world. Whether you're a long-time believer or just beginning your spiritual journey, you'll find a warm, welcoming community here."
                 </p>
-                <p className="font-medium text-[#1B3A7A]">Join us as we worship, learn, and serve together!</p>
+                <p className="font-medium text-[#0B2D3A]">Join us as we worship, learn, and serve together!</p>
               </div>
 
               <div className="pt-4 border-t border-gray-100">
-                <p className="font-playfair text-2xl font-bold text-[#1B3A7A]">Brother Suresh Babu</p>
-                <p className="text-[#D4A574] font-medium">Senior Pastor</p>
+                <p className="font-playfair text-2xl font-bold text-[#0B2D3A]">Brother Suresh Babu</p>
+                <p className="text-[#4AAFCA] font-medium">Senior Pastor</p>
               </div>
             </div>
           </motion.div>
@@ -118,7 +116,7 @@ const ChristCentre = () => {
       </section>
 
       {/* SECTION 3: INFO AT A GLANCE */}
-      <section className="py-16 bg-[#1B3A7A] text-white">
+      <section className="py-16 bg-gradient-to-br from-[#102931] via-[#142E35] to-[#1D3F48] text-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
@@ -131,7 +129,7 @@ const ChristCentre = () => {
               { icon: Globe, title: "Church Type", value: "Non-Denominational" }
             ].map((stat, index) => (
               <motion.div key={index} variants={fadeIn} className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur hover:bg-white/10 transition-colors">
-                <div className="w-16 h-16 mx-auto bg-[#D4A574]/20 rounded-full flex items-center justify-center mb-4 text-[#D4A574]">
+                <div className="w-16 h-16 mx-auto bg-[#4AAFCA]/20 rounded-full flex items-center justify-center mb-4 text-[#4AAFCA]">
                   <stat.icon size={32} />
                 </div>
                 <h3 className="text-gray-300 text-sm uppercase tracking-wider mb-2">{stat.title}</h3>
@@ -146,28 +144,28 @@ const ChristCentre = () => {
       <section className="py-24 px-4 bg-[#F8F6F1]">
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold text-[#1B3A7A] mb-4">Who We Are</h2>
-            <div className="w-24 h-1 bg-[#D4A574] mx-auto mb-8"></div>
+            <h2 className="text-4xl md:text-5xl font-playfair font-bold text-[#0B2D3A] mb-4">Who We Are</h2>
+            <div className="w-24 h-1 bg-[#0C647F] mx-auto mb-8"></div>
           </div>
 
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
             className="grid md:grid-cols-2 gap-12 mb-20"
           >
-            <motion.div variants={fadeIn} className="bg-white p-10 rounded-[2rem] shadow-xl border-t-4 border-[#1B3A7A]">
+            <motion.div variants={fadeIn} className="bg-white p-10 rounded-[2rem] shadow-xl border-t-4 border-[#0B2D3A]">
               <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-[#1B3A7A]/10 rounded-xl text-[#1B3A7A]"><Globe size={28} /></div>
-                <h3 className="text-3xl font-playfair font-bold text-[#1B3A7A]">Our Vision</h3>
+                <div className="p-3 bg-[#0B2D3A]/10 rounded-xl text-[#0B2D3A]"><Globe size={28} /></div>
+                <h3 className="text-3xl font-playfair font-bold text-[#0B2D3A]">Our Vision</h3>
               </div>
               <p className="text-xl text-gray-600 leading-relaxed font-light italic">
                 "To be a beacon of God's light in Trivandrum, reaching the lost, strengthening believers, and sending out disciples who transform their communities with the Gospel."
               </p>
             </motion.div>
 
-            <motion.div variants={fadeIn} className="bg-white p-10 rounded-[2rem] shadow-xl border-t-4 border-[#D4A574]">
+            <motion.div variants={fadeIn} className="bg-white p-10 rounded-[2rem] shadow-xl border-t-4 border-[#0C647F]">
               <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-[#D4A574]/10 rounded-xl text-[#D4A574]"><BookOpen size={28} /></div>
-                <h3 className="text-3xl font-playfair font-bold text-[#1B3A7A]">Our Mission</h3>
+                <div className="p-3 bg-[#0C647F]/10 rounded-xl text-[#0C647F]"><BookOpen size={28} /></div>
+                <h3 className="text-3xl font-playfair font-bold text-[#0B2D3A]">Our Mission</h3>
               </div>
               <p className="text-xl text-gray-600 leading-relaxed font-light italic">
                 "Reaching people with the Gospel, teaching them God's Word, and transforming them into Christ-like disciples who impact the world."
@@ -175,7 +173,7 @@ const ChristCentre = () => {
             </motion.div>
           </motion.div>
 
-          <h3 className="text-3xl font-playfair font-bold text-center text-[#1B3A7A] mb-12">Our Core Values</h3>
+          <h3 className="text-3xl font-playfair font-bold text-center text-[#0B2D3A] mb-12">Our Core Values</h3>
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -188,10 +186,10 @@ const ChristCentre = () => {
               { icon: Church, title: "Non-Denominational", desc: "Welcoming believers from all backgrounds. Unity in Christ is our ultimate emphasis." },
             ].map((value, idx) => (
               <motion.div key={idx} variants={fadeIn} className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow group">
-                <div className="w-14 h-14 bg-[#2B7A78]/10 text-[#2B7A78] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 bg-[#0C647F]/10 text-[#0C647F] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <value.icon size={28} />
                 </div>
-                <h4 className="text-xl font-bold text-[#1B3A7A] mb-3">{value.title}</h4>
+                <h4 className="text-xl font-bold text-[#0B2D3A] mb-3">{value.title}</h4>
                 <p className="text-gray-600">{value.desc}</p>
               </motion.div>
             ))}
@@ -208,8 +206,8 @@ const ChristCentre = () => {
               className="md:w-1/2 space-y-8"
             >
               <div>
-                <span className="text-[#D4A574] font-semibold tracking-wider uppercase text-sm">Join Us</span>
-                <h2 className="text-4xl md:text-5xl font-playfair font-bold text-[#1B3A7A] mt-2 mb-6">Worship Services</h2>
+                <span className="text-[#0C647F] font-semibold tracking-wider uppercase text-sm">Join Us</span>
+                <h2 className="text-4xl md:text-5xl font-playfair font-bold text-[#0B2D3A] mt-2 mb-6">Worship Services</h2>
                 <p className="text-lg text-gray-600 mb-8">
                   Experience dynamic worship, powerful teaching, and a welcoming community. There's a place for you here.
                 </p>
@@ -221,13 +219,13 @@ const ChristCentre = () => {
                   { title: "Youth Service", time: "Sunday, 3:00 PM - 4:30 PM", desc: "Contemporary worship & relevant messages for ages 13-25." },
                   { title: "Evening Prayer", time: "Wednesday, 7:00 PM - 8:00 PM", desc: "Focused prayer, intimate worship, and Bible study." }
                 ].map((svc, idx) => (
-                  <div key={idx} className="flex gap-4 p-5 rounded-xl border border-gray-100 hover:border-[#D4A574]/50 hover:shadow-lg transition-all bg-[#F8F6F1]/50">
-                    <div className="p-3 bg-white rounded-lg shadow-sm h-fit text-[#1B3A7A]">
+                  <div key={idx} className="flex gap-4 p-5 rounded-xl border border-gray-100 hover:border-[#0C647F]/40 hover:shadow-lg transition-all bg-[#F8F6F1]/50">
+                    <div className="p-3 bg-white rounded-lg shadow-sm h-fit text-[#0B2D3A]">
                       <Clock size={24} />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-[#1B3A7A]">{svc.title}</h4>
-                      <p className="text-[#D4A574] font-medium my-1">{svc.time}</p>
+                      <h4 className="text-xl font-bold text-[#0B2D3A]">{svc.title}</h4>
+                      <p className="text-[#0C647F] font-medium my-1">{svc.time}</p>
                       <p className="text-gray-600 text-sm mt-1">{svc.desc}</p>
                     </div>
                   </div>
@@ -244,7 +242,7 @@ const ChristCentre = () => {
                 <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1470&auto=format&fit=crop" className="rounded-2xl h-64 object-cover w-full shadow-lg mt-8" alt="Prayer" />
               </div>
               <div className="absolute -bottom-10 -left-10 bg-white p-6 rounded-2xl shadow-2xl">
-                <h4 className="font-bold text-[#1B3A7A] mb-2 flex items-center gap-2"><MapPin size={20} className="text-[#D4A574]" /> Easy Access</h4>
+                <h4 className="font-bold text-[#0B2D3A] mb-2 flex items-center gap-2"><MapPin size={20} className="text-[#0C647F]" /> Easy Access</h4>
                 <ul className="text-sm text-gray-600 space-y-1">
                   <li>✓ Free parking available</li>
                   <li>✓ Wheelchair accessible</li>
@@ -257,12 +255,12 @@ const ChristCentre = () => {
       </section>
 
       {/* SECTION 6: MINISTRIES */}
-      <section className="py-24 bg-[#1B3A7A] text-white">
+      <section className="py-24 bg-gradient-to-br from-[#102931] via-[#142E35] to-[#1D3F48] text-white">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4">Programs & Ministries</h2>
-            <div className="w-24 h-1 bg-[#D4A574] mx-auto mb-6"></div>
-            <p className="text-blue-100 max-w-2xl mx-auto text-lg">Find your community and your calling through our diverse ministries designed for every age and season of life.</p>
+            <div className="w-24 h-1 bg-[#0C647F] mx-auto mb-6"></div>
+            <p className="text-cyan-100 max-w-2xl mx-auto text-lg">Find your community and your calling through our diverse ministries designed for every age and season of life.</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -282,17 +280,17 @@ const ChristCentre = () => {
                 className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:bg-white/20 transition-all group"
               >
                 <div className="flex justify-between items-start mb-4">
-                  <div className="p-3 bg-[#D4A574] rounded-lg text-white">
+                  <div className="p-3 bg-[#0C647F] rounded-lg text-white">
                     <min.icon size={24} />
                   </div>
                   <div className="flex gap-2">
                     {min.tags.map(tag => (
-                      <span key={tag} className="text-[10px] uppercase tracking-wider bg-white/10 px-2 py-1 rounded-full text-blue-100">{tag}</span>
+                      <span key={tag} className="text-[10px] uppercase tracking-wider bg-white/10 px-2 py-1 rounded-full text-cyan-100">{tag}</span>
                     ))}
                   </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-[#D4A574] transition-colors">{min.title}</h3>
-                <p className="text-blue-100 text-sm leading-relaxed">{min.desc}</p>
+                <h3 className="text-xl font-bold mb-2 group-hover:text-[#4AAFCA] transition-colors">{min.title}</h3>
+                <p className="text-cyan-100 text-sm leading-relaxed">{min.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -303,7 +301,7 @@ const ChristCentre = () => {
       <section className="py-24 bg-[#F8F6F1]">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="bg-white rounded-[3rem] shadow-2xl overflow-hidden flex flex-col md:flex-row">
-            <div className="md:w-5/12 bg-[#D4A574] p-12 text-white flex flex-col justify-center relative overflow-hidden">
+            <div className="md:w-5/12 bg-gradient-to-br from-[#0B2D3A] via-[#0C4A5E] to-[#071E28] p-12 text-white flex flex-col justify-center relative overflow-hidden">
               <div className="absolute top-0 right-0 opacity-10 transform translate-x-1/3 -translate-y-1/3 text-white">
                 <Heart size={300} />
               </div>
@@ -311,13 +309,13 @@ const ChristCentre = () => {
               <p className="text-white/90 text-lg mb-8 relative z-10">
                 Your generosity supports the church ministry, enables outreach programs, funds community service, and supports missions globally.
               </p>
-              <Button size="lg" className="bg-white text-[#D4A574] hover:bg-gray-100 w-fit rounded-full px-8 py-6 shadow-lg relative z-10 text-lg">
+              <Button size="lg" className="bg-white text-[#0C647F] hover:bg-gray-100 w-fit rounded-full px-8 py-6 shadow-lg relative z-10 text-lg">
                 Give Online Now
               </Button>
             </div>
 
             <div className="md:w-7/12 p-12 lg:p-16">
-              <h3 className="text-2xl font-bold text-[#1B3A7A] mb-8">Ways to Give</h3>
+              <h3 className="text-2xl font-bold text-[#0B2D3A] mb-8">Ways to Give</h3>
               <div className="grid sm:grid-cols-2 gap-6">
                 {[
                   { title: "In-Church Offering", desc: "During standard Sunday services" },
@@ -326,7 +324,7 @@ const ChristCentre = () => {
                   { title: "Envelope System", desc: "Special offerings designated by envelopes" }
                 ].map((way, i) => (
                   <div key={i} className="flex gap-4">
-                    <div className="mt-1 w-8 h-8 rounded-full bg-[#1B3A7A]/10 text-[#1B3A7A] flex items-center justify-center shrink-0">
+                    <div className="mt-1 w-8 h-8 rounded-full bg-[#0B2D3A]/10 text-[#0B2D3A] flex items-center justify-center shrink-0">
                       <ChevronRight size={16} />
                     </div>
                     <div>
@@ -348,7 +346,7 @@ const ChristCentre = () => {
 
             {/* FAQ Area */}
             <div>
-              <h2 className="text-3xl font-playfair font-bold text-[#1B3A7A] mb-8 border-l-4 border-[#D4A574] pl-4">Frequently Asked Questions</h2>
+              <h2 className="text-3xl font-playfair font-bold text-[#0B2D3A] mb-8 border-l-4 border-[#0C647F] pl-4">Frequently Asked Questions</h2>
               <Accordion type="single" collapsible className="w-full bg-white p-6 rounded-2xl shadow-sm">
                 {[
                   { q: "What denomination are you?", a: "We are non-denominational but welcome believers from all Christian traditions." },
@@ -358,7 +356,7 @@ const ChristCentre = () => {
                   { q: "How do I become a member?", a: "Attend services, go through our membership class, and make a commitment." }
                 ].map((faq, i) => (
                   <AccordionItem key={i} value={`item-${i}`}>
-                    <AccordionTrigger className="text-left font-semibold text-[#1B3A7A] hover:text-[#D4A574]">{faq.q}</AccordionTrigger>
+                    <AccordionTrigger className="text-left font-semibold text-[#0B2D3A] hover:text-[#4AAFCA]">{faq.q}</AccordionTrigger>
                     <AccordionContent className="text-gray-600 text-base leading-relaxed">
                       {faq.a}
                     </AccordionContent>
@@ -369,14 +367,13 @@ const ChristCentre = () => {
 
             {/* LOCATION Area */}
             <div>
-              <h2 className="text-3xl font-playfair font-bold text-[#1B3A7A] mb-8 border-l-4 border-[#D4A574] pl-4">Visit Us</h2>
+              <h2 className="text-3xl font-playfair font-bold text-[#0B2D3A] mb-8 border-l-4 border-[#0C647F] pl-4">Visit Us</h2>
               <div className="bg-white rounded-2xl shadow-sm overflow-hidden h-full flex flex-col">
                 <div className="h-64 bg-gray-200 w-full relative">
-                  {/* Placeholder for iframe Google Map */}
                   <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1474&auto=format&fit=crop" className="w-full h-full object-cover opacity-80" alt="Map View" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <a href="https://maps.app.goo.gl/iGZT19JoaSkk8v2t5" target="_blank" rel="noopener noreferrer">
-                      <Button variant="secondary" className="bg-white text-[#1B3A7A] hover:bg-white/90 shadow-xl font-bold rounded-full">
+                      <Button variant="secondary" className="bg-white text-[#0B2D3A] hover:bg-white/90 shadow-xl font-bold rounded-full">
                         <MapPin className="mr-2" size={18} /> Open Google Maps
                       </Button>
                     </a>
@@ -384,7 +381,7 @@ const ChristCentre = () => {
                 </div>
                 <div className="p-8 flex-1 grid sm:grid-cols-2 gap-8">
                   <div>
-                    <h4 className="font-bold text-[#1B3A7A] mb-3 flex items-center gap-2"><MapPin size={18} className="text-[#D4A574]" /> Address</h4>
+                    <h4 className="font-bold text-[#0B2D3A] mb-3 flex items-center gap-2"><MapPin size={18} className="text-[#0C647F]" /> Address</h4>
                     <p className="text-gray-600 text-sm leading-relaxed">
                       Christ Centre<br />
                       Main Road, City Center<br />
@@ -393,7 +390,7 @@ const ChristCentre = () => {
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#1B3A7A] mb-3 flex items-center gap-2"><Phone size={18} className="text-[#D4A574]" /> Contact Info</h4>
+                    <h4 className="font-bold text-[#0B2D3A] mb-3 flex items-center gap-2"><Phone size={18} className="text-[#0C647F]" /> Contact Info</h4>
                     <p className="text-gray-600 text-sm leading-relaxed">
                       Phone: +91-XXXX-XXXX-XX<br />
                       Email: info@christcentre.in<br />

@@ -21,7 +21,7 @@ export const CircularText = ({ text, radius = 50 }: { text: string; radius?: num
       {characters.map((char, i) => (
         <span
           key={`char-${i}`}
-          className="absolute text-[11px] font-bold uppercase tracking-widest text-[#0C647F]/70"
+          className="absolute text-[11px] font-bold uppercase tracking-widest text-white/70"
           style={{
             transform: `rotate(${i * degree}deg) translateY(-${radius}px)`,
             transformOrigin: "center center",
@@ -65,7 +65,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative rounded-[40px] min-h-[95vh] w-full flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#102931] via-[#142E35] to-[#1D3F48]">
+    <section id="home" className="relative rounded-[40px] min-h-[110vh] lg:min-h-[95vh] w-full flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#102931] via-[#142E35] to-[#1D3F48]">
 
       {/* Gradient orbs */}
       <div className="absolute left-[10%] top-[20%] w-[400px] h-[400px] rounded-full bg-gradient-to-br from-[#0C647F]/20 to-[#0C647F]/05 blur-[80px] pointer-events-none" />
@@ -123,10 +123,10 @@ const Hero = () => {
       <div className="bubble-p  [animation-delay:4.4s] absolute top-[2%]   right-[44%] w-6   h-6   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.52) 0%, rgba(255,255,255,0.08) 60%, transparent 100%)"}} />
 
       {/* Main Content Area */}
-      <div className="container relative z-20 mx-auto px-4 sm:px-6 lg:px-8 h-full flex-1 flex flex-col lg:flex-row items-center justify-between pt-28 lg:pt-32 pb-8">
+      <div className="container relative z-20 mx-auto px-4 sm:px-6 lg:px-8 h-full flex-1 flex flex-col lg:flex-row items-center justify-between pt-28 lg:pt-32 pb-0 lg:pb-8">
 
         {/* Left Column */}
-        <div className="w-full lg:w-1/3 flex flex-col items-start space-y-8 z-30 pb-8 lg:pb-24">
+        <div className="w-full lg:w-1/3 flex flex-col items-start space-y-8 z-30 pb-4 lg:pb-24 order-1">
 
           {/* Status Badge */}
           <motion.div
@@ -170,26 +170,8 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Center Column - Portrait Image */}
-        <div className="w-full lg:w-auto lg:absolute lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2 flex justify-center items-end z-10 mt-8 lg:mt-0 pointer-events-none">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 50 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-            className="relative flex-shrink-0 w-[450px] pointer-events-auto"
-          >
-            {/* Spotlight backglow behind portrait */}
-            <div className="absolute inset-x-0 bottom-0 top-1/4 bg-[#0C647F]/15 blur-[80px] -z-10 rounded-t-full" />
-            <img
-              src={HeroImg}
-              className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(12,100,127,0.2)]"
-              alt="Brother Suresh Babu"
-            />
-          </motion.div>
-        </div>
-
-        {/* Right Column */}
-        <div className="w-full lg:w-1/3 flex flex-col items-start lg:items-end space-y-12 z-30 pb-8 lg:pb-32 mt-12 lg:mt-0 text-left lg:text-right">
+        {/* Right Column — order-2 on mobile, order-3 on desktop */}
+        <div className="w-full lg:w-1/3 flex flex-col items-start lg:items-end space-y-8 lg:space-y-12 z-30 pb-4 lg:pb-32 mt-4 lg:mt-0 text-left lg:text-right order-2 lg:order-3">
 
           {/* Rotating Stamp */}
           <motion.div
@@ -215,6 +197,25 @@ const Hero = () => {
             <a href="/ministry" className="inline-block px-8 py-3.5 bg-[#0C647F] hover:bg-[#0a5570] text-white font-bold rounded-xl transition-colors shadow-md">
               Explore Ministry
             </a>
+          </motion.div>
+        </div>
+
+        {/* Center Column - Portrait Image — order-3 on mobile (bottom), order-2 on desktop (center) */}
+        <div className="w-full lg:w-auto lg:absolute lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2 flex justify-center items-end z-10 mt-2 lg:mt-0 pointer-events-none order-3 lg:order-2 mb-0 pb-0">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 50 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+            className="relative flex-shrink-0 w-[95vw] sm:w-[480px] lg:w-[450px] pointer-events-auto"
+          >
+            {/* Spotlight backglow behind portrait */}
+            <div className="absolute inset-x-0 bottom-0 top-1/4 bg-[#0C647F]/15 blur-[80px] -z-10 rounded-t-full" />
+            <img
+              src={HeroImg}
+              className="w-full h-auto object-contain block"
+              style={{ marginBottom: '-8%' }}
+              alt="Brother Suresh Babu"
+            />
           </motion.div>
         </div>
 

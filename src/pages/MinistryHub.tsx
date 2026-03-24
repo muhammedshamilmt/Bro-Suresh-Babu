@@ -227,7 +227,7 @@ export default function MinistryHub() {
             </motion.div>
 
             {/* Stamp placed inside the Dial Wrapper at the exact top-[10%] (Completely isolated from rotation physics) */}
-            <div className="absolute left-[60%] top-[50%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center scale-90 sm:scale-100 z-50 pointer-events-none">
+            <div className="absolute left-[60%] top-[50%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center scale-90 sm:scale-100 z-50 pointer-events-none text-white">
               <CircularText text="33+ YEARS OF MINISTRY • GLOBAL REACH • " radius={45} />
               {/* Central White Navigation Circle */}
               <div className="absolute w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex flex-col items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.5)] border border-black/5 pointer-events-auto cursor-pointer object-cover">
