@@ -44,7 +44,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link to="/landing" className={`flex items-center gap-3 transition-colors ${!isScrolled ? 'text-white' : 'text-foreground'}`}>
+        <Link to="/landing" className="flex items-center gap-3 text-white transition-colors">
           <span className="text-2xl font-serif font-bold">
             Brother Suresh Babu
           </span>
@@ -71,11 +71,11 @@ const Navbar = () => {
                   key={item.label}
                   href={item.href}
                   className={`relative text-sm font-medium transition-smooth group ${
-                    !isScrolled ? 'text-white/90 hover:text-white' : 'text-foreground hover:text-primary'
+                    !isScrolled ? 'text-white/90 hover:text-white' : 'text-white/80 hover:text-[#0C647F]'
                   }`}
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#0C647F] transition-all duration-300 group-hover:w-full" />
                 </a>
               );
             }
@@ -86,14 +86,12 @@ const Navbar = () => {
                 to={item.href}
                 className={`relative text-sm font-medium transition-smooth group ${
                   isActive 
-                    ? "text-primary" 
-                    : !isScrolled 
-                      ? "text-white/90 hover:text-white" 
-                      : "text-foreground hover:text-primary"
+                    ? "text-[#0C647F]" 
+                    : "text-white/80 hover:text-white"
                 }`}
               >
                 {item.label}
-                <span className={`absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                <span className={`absolute bottom-0 left-0 h-0.5 bg-[#0C647F] transition-all duration-300 ${
                   isActive ? "w-full" : "w-0 group-hover:w-full"
                 }`} />
               </Link>
@@ -104,7 +102,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`md:hidden p-2 transition-smooth ${!isScrolled ? 'text-white' : 'text-foreground hover:text-primary'}`}
+          className="md:hidden p-2 text-white hover:text-[#0C647F] transition-smooth"
           aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -128,7 +126,7 @@ const Navbar = () => {
                   key={item.label}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-sm font-medium text-foreground hover:text-primary hover:bg-accent/50 transition-smooth"
+                  className="block px-4 py-3 text-sm font-medium text-foreground hover:text-[#0C647F] hover:bg-accent/50 transition-smooth"
                 >
                   {item.label}
                 </a>
@@ -140,7 +138,7 @@ const Navbar = () => {
                 key={item.label}
                 to={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-sm font-medium text-foreground hover:text-primary hover:bg-accent/50 transition-smooth"
+                className="block px-4 py-3 text-sm font-medium text-foreground hover:text-[#0C647F] hover:bg-accent/50 transition-smooth"
               >
                 {item.label}
               </Link>

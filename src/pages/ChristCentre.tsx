@@ -53,7 +53,7 @@ const ChristCentre = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-7xl font-playfair font-bold text-white mb-6 drop-shadow-lg">
-              Christ <span className="text-[#D4A574]">Centre</span>
+              Christ <span className="text-[#0C647F]">Centre</span>
             </h1>
             <p className="text-xl md:text-3xl text-gray-200 mb-2 font-light">
               A Dynamic Non-Denominational Church
@@ -63,7 +63,7 @@ const ChristCentre = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" className="bg-[#D4A574] hover:bg-[#c09160] text-white px-8 py-6 text-lg rounded-full shadow-xl transition-all hover:scale-105">
+              <Button size="lg" className="bg-[#0C647F] hover:bg-[#0a5570] text-white px-8 py-6 text-lg rounded-full shadow-xl transition-all hover:scale-105">
                 Visit Us This Sunday
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg rounded-full backdrop-blur-sm transition-all bg-transparent">
