@@ -59,7 +59,7 @@ const Podcast = () => {
           alt="Podcast"
           className="absolute inset-0 w-full h-full object-cover rounded-[40px]"
         />
-        <div className="absolute inset-0 rounded-[40px] bg-gradient-to-t from-black/80 via-black/50 to-black/20" />
+        <div className="absolute inset-0 rounded-[40px] bg-gradient-to-br from-[#0B2D3A]/90 via-[#0D3A4A]/75 to-[#071E28]/90" />
 
         <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}

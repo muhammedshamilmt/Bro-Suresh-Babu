@@ -38,14 +38,14 @@ const ChristCentre = () => {
       {/* SECTION 1: HERO BANNER */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br rounded-[40px] from-[#1B3A7A]/90 to-black/80 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-br rounded-[40px] from-[#0B2D3A]/92 via-[#0D3A4A]/85 to-[#071E28]/95 z-10" />
           <img
             src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=2073&auto=format&fit=crop"
             alt="Worship Service"
             className="w-full h-full object-cover rounded-[40px]"
           />
         </div>
-
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B2D3A]/90 via-[#0D3A4A]/80 to-[#071E28]/90 rounded-[40px]" />
         <div className="container relative z-20 text-center px-4 mt-20">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}

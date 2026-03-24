@@ -66,7 +66,7 @@ export default function EventDetail() {
           {event?.image
             ? <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
             : <div className={`w-full h-full bg-gradient-to-br ${event?.color ?? "from-blue-600 to-indigo-700"}`} />}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#071E28] via-[#0B2D3A]/70 to-[#0D3A4A]/30" />
         </motion.div>
 
         <motion.div style={{ opacity: heroOpacity }} className="relative z-10 w-full pb-12 px-4">

@@ -44,7 +44,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link to="/landing" className="flex items-center gap-3 text-[#0C647F] hover:text-white transition-colors">
+        <Link to="/landing" className="flex items-center gap-3 transition-colors" style={{ color: isScrolled ? "#0C647F" : "#ffffff" }}>
           <span className="text-2xl font-serif font-bold">
             Brother Suresh Babu
           </span>
@@ -64,32 +64,35 @@ const Navbar = () => {
             const isExternal = item.href.startsWith("/#");
             const isActive = location.pathname === item.href ||
                            (item.href === "/landing" && location.pathname === "/landing");
-            
+            const linkColor = isScrolled ? "#0C647F" : "#ffffff";
+            const underlineColor = isScrolled ? "#0C647F" : "#ffffff";
+
             if (isExternal) {
               return (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="relative text-sm font-medium transition-smooth group text-[#0C647F] hover:text-white"
+                  className="relative text-sm font-medium transition-all duration-300 group"
+                  style={{ color: linkColor }}
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full" style={{ background: underlineColor }} />
                 </a>
               );
             }
-            
+
             return (
               <Link
                 key={item.label}
                 to={item.href}
-                className={`relative text-sm font-medium transition-smooth group ${
-                  isActive ? "text-white" : "text-[#0C647F] hover:text-white"
-                }`}
+                className="relative text-sm font-medium transition-all duration-300 group"
+                style={{ color: isActive ? linkColor : linkColor, fontWeight: isActive ? 700 : 500, opacity: isActive ? 1 : isScrolled ? 1 : 0.85 }}
               >
                 {item.label}
-                <span className={`absolute bottom-0 left-0 h-0.5 bg-white transition-all duration-300 ${
-                  isActive ? "w-full" : "w-0 group-hover:w-full"
-                }`} />
+                <span
+                  className="absolute bottom-0 left-0 h-0.5 transition-all duration-300"
+                  style={{ background: underlineColor, width: isActive ? "100%" : "0%"  }}
+                />
               </Link>
             );
           })}
@@ -98,7 +101,8 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden p-2 text-[#0C647F] hover:text-white transition-smooth"
+          className="md:hidden p-2 transition-colors"
+          style={{ color: isScrolled ? "#0C647F" : "#ffffff" }}
           aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

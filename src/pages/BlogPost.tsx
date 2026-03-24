@@ -73,9 +73,9 @@ export default function BlogPost() {
           <img
             src={post.coverImage || "https://images.unsplash.com/photo-1490730141103-6cac501b1062?q=80&w=1470&auto=format&fit=crop"}
             alt={post.title}
-            className="w-full h-full object-cover opacity-30 mix-blend-overlay"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-blue-dark/80 to-blue-dark/40" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0B2D3A]/90 via-[#0D3A4A]/80 to-[#071E28]/90" />
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-12">
           {post.category && (

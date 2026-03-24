@@ -179,14 +179,14 @@ const Contact = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative w-full rounded-[40px] h-[50vh] flex items-center justify-center overflow-hidden bg-blue-dark">
+      <section className="relative w-full rounded-[40px] h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?q=80&w=1470&auto=format&fit=crop"
             alt="Contact Us"
-            className="w-full h-full object-cover rounded-[40px] opacity-20 mix-blend-overlay"
+            className="w-full h-full object-cover rounded-[40px]"
           />
-          {/* <div className="absolute inset-0 bg-gradient-to-t from-blue-dark to-transparent" /> */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0B2D3A]/90 via-[#0D3A4A]/80 to-[#071E28]/90 rounded-[40px]" />
         </div>
         <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.h1

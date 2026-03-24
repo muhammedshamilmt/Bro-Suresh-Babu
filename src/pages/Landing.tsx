@@ -1,7 +1,9 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Introduction from "@/components/Introduction";
-import Services from "@/components/Services";
+import GivingBanners from "@/components/GivingBanners";
+// import Services from "@/components/Services";
+import Gallery from "@/components/Gallery";
 import MinistryAccordion from "@/components/MinistryAccordion";
 import Video from "@/components/Video";
 import Footer from "@/components/Footer";
@@ -12,7 +14,8 @@ const Landing = () => {
       <Navbar />
       <Hero />
       <Introduction />
-      <Services />
+      <GivingBanners />
+      <Gallery/>
       <MinistryAccordion />
       <Video />
       <Footer />

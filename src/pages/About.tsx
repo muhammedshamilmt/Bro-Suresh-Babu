@@ -1,9 +1,63 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { BookOpen, MapPin, Heart, GraduationCap, Users } from "lucide-react";
+import { Play, BookOpen, MapPin, Heart, GraduationCap, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Gallery from "@/components/Gallery";
+
+const AboutVideo = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const [src, setSrc] = useState("");
+
+  useEffect(() => {
+    if (isInView && !src) {
+      // Small delay lets the browser settle before injecting autoplay iframe
+      const t = setTimeout(() => {
+        setSrc(
+          "https://www.youtube.com/embed/YfDEbDLrpN4?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+        );
+      }, 300);
+      return () => clearTimeout(t);
+    }
+  }, [isInView, src]);
+
+  return (
+    <section ref={ref} className="py-16 px-3">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <div className="w-8 h-8 rounded-full bg-[#0C647F]/15 border border-[#0C647F]/30 flex items-center justify-center">
+              <Play size={14} className="text-[#0C647F] ml-0.5" />
+            </div>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#0C647F]">Watch His Story</span>
+          </div>
+
+          <div className="relative rounded-[28px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-black/[0.08] aspect-video bg-black w-full">
+            {src && (
+              <iframe
+                key={src}
+                className="absolute inset-0 w-full h-full"
+                src={src}
+                title="Brother Suresh Babu Ministry"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowFullScreen
+              />
+            )}
+          </div>
+
+          <p className="text-center text-muted-foreground text-sm mt-4">
+            A glimpse into the life and ministry of Brother Suresh Babu
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 const About = () => {
   const ref = useRef(null);
@@ -78,66 +132,113 @@ const About = () => {
     },
   ];
 
-  const testimonialsData = [
-    {
-      id: 1,
-      quote:
-        "Brother Suresh's ministry completely changed our church. His focus on Gospel truth and practical spiritual transformation brought a new wave of revival to our congregation.",
-      name: "Rev. David Smith",
-      role: "Senior Pastor",
-      imageSrc: "https://images.unsplash.com/photo-1581403341630-a6e0b9d2d257?q=80&w=1470&auto=format&fit=crop",
-    },
-    {
-      id: 2,
-      quote:
-        "The youth camp led by Brother Suresh Babu was the turning point in my life. I encountered God's grace and found my true calling in serving the community.",
-      name: "John Mark",
-      role: "Youth Leader",
-      imageSrc: "https://images.unsplash.com/photo-1690407617542-2f210cf20d7e?q=80&w=1470&auto=format&fit=crop",
-    },
-    {
-      id: 3,
-      quote:
-        "Attending the Argentina conference with 1200+ other churches was a glimpse of heaven. The anointing and clarity in his teaching is unparalleled.",
-      name: "Carlos Gomez",
-      role: "Conference Attendee",
-      imageSrc: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1470&auto=format&fit=crop",
-    },
-  ];
-
   return (
     <div className="min-h-screen p-3">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative w-full h-[70vh] flex items-center justify-center bg-background">
-        <div className="absolute inset-0">
+      {/* Hero Section — MinistryHub style */}
+      <section className="relative w-full rounded-[40px] min-h-[80vh] flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#102931] via-[#142E35] to-[#1D3F48]">
+
+        {/* Grid background */}
+        <div
+          className="absolute inset-0 rounded-[40px] bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:64px_64px]"
+          style={{
+            maskImage: 'radial-gradient(ellipse 80% 80% at 50% 100%, black 10%, transparent 100%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at 50% 100%, black 10%, transparent 100%)'
+          }}
+        />
+
+        {/* Glow orbs */}
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#0C647F]/20 rounded-full blur-[120px] -translate-y-1/3 translate-x-1/4 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#1D3F48]/30 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
+
+        {/* Hero image with teal overlay */}
+        <div className="absolute inset-0 rounded-[40px] overflow-hidden">
           <img
             src="https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774195167/img-13_kqw3rc.jpg"
             alt="About Brother Suresh Babu"
-            className="w-full h-full object-cover rounded-[40px]"
+            className="w-full h-full object-cover object-top opacity-20 mix-blend-luminosity"
           />
-          <div className="absolute  rounded-[40px] inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0B2D3A]/30 via-[#0D3A4A]/50 to-[#071E28]/40 rounded-[40px]" />
         </div>
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+
+        {/* Content */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 pt-20 pb-8">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#0C647F]/40 bg-[#0C647F]/10 text-[#4AAFCA] text-xs font-semibold uppercase tracking-widest mb-6"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0C647F] animate-pulse" />
+            Ministry Profile
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl font-bold text-white font-serif mb-6"
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white font-serif mb-4 leading-tight"
           >
-            About Brother Suresh Babu
+            About Brother<br className="hidden sm:block" /> Suresh Babu
           </motion.h1>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-white/90"
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-lg md:text-xl text-white/60 max-w-xl mx-auto mb-8"
           >
             A Life Transformed to Transform Lives
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="flex flex-wrap gap-3 justify-center"
+          >
+            <a href="/contact" className="px-6 py-2.5 bg-[#0C647F] hover:bg-[#0a5570] text-white font-bold rounded-full text-sm transition-colors shadow-lg">
+              Invite for Event
+            </a>
+            <a href="/ministry" className="px-6 py-2.5 bg-white/10 hover:bg-white/20 text-white font-medium rounded-full text-sm border border-white/20 transition-colors">
+              View Ministry
+            </a>
+          </motion.div>
         </div>
+
+        {/* Bottom stats bar */}
+        <motion.div
+          initial={{ y: 40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="relative z-10 w-full border-t border-white/10 bg-[#102931]/70 backdrop-blur-xl rounded-b-[40px]"
+        >
+          <div className="container mx-auto px-4 py-5">
+            <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-16">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-[#0C647F]">{counts.years}+</span>
+                <span className="text-white/70 font-semibold text-sm uppercase tracking-wider">Years</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-[#0C647F]">{counts.nations}+</span>
+                <span className="text-white/70 font-semibold text-sm uppercase tracking-wider">Nations</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-[#0C647F]">{counts.states}</span>
+                <span className="text-white/70 font-semibold text-sm uppercase tracking-wider">States</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-[#0C647F]">{counts.churches}+</span>
+                <span className="text-white/70 font-semibold text-sm uppercase tracking-wider">Churches</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </section>
+
+      {/* Autoplay Video Section */}
+      <AboutVideo />
 
       {/* From Despair to Destiny Section */}
       <section className="py-16 md:py-24 bg-background">
@@ -333,9 +434,6 @@ const About = () => {
           </motion.div>
         </div>
       </section>
-
-      {/* Testimonials Section */}
-      {/* <TestimonialSection ... /> */}
 
       <Gallery />
       <Footer />

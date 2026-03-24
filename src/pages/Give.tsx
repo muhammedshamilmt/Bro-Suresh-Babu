@@ -89,9 +89,9 @@ const Give = () => {
           <img
             src="https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto,w_1400/v1774196451/cta-background_wqv5n9.jpg"
             alt="Give & Support"
-            className="w-full h-full object-cover object-center rounded-[40px] "
+            className="w-full h-full object-cover object-center rounded-[40px]"
           />
-          <div className="absolute inset-0 bg-black/60 rounded-[40px] " />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0B2D3A]/85 via-[#0D3A4A]/75 to-[#071E28]/90 rounded-[40px]" />
         </div>
         <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
           <motion.div

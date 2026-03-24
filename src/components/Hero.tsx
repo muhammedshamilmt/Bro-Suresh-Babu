@@ -65,12 +65,62 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative rounded-[40px] min-h-[95vh] w-full flex flex-col justify-between overflow-hidden bg-white">
+    <section id="home" className="relative rounded-[40px] min-h-[95vh] w-full flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#102931] via-[#142E35] to-[#1D3F48]">
 
       {/* Gradient orbs */}
       <div className="absolute left-[10%] top-[20%] w-[400px] h-[400px] rounded-full bg-gradient-to-br from-[#0C647F]/20 to-[#0C647F]/05 blur-[80px] pointer-events-none" />
       <div className="absolute left-1/2 -translate-x-1/2 top-[10%] w-[500px] h-[500px] rounded-full bg-gradient-to-b from-[#0C647F]/25 to-[#0C647F]/05 blur-[90px] pointer-events-none" />
       <div className="absolute right-[10%] top-[20%] w-[400px] h-[400px] rounded-full bg-gradient-to-bl from-[#0C647F]/20 to-[#0C647F]/05 blur-[80px] pointer-events-none" />
+
+      {/* Decorative bubbles — animated radial-gradient bokeh */}
+      <div className="bubble-f1 [animation-delay:0s]   absolute top-[4%]   left-[4%]   w-8   h-8   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.08) 60%, transparent 100%)"}} />
+      <div className="bubble-f2 [animation-delay:1s]   absolute top-[10%]  left-[14%]  w-5   h-5   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.60) 0%, rgba(255,255,255,0.10) 60%, transparent 100%)"}} />
+      <div className="bubble-f3 [animation-delay:2s]   absolute top-[3%]   left-[28%]  w-12  h-12  rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.06) 55%, transparent 100%)", boxShadow:"0 0 16px 4px rgba(255,255,255,0.07)"}} />
+      <div className="bubble-p  [animation-delay:0.5s] absolute top-[18%]  left-[6%]   w-4   h-4   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.70) 0%, rgba(255,255,255,0.12) 60%, transparent 100%)"}} />
+      <div className="bubble-f1 [animation-delay:3s]   absolute top-[26%]  left-[2%]   w-7   h-7   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.50) 0%, rgba(255,255,255,0.08) 60%, transparent 100%)"}} />
+      <div className="bubble-f2 [animation-delay:1.5s] absolute top-[38%]  left-[7%]   w-5   h-5   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.09) 60%, transparent 100%)"}} />
+      <div className="bubble-f3 [animation-delay:4s]   absolute top-[48%]  left-[2%]   w-10  h-10  rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 30% 30%, rgba(255,255,255,0.40) 0%, rgba(255,255,255,0.06) 55%, transparent 100%)", boxShadow:"0 0 14px 3px rgba(255,255,255,0.07)"}} />
+      <div className="bubble-p  [animation-delay:2.5s] absolute top-[58%]  left-[12%]  w-4   h-4   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.11) 60%, transparent 100%)"}} />
+      <div className="bubble-f1 [animation-delay:5s]   absolute top-[66%]  left-[4%]   w-7   h-7   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.50) 0%, rgba(255,255,255,0.08) 60%, transparent 100%)"}} />
+      <div className="bubble-f2 [animation-delay:0.8s] absolute bottom-[18%] left-[9%]  w-6   h-6   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.09) 60%, transparent 100%)"}} />
+      <div className="bubble-f3 [animation-delay:3.5s] absolute bottom-[8%]  left-[20%] w-9   h-9   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 30% 30%, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.07) 55%, transparent 100%)", boxShadow:"0 0 12px 3px rgba(255,255,255,0.07)"}} />
+      <div className="bubble-p  [animation-delay:1.2s] absolute bottom-[4%]  left-[35%] w-5   h-5   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.60) 0%, rgba(255,255,255,0.10) 60%, transparent 100%)"}} />
+      <div className="bubble-f1 [animation-delay:0.3s] absolute top-[7%]   right-[6%]  w-12  h-12  rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 30% 30%, rgba(255,255,255,0.50) 0%, rgba(255,255,255,0.08) 55%, transparent 100%)", boxShadow:"0 0 20px 6px rgba(255,255,255,0.10)"}} />
+      <div className="bubble-f2 [animation-delay:2.2s] absolute top-[15%]  right-[18%] w-5   h-5   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.60) 0%, rgba(255,255,255,0.10) 60%, transparent 100%)"}} />
+      <div className="bubble-f3 [animation-delay:4.5s] absolute top-[4%]   right-[28%] w-7   h-7   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.50) 0%, rgba(255,255,255,0.08) 60%, transparent 100%)"}} />
+      <div className="bubble-p  [animation-delay:1.8s] absolute top-[24%]  right-[4%]  w-6   h-6   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.09) 60%, transparent 100%)", boxShadow:"0 0 14px 4px rgba(255,255,255,0.10)"}} />
+      <div className="bubble-f1 [animation-delay:3.2s] absolute top-[34%]  right-[14%] w-4   h-4   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.70) 0%, rgba(255,255,255,0.12) 60%, transparent 100%)"}} />
+      <div className="bubble-f2 [animation-delay:0.6s] absolute top-[44%]  right-[5%]  w-9   h-9   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.07) 55%, transparent 100%)", boxShadow:"0 0 22px 7px rgba(255,255,255,0.09)"}} />
+      <div className="bubble-f3 [animation-delay:5.5s] absolute top-[54%]  right-[16%] w-5   h-5   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.58) 0%, rgba(255,255,255,0.09) 60%, transparent 100%)"}} />
+      <div className="bubble-p  [animation-delay:2.8s] absolute top-[62%]  right-[6%]  w-7   h-7   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.50) 0%, rgba(255,255,255,0.08) 60%, transparent 100%)"}} />
+      <div className="bubble-f1 [animation-delay:1.4s] absolute bottom-[20%] right-[12%] w-6  h-6   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.09) 60%, transparent 100%)", boxShadow:"0 0 14px 4px rgba(255,255,255,0.10)"}} />
+      <div className="bubble-f2 [animation-delay:3.8s] absolute bottom-[10%] right-[24%] w-4  h-4   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.11) 60%, transparent 100%)"}} />
+      <div className="bubble-f3 [animation-delay:0.9s] absolute bottom-[5%]  right-[8%]  w-10 h-10  rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 30% 30%, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.07) 55%, transparent 100%)", boxShadow:"0 0 24px 7px rgba(255,255,255,0.09)"}} />
+      <div className="bubble-p  [animation-delay:4.2s] absolute top-[11%]  right-[10%] w-4   h-4   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.11) 60%, transparent 100%)"}} />
+      <div className="bubble-f1 [animation-delay:2.6s] absolute top-[19%]  right-[3%]  w-8   h-8   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 30% 30%, rgba(255,255,255,0.48) 0%, rgba(255,255,255,0.08) 55%, transparent 100%)", boxShadow:"0 0 18px 5px rgba(255,255,255,0.10)"}} />
+      <div className="bubble-f2 [animation-delay:5.2s] absolute top-[29%]  right-[22%] w-6   h-6   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.52) 0%, rgba(255,255,255,0.08) 60%, transparent 100%)"}} />
+      <div className="bubble-f3 [animation-delay:1.6s] absolute top-[39%]  right-[10%] w-11  h-11  rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 28% 28%, rgba(255,255,255,0.40) 0%, rgba(255,255,255,0.06) 55%, transparent 100%)", boxShadow:"0 0 26px 9px rgba(255,255,255,0.08)"}} />
+      <div className="bubble-p  [animation-delay:3.6s] absolute top-[49%]  right-[26%] w-5   h-5   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.56) 0%, rgba(255,255,255,0.09) 60%, transparent 100%)"}} />
+      <div className="bubble-f1 [animation-delay:0.4s] absolute top-[57%]  right-[4%]  w-7   h-7   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.50) 0%, rgba(255,255,255,0.08) 60%, transparent 100%)", boxShadow:"0 0 16px 5px rgba(255,255,255,0.10)"}} />
+      <div className="bubble-f2 [animation-delay:4.8s] absolute top-[72%]  right-[18%] w-9   h-9   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 30% 30%, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.07) 55%, transparent 100%)"}} />
+      <div className="bubble-f3 [animation-delay:2.4s] absolute top-[80%]  right-[6%]  w-5   h-5   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.62) 0%, rgba(255,255,255,0.10) 60%, transparent 100%)", boxShadow:"0 0 12px 3px rgba(255,255,255,0.11)"}} />
+      <div className="bubble-p  [animation-delay:1.0s] absolute bottom-[28%] right-[30%] w-4  h-4   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.66) 0%, rgba(255,255,255,0.11) 60%, transparent 100%)"}} />
+      <div className="bubble-f1 [animation-delay:6s]   absolute bottom-[15%] right-[4%]  w-12 h-12  rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 28% 28%, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0.06) 55%, transparent 100%)", boxShadow:"0 0 30px 10px rgba(255,255,255,0.08)"}} />
+      <div className="bubble-f2 [animation-delay:2.0s] absolute top-[20%]  left-[42%]  w-5   h-5   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.09) 60%, transparent 100%)"}} />
+      <div className="bubble-f3 [animation-delay:4.0s] absolute top-[45%]  left-[48%]  w-3   h-3   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.11) 60%, transparent 100%)"}} />
+      <div className="bubble-p  [animation-delay:5.8s] absolute top-[70%]  left-[36%]  w-6   h-6   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.50) 0%, rgba(255,255,255,0.08) 60%, transparent 100%)"}} />
+      <div className="bubble-f1 [animation-delay:3.4s] absolute top-[80%]  left-[52%]  w-4   h-4   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.60) 0%, rgba(255,255,255,0.10) 60%, transparent 100%)"}} />
+      <div className="bubble-f2 [animation-delay:1.6s] absolute top-[12%]  left-[52%]  w-8   h-8   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 30% 30%, rgba(255,255,255,0.44) 0%, rgba(255,255,255,0.07) 55%, transparent 100%)"}} />
+      <div className="bubble-f3 [animation-delay:5.0s] absolute top-[32%]  left-[22%]  w-10  h-10  rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 28% 28%, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0.06) 55%, transparent 100%)"}} />
+      <div className="bubble-p  [animation-delay:0.7s] absolute top-[55%]  left-[30%]  w-6   h-6   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.52) 0%, rgba(255,255,255,0.08) 60%, transparent 100%)"}} />
+      <div className="bubble-f1 [animation-delay:4.6s] absolute top-[75%]  left-[18%]  w-8   h-8   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 30% 30%, rgba(255,255,255,0.44) 0%, rgba(255,255,255,0.07) 55%, transparent 100%)"}} />
+      <div className="bubble-f2 [animation-delay:2.9s] absolute top-[8%]   left-[60%]  w-5   h-5   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.58) 0%, rgba(255,255,255,0.09) 60%, transparent 100%)"}} />
+      <div className="bubble-f3 [animation-delay:1.1s] absolute top-[28%]  right-[32%] w-9   h-9   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 28% 28%, rgba(255,255,255,0.40) 0%, rgba(255,255,255,0.06) 55%, transparent 100%)"}} />
+      <div className="bubble-p  [animation-delay:3.9s] absolute top-[50%]  right-[28%] w-4   h-4   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.62) 0%, rgba(255,255,255,0.10) 60%, transparent 100%)"}} />
+      <div className="bubble-f1 [animation-delay:5.4s] absolute bottom-[14%] left-[44%] w-7  h-7   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.48) 0%, rgba(255,255,255,0.08) 60%, transparent 100%)"}} />
+      <div className="bubble-f2 [animation-delay:2.3s] absolute bottom-[6%]  right-[40%] w-5  h-5   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.56) 0%, rgba(255,255,255,0.09) 60%, transparent 100%)"}} />
+      <div className="bubble-f3 [animation-delay:0.2s] absolute top-[88%]  left-[8%]   w-11  h-11  rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 28% 28%, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0.06) 55%, transparent 100%)"}} />
+      <div className="bubble-p  [animation-delay:4.4s] absolute top-[2%]   right-[44%] w-6   h-6   rounded-full pointer-events-none" style={{background:"radial-gradient(circle at 35% 35%, rgba(255,255,255,0.52) 0%, rgba(255,255,255,0.08) 60%, transparent 100%)"}} />
 
       {/* Main Content Area */}
       <div className="container relative z-20 mx-auto px-4 sm:px-6 lg:px-8 h-full flex-1 flex flex-col lg:flex-row items-center justify-between pt-28 lg:pt-32 pb-8">
@@ -82,13 +132,13 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#0C647F]/20 bg-[#0C647F]/08 shadow-sm"
+            className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#0C647F]/30 bg-[#0C647F]/10 shadow-sm"
           >
             <div className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0C647F] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#0C647F]"></span>
             </div>
-            <span className="text-sm font-medium text-[#0C647F]">Accepting Invitations</span>
+            <span className="text-sm font-medium text-[#4AAFCA]">Accepting Invitations</span>
           </motion.div>
 
           {/* Main Heading */}
@@ -97,7 +147,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold font-sans tracking-tight text-[#0A1537] leading-[1.1]">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold font-sans tracking-tight text-white leading-[1.1]">
               Gospel <br className="hidden sm:block" /> Preacher & <br className="hidden sm:block" /> Evangelist
             </h1>
           </motion.div>
@@ -107,13 +157,13 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex items-center gap-4 px-5 py-2.5 rounded-[1.25rem] border border-[#0C647F]/20 bg-[#0C647F]/05"
+            className="flex items-center gap-4 px-5 py-2.5 rounded-[1.25rem] border border-[#0C647F]/30 bg-[#0C647F]/10"
           >
-            <span className="text-sm font-semibold text-[#0C647F]">Core Focus</span>
+            <span className="text-sm font-semibold text-[#4AAFCA]">Core Focus</span>
             <div className="flex -space-x-3">
               {[Globe, Users, BookOpen, Heart].map((Icon, idx) => (
-                <div key={idx} className="w-8 h-8 rounded-full bg-white border-2 border-[#0C647F]/20 flex items-center justify-center shadow-sm">
-                  <Icon size={14} className="text-[#0C647F]" />
+                <div key={idx} className="w-8 h-8 rounded-full bg-white/10 border-2 border-[#0C647F]/30 flex items-center justify-center shadow-sm">
+                  <Icon size={14} className="text-[#4AAFCA]" />
                 </div>
               ))}
             </div>
@@ -158,7 +208,7 @@ const Hero = () => {
             transition={{ delay: 0.3 }}
             className="max-w-sm space-y-6 lg:ml-auto"
           >
-            <p className="text-[#0A1537]/65 text-base sm:text-lg leading-relaxed font-sans">
+            <p className="text-white/65 text-base sm:text-lg leading-relaxed font-sans">
               As a dedicated minister of the Gospel, I rely on God's grace to lead impactful campaigns, seminars, and television broadcasts that transform lives globally.
             </p>
 
@@ -175,29 +225,29 @@ const Hero = () => {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6 }}
-        className="relative z-30 w-full border-t border-[#0C647F]/15 bg-[#0C647F]/05 backdrop-blur-xl"
+        className="relative z-30 w-full border-t border-white/10 bg-[#102931]/70 backdrop-blur-xl"
       >
         <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-wrap items-center justify-center lg:justify-between gap-6 lg:gap-12 text-[#0A1537]/50 text-sm font-medium uppercase tracking-wider">
+          <div className="flex flex-wrap items-center justify-center lg:justify-between gap-6 lg:gap-12 text-white/50 text-sm font-medium uppercase tracking-wider">
 
             <div className="flex items-center gap-3">
-              <BookOpen size={20} className="text-[#0C647F]/50" />
-              <span className="flex items-center gap-1 font-bold text-[#0A1537]"><span className="text-xl sm:text-2xl text-[#0C647F]">{counts.years}+</span> Years</span>
+              <BookOpen size={20} className="text-white/40" />
+              <span className="flex items-center gap-1 font-bold text-white"><span className="text-xl sm:text-2xl text-[#0C647F]">{counts.years}+</span> Years</span>
             </div>
 
             <div className="flex items-center gap-3">
-              <Globe size={20} className="text-[#0C647F]/50" />
-              <span className="flex items-center gap-1 font-bold text-[#0A1537]"><span className="text-xl sm:text-2xl text-[#0C647F]">{counts.nations}+</span> Nations</span>
+              <Globe size={20} className="text-white/40" />
+              <span className="flex items-center gap-1 font-bold text-white"><span className="text-xl sm:text-2xl text-[#0C647F]">{counts.nations}+</span> Nations</span>
             </div>
 
             <div className="flex items-center gap-3">
-              <Navigation size={20} className="text-[#0C647F]/50" />
-              <span className="flex items-center gap-1 font-bold text-[#0A1537]"><span className="text-xl sm:text-2xl text-[#0C647F]">{counts.states}</span> States</span>
+              <Navigation size={20} className="text-white/40" />
+              <span className="flex items-center gap-1 font-bold text-white"><span className="text-xl sm:text-2xl text-[#0C647F]">{counts.states}</span> States</span>
             </div>
 
             <div className="flex items-center gap-3">
-              <Church size={20} className="text-[#0C647F]/50" />
-              <span className="flex items-center gap-1 font-bold text-[#0A1537]"><span className="text-xl sm:text-2xl text-[#0C647F]">{counts.churches}+</span> Churches</span>
+              <Church size={20} className="text-white/40" />
+              <span className="flex items-center gap-1 font-bold text-white"><span className="text-xl sm:text-2xl text-[#0C647F]">{counts.churches}+</span> Churches</span>
             </div>
 
           </div>

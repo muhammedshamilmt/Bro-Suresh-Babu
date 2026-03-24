@@ -40,7 +40,6 @@ const serviceImages = [
   [
     "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195155/img-23_qjfc72.jpg",
     "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195157/img-24_lqtjmx.jpg",
-    "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195153/img-25_grv02w.jpg",
     "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195153/img-26_o3wccz.jpg",
     "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195161/img-27_gp8lhj.jpg",
     "https://res.cloudinary.com/dfadqkxbo/image/upload/v1774195159/img-28_y2gg0a.jpg",

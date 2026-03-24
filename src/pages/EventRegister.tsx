@@ -211,7 +211,7 @@ export default function EventRegister() {
       {/* ── Hero Banner ── */}
       <div className="relative h-52 overflow-hidden">
         <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#071E28]/90 via-[#0B2D3A]/60 to-[#0D3A4A]/30" />
         <div className="absolute inset-0 flex flex-col justify-end px-4 pb-8 max-w-3xl mx-auto w-full">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <button

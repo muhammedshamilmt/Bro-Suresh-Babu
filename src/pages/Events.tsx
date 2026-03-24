@@ -63,9 +63,9 @@ const Events = () => {
           <img
             src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1470&auto=format&fit=crop"
             alt="Events & Calendar"
-            className="w-full h-full object-cover rounded-[40px] opacity-30 mix-blend-overlay"
+            className="w-full h-full object-cover rounded-[40px]"
           />
-          {/* <div className="absolute inset-0 bg-gradient-to-t from-blue-dark to-blue-dark/50" /> */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0B2D3A]/90 via-[#0D3A4A]/80 to-[#071E28]/90 rounded-[40px]" />
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <motion.h1

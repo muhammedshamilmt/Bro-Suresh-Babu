@@ -96,7 +96,7 @@ const BuildingFund = () => {
             alt="Building Fund"
             className="w-full rounded-[40px] h-full object-cover object-center"
           />
-          <div className="absolute rounded-[40px] inset-0 bg-black/60" />
+          <div className="absolute rounded-[40px] inset-0 bg-gradient-to-br from-[#0B2D3A]/85 via-[#0D3A4A]/75 to-[#071E28]/90" />
         </div>
         <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
           <motion.div

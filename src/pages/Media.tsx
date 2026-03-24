@@ -60,14 +60,14 @@ const Media = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative w-full rounded-[40px] h-[60vh] flex items-center justify-center bg-blue-dark overflow-hidden mt-2">
+      <section className="relative w-full rounded-[40px] h-[60vh] flex items-center justify-center overflow-hidden mt-2">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1470&auto=format&fit=crop"
             alt="Media & Sermons"
-            className="w-full h-full object-cover rounded-[40px] opacity-25 mix-blend-overlay scale-105"
+            className="w-full h-full object-cover rounded-[40px] scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-blue-dark to-blue-dark/50 rounded-[40px]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0B2D3A]/90 via-[#0D3A4A]/80 to-[#071E28]/90 rounded-[40px]" />
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
