@@ -77,7 +77,7 @@ const Media = () => {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center justify-center p-3 sm:p-4 bg-white/10 backdrop-blur-md rounded-full mb-6 sm:mb-8 border border-white/20"
           >
-            <Video className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+            <Video className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -85,7 +85,7 @@ const Media = () => {
             transition={{ delay: 0.2 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight"
           >
-            Media <span className="text-primary italic font-serif">&</span> Resources
+            Media & Resources
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
