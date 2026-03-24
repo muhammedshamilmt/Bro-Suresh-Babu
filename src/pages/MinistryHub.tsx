@@ -6,6 +6,20 @@ import { CircularText } from "@/components/Hero";
 
 const HeroImg = "https://res.cloudinary.com/dfadqkxbo/image/upload/f_auto,q_auto/v1774197091/hero_b69llr.png";
 
+// ── Spotify ───────────────────────────────────────────────────────────────────
+const SpotifyIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1333.33 1333.3" className={className} fill="currentColor">
+    <path d="M666.66 0C298.48 0 0 298.47 0 666.65c0 368.19 298.48 666.65 666.66 666.65 368.22 0 666.67-298.45 666.67-666.65C1333.33 298.49 1034.88.03 666.65.03l.01-.04zm305.73 961.51c-11.94 19.58-37.57 25.8-57.16 13.77-156.52-95.61-353.57-117.26-585.63-64.24-22.36 5.09-44.65-8.92-49.75-31.29-5.12-22.37 8.84-44.66 31.26-49.75 253.95-58.02 471.78-33.04 647.51 74.35 19.59 12.02 25.8 37.57 13.77 57.16zm81.6-181.52c-15.05 24.45-47.05 32.17-71.49 17.13-179.2-110.15-452.35-142.05-664.31-77.7-27.49 8.3-56.52-7.19-64.86-34.63-8.28-27.49 7.22-56.46 34.66-64.82 242.11-73.46 543.1-37.88 748.89 88.58 24.44 15.05 32.16 47.05 17.12 71.46V780zm7.01-189.02c-214.87-127.62-569.36-139.35-774.5-77.09-32.94 9.99-67.78-8.6-77.76-41.55-9.98-32.96 8.6-67.77 41.56-77.78 235.49-71.49 626.96-57.68 874.34 89.18 29.69 17.59 39.41 55.85 21.81 85.44-17.52 29.63-55.89 39.4-85.42 21.8h-.03z" />
+  </svg>
+);
+
+const PODCAST_EPISODES = [
+  "658jza0pDhSXjKUkYROQ9h",
+  "7HXYJuIEKayFnjnkq2QBG4",
+  "2wfrrZlAXQ4kxJEvvJQbLE",
+  "3Q5yqEuDPGYlTQjC975mgl",
+];
+
 const BUBBLES = [
   { label: "Home", path: "/landing" },
   { label: "About", path: "/about" },
@@ -50,6 +64,8 @@ export default function MinistryHub() {
     return () => clearInterval(timer);
   }, []);
 
+  const [activeEp, setActiveEp] = useState(0);
+
   // Dial rotation logic
   const rotation = useMotionValue(0);
   const isDragging = useRef(false);
@@ -65,13 +81,13 @@ export default function MinistryHub() {
   const reverseRotation = useTransform(rotation, r => -r);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#061430] via-[#050A14] to-[#241702] flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-[#102931] via-[#142E35] to-[#1D3F48] flex flex-col">
       <section className="relative flex-1 w-full flex flex-col justify-between overflow-hidden">
         {/* Top Header Placeholder mimicking the provided design */}
         <motion.div
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="relative z-40 w-full flex flex-col sm:flex-row items-center justify-center sm:justify-between px-4 sm:px-8 py-4 lg:py-5 bg-[#061430]/60 backdrop-blur-md border-b border-white/10"
+          className="relative z-40 w-full flex flex-col sm:flex-row items-center justify-center sm:justify-between px-4 sm:px-8 py-4 lg:py-5 bg-[#102931]/70 backdrop-blur-md border-b border-white/10"
         >
           <div className="flex flex-col items-center sm:items-start gap-1">
             <h2 className="text-white font-bold text-base sm:text-lg tracking-wider">Welcome to Brother Suresh  Babu ministries</h2>
@@ -93,8 +109,8 @@ export default function MinistryHub() {
         />
 
         {/* Glow Effects */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/3" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0C647F]/15 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#1D3F48]/20 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/3" />
 
         {/* Main Content Area */}
         <div className="container relative z-20 mx-auto px-4 sm:px-6 lg:px-8 h-full flex-1 flex flex-col items-center justify-center lg:justify-between pt-16 lg:pt-24 pb-8">
@@ -155,13 +171,13 @@ export default function MinistryHub() {
                   >
                     <Link
                       to={item.path}
-                      className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3 px-3 py-2 sm:px-5 sm:py-3 rounded-full border border-white/10 bg-[#061430]/95 backdrop-blur-md shadow-[0_0_15px_rgba(255,255,255,0.03)] hover:bg-white/10 hover:border-primary/50 transition-all group pointer-events-auto relative z-10"
+                      className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3 px-3 py-2 sm:px-5 sm:py-3 rounded-full border border-white/10 bg-[#102931]/95 backdrop-blur-md shadow-[0_0_15px_rgba(255,255,255,0.03)] hover:bg-white/10 hover:border-[#0C647F]/50 transition-all group pointer-events-auto relative z-10"
                     >
-                      <span className="text-xs sm:text-sm lg:text-base font-semibold text-white/90 group-hover:text-primary transition-colors whitespace-nowrap">
+                      <span className="text-xs sm:text-sm lg:text-base font-semibold text-white/90 group-hover:text-[#0C647F] transition-colors whitespace-nowrap">
                         {item.label}
                       </span>
-                      <div className="w-5 h-5 sm:w-8 sm:h-8 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/40 transition-colors hidden sm:flex">
-                        <Navigation size={12} className="text-primary -rotate-45" />
+                      <div className="w-5 h-5 sm:w-8 sm:h-8 rounded-full bg-[#0C647F]/20 flex items-center justify-center group-hover:bg-[#0C647F]/40 transition-colors hidden sm:flex">
+                        <Navigation size={12} className="text-[#0C647F] -rotate-45" />
                       </div>
                     </Link>
                   </motion.div>
@@ -179,57 +195,105 @@ export default function MinistryHub() {
             </div>
           </motion.div>
 
-          {/* Right Column - Portrait Image */}
-          <div className="relative w-full flex-1 flex justify-center lg:justify-end lg:absolute lg:bottom-0 lg:right-0 items-end z-10 pointer-events-none pb-12 lg:pb-0 lg:pr-12 xl:pr-24 mt-20 lg:mt-0">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, x: 50 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-              className="relative flex-shrink-0 w-[300px] sm:w-[350px] lg:w-[400px] xl:w-[450px] pointer-events-auto"
-            >
-              {/* Animated Floating Particles Behind the Portrait */}
-              <div className="absolute inset-x-[-30%] bottom-0 top-0 -z-20 overflow-hidden pointer-events-none [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]">
-                {Array.from({ length: 75 }).map((_, i) => (
-                  <motion.div
-                    key={`particle-${i}`}
-                    className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-primary/70 rounded-full blur-[1px]"
-                    initial={{
-                      left: `${10 + Math.random() * 80}%`,
-                      bottom: `${Math.random() * -20}%`,
-                      scale: Math.random() * 1.5 + 0.5,
-                      opacity: 0,
-                    }}
-                    animate={{
-                      y: [0, -500 - Math.random() * 400],
-                      x: [0, (Math.random() - 0.5) * 150],
-                      opacity: [0, 1, 0.8, 0],
-                    }}
-                    transition={{
-                      duration: Math.random() * 8 + 6,
-                      repeat: Infinity,
-                      ease: "linear",
-                      delay: Math.random() * 8,
-                    }}
+          {/* ── Spotify Episodes Panel — right side ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="absolute right-4 top-0 bottom-0 z-30 w-[260px] sm:w-[290px] pointer-events-auto hidden lg:flex flex-col justify-center gap-3"
+          >
+            {/* Header */}
+            <div className="flex items-center gap-2.5 px-1">
+              <div className="w-8 h-8 rounded-full bg-[#1DB954] flex items-center justify-center shadow-[0_0_20px_rgba(29,185,84,0.4)] shrink-0">
+                <SpotifyIcon className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <p className="text-white font-bold text-sm leading-tight">Latest Episodes</p>
+                <p className="text-white/40 text-[10px] uppercase tracking-widest">Podcast</p>
+              </div>
+              <div className="ml-auto flex gap-[2px] items-end h-4">
+                {[3, 5, 4, 6, 3].map((h, j) => (
+                  <motion.span key={j}
+                    className="w-[2px] bg-[#1DB954] rounded-full"
+                    animate={{ height: [`${h}px`, `${h + 5}px`, `${h}px`] }}
+                    transition={{ duration: 0.6, repeat: Infinity, delay: j * 0.1 }}
                   />
                 ))}
               </div>
+            </div>
 
-              {/* Animated Pulsing Backglow for the portrait */}
-              <motion.div
-                animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.7, 0.3] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute inset-x-0 bottom-0 top-1/4 bg-primary/30 blur-[60px] sm:blur-[80px] -z-10 rounded-t-full"
-              />
+            <div className="h-px bg-gradient-to-r from-[#1DB954]/40 via-white/10 to-transparent" />
 
-              <motion.img
-                animate={{ y: [-5, 5, -5] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                src={HeroImg}
-                className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative z-10"
-                alt="Brother Suresh Babu"
-                style={{ filter: "brightness(1.1) contrast(1.05)" }}
+            {/* Episode list */}
+            <div className="flex flex-col gap-2">
+              {PODCAST_EPISODES.map((_, i) => (
+                <motion.button key={i} onClick={() => setActiveEp(i)}
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-2xl border text-left transition-all duration-200 group
+                    ${activeEp === i
+                      ? "bg-[#1DB954]/15 border-[#1DB954]/50 shadow-[0_0_16px_rgba(29,185,84,0.15)]"
+                      : "bg-white/[0.04] border-white/10 hover:bg-white/[0.08] hover:border-white/20"
+                    }`}
+                >
+                  <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-all
+                    ${activeEp === i ? "bg-[#1DB954] shadow-[0_0_10px_rgba(29,185,84,0.5)]" : "bg-white/10 group-hover:bg-white/20"}`}>
+                    {activeEp === i ? (
+                      <span className="flex gap-[2px] items-end h-3">
+                        {[3, 5, 4].map((h, j) => (
+                          <motion.span key={j} className="w-[2px] bg-white rounded-full"
+                            animate={{ height: [`${h}px`, `${h + 3}px`, `${h}px`] }}
+                            transition={{ duration: 0.5, repeat: Infinity, delay: j * 0.12 }} />
+                        ))}
+                      </span>
+                    ) : (
+                      <svg className="w-3 h-3 text-white/70 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    )}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className={`text-xs font-bold truncate ${activeEp === i ? "text-[#1DB954]" : "text-white/80 group-hover:text-white"} transition-colors`}>
+                      Episode {i + 1}
+                    </p>
+                    <p className="text-[10px] text-white/35 mt-0.5">Brother Suresh Babu</p>
+                  </div>
+                  <SpotifyIcon className={`w-3 h-3 shrink-0 ${activeEp === i ? "text-[#1DB954]" : "text-white/20 group-hover:text-white/40"} transition-colors`} />
+                </motion.button>
+              ))}
+            </div>
+
+            {/* Active embed */}
+            <motion.div key={activeEp}
+              initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
+              className="rounded-2xl overflow-hidden border border-[#1DB954]/20 shadow-[0_4px_32px_rgba(29,185,84,0.1)]"
+            >
+              <iframe
+                style={{ borderRadius: "12px", display: "block" }}
+                src={`https://open.spotify.com/embed/episode/${PODCAST_EPISODES[activeEp]}?utm_source=generator`}
+                width="100%" height="152"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                title={`Episode ${activeEp + 1}`}
               />
             </motion.div>
+
+            <Link to="/podcast"
+              className="flex items-center justify-center gap-2 py-2 rounded-2xl border border-white/10 bg-white/[0.03] hover:bg-[#1DB954]/10 hover:border-[#1DB954]/30 transition-all text-white/50 hover:text-[#1DB954] text-xs font-semibold"
+            >
+              <SpotifyIcon className="w-3 h-3" />
+              View all episodes
+            </Link>
+          </motion.div>
+
+          {/* Portrait Image — centered, no animation */}
+          <div className="absolute inset-0 flex justify-center items-end z-10 pointer-events-none overflow-hidden">
+            <img
+              src={HeroImg}
+              className="w-[300px] sm:w-[380px] lg:w-[460px] xl:w-[520px] h-auto object-contain object-top drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+              alt="Brother Suresh Babu"
+            />
           </div>
         </div>
 
@@ -238,25 +302,25 @@ export default function MinistryHub() {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="relative z-30 w-full border-t border-white/10 bg-[#061430]/60 backdrop-blur-xl"
+          className="relative z-30 w-full border-t border-white/10 bg-[#102931]/70 backdrop-blur-xl"
         >
           <div className="container mx-auto px-4 py-6">
             <div className="flex flex-wrap items-center justify-center lg:justify-between gap-6 lg:gap-12 text-white/60 text-sm font-medium uppercase tracking-wider">
               <div className="flex items-center gap-3">
                 <BookOpen size={20} className="text-white/40" />
-                <span className="flex items-center gap-1 font-bold text-white"><span className="text-xl sm:text-2xl text-primary">{counts.years}+</span> Years</span>
+                <span className="flex items-center gap-1 font-bold text-white"><span className="text-xl sm:text-2xl text-[#0C647F]">{counts.years}+</span> Years</span>
               </div>
               <div className="flex items-center gap-3">
                 <Globe size={20} className="text-white/40" />
-                <span className="flex items-center gap-1 font-bold text-white"><span className="text-xl sm:text-2xl text-primary">{counts.nations}+</span> Nations</span>
+                <span className="flex items-center gap-1 font-bold text-white"><span className="text-xl sm:text-2xl text-[#0C647F]">{counts.nations}+</span> Nations</span>
               </div>
               <div className="flex items-center gap-3">
                 <Navigation size={20} className="text-white/40" />
-                <span className="flex items-center gap-1 font-bold text-white"><span className="text-xl sm:text-2xl text-primary">{counts.states}</span> States</span>
+                <span className="flex items-center gap-1 font-bold text-white"><span className="text-xl sm:text-2xl text-[#0C647F]">{counts.states}</span> States</span>
               </div>
               <div className="flex items-center gap-3">
                 <Church size={20} className="text-white/40" />
-                <span className="flex items-center gap-1 font-bold text-white"><span className="text-xl sm:text-2xl text-primary">{counts.churches}+</span> Churches</span>
+                <span className="flex items-center gap-1 font-bold text-white"><span className="text-xl sm:text-2xl text-[#0C647F]">{counts.churches}+</span> Churches</span>
               </div>
             </div>
           </div>
