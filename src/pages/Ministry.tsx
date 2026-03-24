@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Globe2, Users, BookOpen, Heart, Radio, MapPin, Target, MonitorPlay } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CTA from "@/components/CTA";
 import { TestimonialSection } from "@/components/ui/testimonials";
 
 const Ministry = () => {
@@ -60,14 +59,14 @@ const Ministry = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative w-full h-[60vh] flex items-center justify-center rounded-[40px] bg-blue-dark">
-        <div className="absolute inset-0 rounded-[40px] ">
+      <section className="relative w-full h-[60vh] flex items-center justify-center rounded-[40px]">
+        <div className="absolute inset-0 rounded-[40px] overflow-hidden">
           <img
             src="https://images.unsplash.com/photo-1543722530-d2c3201371e7?q=80&w=1474&auto=format&fit=crop"
             alt="Ministry & Work"
-            className="w-full h-full object-cover opacity-30 mix-blend-overlay rounded-[40px]"
+            className="w-full h-full object-cover rounded-[40px]"
           />
-          {/* <div className="absolute inset-0 bg-blue-dark/60 rounded-[40px]" /> */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0B2D3A]/90 via-[#0D3A4A]/80 to-[#071E28]/90 rounded-[40px]" />
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <motion.h1
@@ -253,7 +252,7 @@ const Ministry = () => {
       </section>
 
       {/* Ministry Impact Stats/Testimonials */}
-      <section className="py-16 md:py-24 bg-primary text-primary-foreground text-center">
+      <section className="py-16 md:py-24 bg-primary mb-3 rounded-[40px] text-primary-foreground text-center">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl md:text-5xl font-bold font-serif mb-6">Real Ministry Impact</h2>
           <p className="text-lg md:text-xl opacity-90 mb-12">
@@ -271,7 +270,6 @@ const Ministry = () => {
         </div>
       </section>
 
-      <CTA />
       <Footer />
     </div>
   );
